@@ -1,6 +1,6 @@
 # GRouNdGAN
 _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata using Causal **G**enerative **A**dversarial **N**etworks_
-
+![architecture figure](https://github.com/YazdanZ/GRouNdGAN/blob/master/docs/figs/architecture.svg)
 ## Dependencies
 This repository has been tested with Python 3.9.6  A PIP environment is provided in [requirements.txt](https://github.com/YazdanZ/GRouNdGAN/blob/master/requirements.txt)
 
