@@ -1,0 +1,6 @@
+[submodule "Beeline"]
+	path = Beeline
+	url = https://github.com/Murali-group/Beeline.git
+[submodule "scGAN"]
+	path = scGAN
+	url = https://github.com/imsb-uke/scGAN.git

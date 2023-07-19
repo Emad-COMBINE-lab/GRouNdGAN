@@ -1,0 +1,45 @@
+# Virtual environment
+env/
+
+# Large raw data files
+data/raw/fresh68k/
+
+# Byte-compiled file
+__pycache__/
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+.virtual_documents
+
+# dask worker space for GRNBoost2 TRN inference
+dask-worker-space/
+
+# Vscode and PyCharm
+.vscode
+.idea
+
+# Logfiles 
+*.log
+
+# For macOS finder
+.DS_Store
+
+# Trained Models
+models/
+
+# Visualizations and Analyses
+results/
+
+# Only add otherwise ignored data files manually 
+data/
+
+# slurm output files (stderr & stdout)
+*.out
+
+# MISC data
+*.pickle
+*.csv
+
+# figures
+*.svg
+*.png
