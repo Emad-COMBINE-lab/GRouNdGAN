@@ -28,10 +28,6 @@ GRouNdGAN can be trained by running  `main.py` with the `--train` argument and p
 python src/main.py --config {path/to/config_file} --train
 ```
 
-## Data Availability
-TODO
-## BibTex Citation
-TODO
 ## License 
 Copyright (C) 2023 Emad's COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad. 
 
