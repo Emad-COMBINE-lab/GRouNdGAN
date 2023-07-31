@@ -7,7 +7,7 @@
 
 Welcome to GRouNdGAN's documentation!
 =====================================  
-.. figure:: figs/architecture.svg
+.. figure:: figs/architecture.png
    :align: center
 
    Overview of GRouNdGAN's architecture
