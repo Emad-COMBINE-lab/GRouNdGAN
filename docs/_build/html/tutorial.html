@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; GRouNdGAN 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contact" href="contact.html" />
+    <link rel="prev" title="Welcome to GRouNdGAN’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            GRouNdGAN
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-groundgan">How to run GRouNdGAN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-files">Config Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GRouNdGAN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/tutorial.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading"></a></h1>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
+<p>Start by cloning GRouNdGAN’s official Github <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN">repo</a> to your local machine:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
+<span class="nb">cd</span><span class="w"> </span>GRouNdGAN/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can optionally clone the BEELINE and scGAN submodules to reproduce our studies.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
+<span class="nb">cd</span><span class="w"> </span>GRouNdGAN/
+</pre></div>
+</div>
+</div>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h2>
+<p>GRouNdGAN is developed and testes with Python version 3.9.6. After loading the appropriate python version, install required pip dependencies from the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</div></blockquote>
+<p>We recommend doing this step in a python virtual environment.</p>
+</section>
+<section id="how-to-run-groundgan">
+<h2>How to run GRouNdGAN<a class="headerlink" href="#how-to-run-groundgan" title="Permalink to this heading"></a></h2>
+<section id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading"></a></h3>
+<p>GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in <code class="docutils literal notranslate"><span class="pre">data/raw/</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">raw/barcodes.tsv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raw/genes.tsv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raw/matrix.mtx</span></code></p></li>
+</ul>
+<p>Then call the preprocessing script <code class="docutils literal notranslate"><span class="pre">src/preprocessing/preprocess.py</span></code> and provide the directory containing raw data and an output directory as positional arguments. If you have annotations, provide them through the <code class="docutils literal notranslate"><span class="pre">--annotations</span></code> option.</p>
+<p>Example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/preprocessing/preprocess.py<span class="w"> </span>data/raw/PBMC/<span class="w"> </span>data/processed/PBMC/PBMC68k.h5ad<span class="w"> </span>--annotations<span class="w"> </span>data/raw/PBMC/barcodes_annotations.tsv
+</pre></div>
+</div>
+</section>
+<section id="config-files">
+<h3>Config Files<a class="headerlink" href="#config-files" title="Permalink to this heading"></a></h3>
+<p>GRouNdGAN uses <a class="reference external" href="https://docs.python.org/3/library/configparser.html">python INI config files</a> to receive its inputs and allow users the flexibility to tune various parameters. Template config files are provided to run GRouNdGAN, scGAN, cscGAN, and cWGAN under the <code class="docutils literal notranslate"><span class="pre">configs/</span></code> directory.</p>
+<p>Below is an example cfg file for GRouNdGAN.</p>
+<div class="highlight-INI notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span>
+<span class="na">output directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">results/GRouNdGAN</span>
+<span class="na">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cuda</span><span class="w"> </span><span class="c1">; we will let the program choose what is available</span>
+<span class="na">checkpoint  ; set value to use a trained model</span>
+
+<span class="w">    </span><span class="k">[Data]</span>
+<span class="w">    </span><span class="na">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/train_data.h5ad</span>
+<span class="w">    </span><span class="na">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/validation_data.h5ad</span>
+<span class="w">    </span><span class="na">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/test_data.h5ad</span>
+<span class="w">    </span><span class="na">number of genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
+
+<span class="w">    </span><span class="c1">; this causal graph is a pickled nested dictionary</span>
+<span class="w">    </span><span class="c1">; nested dictionary keys are gene indices</span>
+<span class="w">    </span><span class="c1">; the dictionary is of this form:</span>
+<span class="w">    </span><span class="c1">; {381: {51, 65, 353, 664, 699},</span>
+<span class="w">    </span><span class="c1">; 16: {21, 65, 353, 605, 699},</span>
+<span class="w">    </span><span class="c1">; ...</span>
+<span class="w">    </span><span class="c1">; 565: {18, 51, 65, 552, 650}}</span>
+<span class="w">    </span><span class="c1">; In this example, 381, 16, and 565 are gene indices in the input dataset</span>
+<span class="w">    </span><span class="c1">; Each key&#39;s (gene&#39;s) value is the indiced of its regulating TFs in the input dataset</span>
+<span class="w">    </span><span class="c1">; A tutorial will be made available in the future.</span>
+
+<span class="w">    </span><span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/causal_graph.pkl</span>
+
+<span class="w">    </span><span class="k">[Model]</span>
+<span class="w">    </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">causal GAN</span>
+<span class="w">    </span><span class="na">noise per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="w">    </span><span class="na">depth per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+<span class="w">    </span><span class="na">width per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="w">    </span><span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span>
+<span class="w">    </span><span class="na">labeler layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2000 2000 2000</span>
+<span class="w">    </span><span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"> </span><span class="c1">; noise vector dimensions</span>
+<span class="w">    </span><span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; UMI count</span>
+<span class="w">    </span><span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; regularization hyper-parameter for gradient penalty</span>
+
+
+<span class="w">    </span><span class="k">[Training]</span>
+<span class="w">    </span><span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024</span>
+<span class="w">    </span><span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="c1">; iterations to train the critic for each iteration of the generator</span>
+<span class="w">    </span><span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000000</span>
+<span class="w">    </span><span class="na">labeler and antilabeler training intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+
+<span class="w">        </span><span class="k">[Optimizer]</span>
+<span class="w">        </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span>
+<span class="w">        </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
+<span class="w">        </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span>
+
+<span class="w">        </span><span class="k">[Learning Rate]</span>
+<span class="w">        </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
+<span class="w">        </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+<span class="w">        </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
+<span class="w">        </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
+<span class="w">        </span><span class="na">labeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+<span class="w">        </span><span class="na">antilabeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+
+
+<span class="w">        </span><span class="k">[Logging]</span>
+<span class="w">        </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<span class="w">        </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<span class="w">        </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span>
+
+<span class="w">    </span><span class="k">[CC Model]</span>
+<span class="w">    </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">GAN</span><span class="w"> </span><span class="c1">; Non-conditional single-cell RNA-seq GAN</span>
+<span class="w">    </span><span class="na">generator layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256 512 1024</span>
+<span class="w">    </span><span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span>
+<span class="w">    </span><span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"> </span><span class="c1">; noise vector dimensions</span>
+<span class="w">    </span><span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; UMI count (hardcoded to None in the code)</span>
+<span class="w">    </span><span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; regularization hyper-parameter for gradient penalty</span>
+
+
+<span class="w">    </span><span class="k">[CC Training]</span>
+<span class="w">    </span><span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span>
+<span class="w">    </span><span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="c1">; iterations to train the critic for each iteration of the generator</span>
+<span class="w">    </span><span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">200000</span>
+
+<span class="w">        </span><span class="k">[CC Optimizer]</span>
+<span class="w">        </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span>
+<span class="w">        </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
+<span class="w">        </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span>
+
+<span class="w">        </span><span class="k">[CC Learning Rate]</span>
+<span class="w">        </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+<span class="w">        </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span>
+<span class="w">        </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+<span class="w">        </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span>
+
+<span class="w">        </span><span class="k">[CC Logging]</span>
+<span class="w">        </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<span class="w">        </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<span class="w">        </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span>
+</pre></div>
+</div>
+</section>
+<section id="training">
+<h3>Training<a class="headerlink" href="#training" title="Permalink to this heading"></a></h3>
+<p>GRouNdGAN can be trained by running <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with the <code class="docutils literal notranslate"><span class="pre">--train</span></code> argument and providing a config file detailing training parameters. A template detailing every argument can be found here. This repository also implements  <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/gan.cfg">scGAN</a>, <cite>_cscGAN with projection conditioning &lt;https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg&gt;</cite>, and a <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg">Wasserstein gan with conditioning by concatenation</a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--train
+</pre></div>
+</div>
+</section>
+<section id="in-silico-single-cell-simulation">
+<h3>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Permalink to this heading"></a></h3>
+<p>One training is done, you can simulate cells by running the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--generate
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You have to first populate the <code class="docutils literal notranslate"><span class="pre">checkpoint</span></code> field with the path to the saved model (with <code class="docutils literal notranslate"><span class="pre">.pth</span></code> extension).</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to GRouNdGAN’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contact.html" class="btn btn-neutral float-right" title="Contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

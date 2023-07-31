@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gans.causal_gan &mdash; GRouNdGAN 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            GRouNdGAN
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GRouNdGAN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">gans.causal_gan</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for gans.causal_gan</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">networks.critic</span> <span class="kn">import</span> <span class="n">Critic</span>
+<span class="kn">from</span> <span class="nn">networks.generator</span> <span class="kn">import</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">networks.labeler</span> <span class="kn">import</span> <span class="n">Labeler</span>
+<span class="kn">from</span> <span class="nn">networks.masked_causal_generator</span> <span class="kn">import</span> <span class="n">CausalGenerator</span>
+
+<span class="kn">from</span> <span class="nn">gans.gan</span> <span class="kn">import</span> <span class="n">GAN</span>
+
+
+<div class="viewcode-block" id="CausalGAN"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN">[docs]</a><span class="k">class</span> <span class="nc">CausalGAN</span><span class="p">(</span><span class="n">GAN</span><span class="p">):</span>
+<div class="viewcode-block" id="CausalGAN.__init__"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">genes_no</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">latent_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">noise_per_gene</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">depth_per_gene</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">width_per_gene</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">cc_latent_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">cc_layers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">cc_pretrained_checkpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">crit_layers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">causal_graph</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
+        <span class="n">labeler_layers</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">device</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+        <span class="n">library_size</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Causal single-cell RNA-seq GAN (TODO: find a unique name).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        genes_no : int</span>
+<span class="sd">            Number of genes in the dataset.</span>
+<span class="sd">        batch_size : int</span>
+<span class="sd">            Training batch size.</span>
+<span class="sd">        latent_dim : int</span>
+<span class="sd">            Dimension of the latent space from which the noise vector used by the causal controller is sampled.</span>
+<span class="sd">        noise_per_gene : int</span>
+<span class="sd">            Dimension of the latent space from which the noise vectors used by target generators is sampled.</span>
+<span class="sd">        depth_per_gene : int</span>
+<span class="sd">            Depth of the target generator networks.</span>
+<span class="sd">        width_per_gene : int</span>
+<span class="sd">            The width scale used for the target generator networks.</span>
+<span class="sd">        cc_latent_dim : int</span>
+<span class="sd">            Dimension of the latent space from which the noise vector to the causal controller is sampled.</span>
+<span class="sd">        cc_layers : typing.List[int]</span>
+<span class="sd">            List of integers corresponding to the number of neurons of each causal controller layer.</span>
+<span class="sd">        cc_pretrained_checkpoint : str</span>
+<span class="sd">            Path to the  pretrained causal controller.</span>
+<span class="sd">        crit_layers : typing.List[int]</span>
+<span class="sd">            List of integers corresponding to the number of neurons of each critic layer.</span>
+<span class="sd">        causal_graph : typing.Dict[int, typing.Set[int]]</span>
+<span class="sd">            The causal graph is a dictionary representing the TRN to impose. It has the following format:</span>
+<span class="sd">            {target gene index: {TF1 index, TF2 index, ...}}. This causal graph has to be acyclic and bipartite.</span>
+<span class="sd">            A TF cannot be regulated by another TF.</span>
+<span class="sd">            Invalid: {1: {2, 3, {4, 6}}, ...} - a regulator (TF) is regulated by another regulator (TF)</span>
+<span class="sd">            Invalid: {1: {2, 3, 4}, 2: {4, 3, 5}, ...} - a regulator (TF) is also regulated</span>
+<span class="sd">            Invalid: {4: {2, 3}, 2: {4, 3}} - contains a cycle</span>
+
+<span class="sd">            Valid causal graph example: {1: {2, 3, 4}, 6: {5, 4, 2}, ...}</span>
+<span class="sd">        labeler_layers : typing.List[int]</span>
+<span class="sd">            List of integers corresponding to the width of each labeler layer.</span>
+<span class="sd">        device : typing.Optional[str], optional</span>
+<span class="sd">            Specifies to train on &#39;cpu&#39; or &#39;cuda&#39;. Only &#39;cuda&#39; is supported for training the</span>
+<span class="sd">            GAN but &#39;cpu&#39; can be used for inference, by default &quot;cuda&quot; if torch.cuda.is_available() else&quot;cpu&quot;.</span>
+<span class="sd">        library_size : typing.Optional[int], optional</span>
+<span class="sd">            Total number of counts per generated cell, by default 20000.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">causal_controller</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">(</span>
+            <span class="n">z_input</span><span class="o">=</span><span class="n">cc_latent_dim</span><span class="p">,</span>
+            <span class="n">output_cells_dim</span><span class="o">=</span><span class="n">genes_no</span><span class="p">,</span>
+            <span class="n">gen_layers</span><span class="o">=</span><span class="n">cc_layers</span><span class="p">,</span>
+            <span class="n">library_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="n">cc_pretrained_checkpoint</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">causal_controller</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;generator_state_dict&quot;</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_per_gene</span> <span class="o">=</span> <span class="n">noise_per_gene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depth_per_gene</span> <span class="o">=</span> <span class="n">depth_per_gene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width_per_gene</span> <span class="o">=</span> <span class="n">width_per_gene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">causal_graph</span> <span class="o">=</span> <span class="n">causal_graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_layers</span> <span class="o">=</span> <span class="n">labeler_layers</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">genes_no</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">latent_dim</span><span class="p">,</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="n">crit_layers</span><span class="p">,</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+            <span class="n">library_size</span><span class="o">=</span><span class="n">library_size</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CausalGAN._build_model"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN._build_model">[docs]</a>    <span class="k">def</span> <span class="nf">_build_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Instantiates the Generator and Critic.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">CausalGenerator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">noise_per_gene</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">depth_per_gene</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">width_per_gene</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">causal_controller</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">causal_graph</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">library_size</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">freeze_causal_controller</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit</span> <span class="o">=</span> <span class="n">Critic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">genes_no</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">critic_layers</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># the number of genes and TFs are resolved by the causal generator during its instantiation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">Labeler</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">num_genes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">num_tfs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler_layers</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span> <span class="o">=</span> <span class="n">Labeler</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">num_genes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">num_tfs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler_layers</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CausalGAN._save"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN._save">[docs]</a>    <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves the model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : typing.Union[str, bytes, os.PathLike]</span>
+<span class="sd">            Directory to save the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/checkpoints&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
+                <span class="s2">&quot;generator_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;critic_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;labeler_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;antilabeler_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;generator_optimizer_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;critic_optimizer_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">crit_opt</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;labeler_optimizer_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;antilabeler_optimizer_state_dict&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler_opt</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;generator_lr_scheduler&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_lr_scheduler</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;critic_lr_scheduler&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">crit_lr_scheduler</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/checkpoints/step_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="si">}</span><span class="s2">.pth&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CausalGAN._load"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN._load">[docs]</a>    <span class="k">def</span> <span class="nf">_load</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;inference&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads a saved causal GAN model (.pth file).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : typing.Union[str, bytes, os.PathLike]</span>
+<span class="sd">            Path to the saved model.</span>
+<span class="sd">        mode : typing.Optional[str], optional</span>
+<span class="sd">            Specify if the loaded model is used for &#39;inference&#39; or &#39;training&#39;, by default &quot;inference&quot;.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If a mode other than &#39;inference&#39; or &#39;training&#39; is specified.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;generator_state_dict&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;critic_state_dict&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;inference&quot;</span><span class="p">:</span>
+            <span class="c1"># The causal GAN performs better when using batch stats (model.train() mode)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;training&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;generator_optimizer_state_dict&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit_opt</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;critic_optimizer_state_dict&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_lr_scheduler</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;generator_lr_scheduler&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit_lr_scheduler</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;critic_lr_scheduler&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;labeler_state_dict&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;antilabeler_state_dict&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;labeler_optimizer_state_dict&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler_opt</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span>
+                <span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;antilabeler_optimizer_state_dict&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mode should be &#39;inference&#39; or &#39;training&#39;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CausalGAN._train_labelers"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN._train_labelers">[docs]</a>    <span class="k">def</span> <span class="nf">_train_labelers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_cells</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trains the labeler (on real and fake) and anti-labeler (on fake only).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        real_cells : torch.Tensor</span>
+<span class="sd">            Tensor containing a batch of real cells.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fake_noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_noise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">fake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="n">fake_noise</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> 
+
+        <span class="c1"># train anti-labeler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler_opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">predicted_tfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="p">(</span><span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">genes</span><span class="p">])</span>
+        <span class="n">actual_tfs</span> <span class="o">=</span> <span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">tfs</span><span class="p">]</span>
+        <span class="n">antilabeler_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">predicted_tfs</span><span class="p">,</span> <span class="n">actual_tfs</span><span class="p">)</span>
+        <span class="n">antilabeler_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">retain_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler_opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c1"># train labeler on fake data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">predicted_tfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="p">(</span><span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">genes</span><span class="p">])</span>
+        <span class="n">labeler_floss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">predicted_tfs</span><span class="p">,</span> <span class="n">actual_tfs</span><span class="p">)</span>
+        <span class="n">labeler_floss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c1"># train labeler on real data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">predicted_tfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="p">(</span><span class="n">real_cells</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">genes</span><span class="p">])</span>
+        <span class="n">actual_tfs</span> <span class="o">=</span> <span class="n">real_cells</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">tfs</span><span class="p">]</span>
+        <span class="n">labeler_rloss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">predicted_tfs</span><span class="p">,</span> <span class="n">actual_tfs</span><span class="p">)</span>
+        <span class="n">labeler_rloss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="CausalGAN._train_generator"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN._train_generator">[docs]</a>    <span class="k">def</span> <span class="nf">_train_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Trains the causal generator for one iteration.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        torch.Tensor</span>
+<span class="sd">            Tensor containing only 1 item, the generator loss.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="n">fake_noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_noise</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+        <span class="p">)</span>
+
+        <span class="n">fake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="n">fake_noise</span><span class="p">)</span>
+
+        <span class="n">predicted_tfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="p">(</span><span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">genes</span><span class="p">])</span>
+        <span class="n">actual_tfs</span> <span class="o">=</span> <span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">tfs</span><span class="p">]</span>
+        <span class="n">labeler_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">predicted_tfs</span><span class="p">,</span> <span class="n">actual_tfs</span><span class="p">)</span>
+
+        <span class="n">predicted_tfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="p">(</span><span class="n">fake</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">genes</span><span class="p">])</span>
+        <span class="n">antilabeler_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mse</span><span class="p">(</span><span class="n">predicted_tfs</span><span class="p">,</span> <span class="n">actual_tfs</span><span class="p">)</span>
+
+        <span class="n">crit_fake_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="p">(</span><span class="n">fake</span><span class="p">)</span>
+        <span class="n">gen_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator_loss</span><span class="p">(</span><span class="n">crit_fake_pred</span><span class="p">)</span>
+
+        <span class="c1"># comment for ablation of labeler and anti-labeler (GRouNdGAN_def_even_ablation1)</span>
+        <span class="n">gen_loss</span> <span class="o">+=</span> <span class="n">labeler_loss</span> <span class="o">+</span> <span class="n">antilabeler_loss</span>
+        
+        <span class="c1"># uncomment for ablation of anti-labeler but keeping the labeler (GRouNdGAN_def_even_ablation2)</span>
+        <span class="c1"># gen_loss += labeler_loss</span>
+
+        <span class="c1"># uncomment for ablation of labeler but keeping the anti-labeler (GRouNdGAN_def_even_ablation3)</span>
+        <span class="c1"># gen_loss += antilabeler_loss</span>
+
+        
+        <span class="n">gen_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Update weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">gen_loss</span></div>
+
+    <span class="c1"># FIXME: A lot of code duplication here with the parent train() method.</span>
+<div class="viewcode-block" id="CausalGAN.train"><a class="viewcode-back" href="../../gans.html#gans.causal_gan.CausalGAN.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">train_files</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">valid_files</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">critic_iter</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">max_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">c_lambda</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">beta1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">beta2</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">gen_alpha_0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">gen_alpha_final</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">crit_alpha_0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">crit_alpha_final</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">labeler_alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">antilabeler_alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">labeler_training_interval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">checkpoint</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span>
+        <span class="n">summary_freq</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="n">plt_freq</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="n">save_feq</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method for training the causal GAN.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        train_files : str</span>
+<span class="sd">            Path to training set files (TFrecords supported for now).</span>
+<span class="sd">        valid_files : str</span>
+<span class="sd">            Path to validation set files (TFrecords supported for now).</span>
+<span class="sd">        critic_iter : int</span>
+<span class="sd">            Number of training iterations of the critic for each iteration on the generator.</span>
+<span class="sd">        max_steps : int</span>
+<span class="sd">            Maximum number of steps to train the GAN.</span>
+<span class="sd">        c_lambda : float</span>
+<span class="sd">            Regularization hyper-parameter for gradient penalty.</span>
+<span class="sd">        beta1 : float</span>
+<span class="sd">            Coefficients used for computing running averages of gradient in the optimizer.</span>
+<span class="sd">        beta2 : float</span>
+<span class="sd">            Coefficient used for computing running averages of gradient squares in the optimizer.</span>
+<span class="sd">        gen_alpha_0 : float</span>
+<span class="sd">            Generator&#39;s initial learning rate value.</span>
+<span class="sd">        gen_alpha_final : float</span>
+<span class="sd">            Generator&#39;s final learning rate value.</span>
+<span class="sd">        crit_alpha_0 : float</span>
+<span class="sd">            Critic&#39;s initial learning rate value.</span>
+<span class="sd">        crit_alpha_final : float</span>
+<span class="sd">            Critic&#39;s final learning rate value.</span>
+<span class="sd">        labeler_alpha : float</span>
+<span class="sd">            Labeler&#39;s learning rate value.</span>
+<span class="sd">        antilabeler_alpha : float</span>
+<span class="sd">            Anti-labeler&#39;s learning rate value.</span>
+<span class="sd">        labeler_training_interval: int</span>
+<span class="sd">            The number of steps after which the labeler and anti-labeler are trained.</span>
+<span class="sd">            If 20, the labeler and anti-labeler will be trained every 20 steps.</span>
+<span class="sd">        checkpoint : typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span>
+<span class="sd">            Path to a trained model; if specified, the checkpoint is be used to resume training, by default None.</span>
+<span class="sd">        output_dir : typing.Optional[str], optional</span>
+<span class="sd">            Directory to which plots, tfevents, and checkpoints will be saved, by default &quot;output&quot;.</span>
+<span class="sd">        summary_freq : typing.Optional[int], optional</span>
+<span class="sd">            Period between summary logs to TensorBoard, by default 5000.</span>
+<span class="sd">        plt_freq : typing.Optional[int], optional</span>
+<span class="sd">            Period between t-SNE plots, by default 10000.</span>
+<span class="sd">        save_feq : typing.Optional[int], optional</span>
+<span class="sd">            Period between saves of the model, by default 10000.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">should_run</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">%</span> <span class="n">freq</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+        <span class="n">loader</span><span class="p">,</span> <span class="n">valid_loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_loaders</span><span class="p">(</span><span class="n">train_files</span><span class="p">,</span> <span class="n">valid_files</span><span class="p">)</span>
+        <span class="n">loader_gen</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
+
+        <span class="c1"># Instantiate optimizers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span>
+            <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span>
+            <span class="n">lr</span><span class="o">=</span><span class="n">gen_alpha_0</span><span class="p">,</span>
+            <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">),</span>
+            <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit_opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+            <span class="n">lr</span><span class="o">=</span><span class="n">crit_alpha_0</span><span class="p">,</span>
+            <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">),</span>
+            <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler_opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+            <span class="n">lr</span><span class="o">=</span><span class="n">labeler_alpha</span><span class="p">,</span>
+            <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">),</span>
+            <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler_opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+            <span class="n">lr</span><span class="o">=</span><span class="n">antilabeler_alpha</span><span class="p">,</span>
+            <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">),</span>
+            <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># for the labeler and anti-labeler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mse</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+        <span class="c1"># Exponential Learning Rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen_lr_scheduler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_exponential_lr</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_opt</span><span class="p">,</span> <span class="n">gen_alpha_0</span><span class="p">,</span> <span class="n">gen_alpha_final</span><span class="p">,</span> <span class="n">max_steps</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit_lr_scheduler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_exponential_lr</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crit_opt</span><span class="p">,</span> <span class="n">crit_alpha_0</span><span class="p">,</span> <span class="n">crit_alpha_final</span><span class="p">,</span> <span class="n">max_steps</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;training&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+        <span class="c1"># We only accept training on GPU since training on CPU is impractical.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labeler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">antilabeler</span><span class="p">)</span>
+
+        <span class="c1"># Main training loop</span>
+        <span class="n">generator_losses</span><span class="p">,</span> <span class="n">critic_losses</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">&lt;=</span> <span class="n">max_steps</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">real_cells</span><span class="p">,</span> <span class="n">real_labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">loader_gen</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="n">loader_gen</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span>
+                <span class="n">real_cells</span><span class="p">,</span> <span class="n">real_labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">loader_gen</span><span class="p">)</span>
+
+            <span class="n">real_cells</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">real_labels</span> <span class="o">=</span> <span class="n">real_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">mean_iter_crit_loss</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">critic_iter</span><span class="p">):</span>
+                    <span class="n">crit_loss</span><span class="p">,</span> <span class="n">gp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train_critic</span><span class="p">(</span>
+                        <span class="n">real_cells</span><span class="p">,</span> <span class="n">real_labels</span><span class="p">,</span> <span class="n">c_lambda</span>
+                    <span class="p">)</span>
+                    <span class="n">mean_iter_crit_loss</span> <span class="o">+=</span> <span class="n">crit_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">critic_iter</span>
+
+                <span class="n">critic_losses</span> <span class="o">+=</span> <span class="p">[</span><span class="n">mean_iter_crit_loss</span><span class="p">]</span>
+
+                <span class="c1"># Update learning rate</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">crit_lr_scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">gen_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train_generator</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_lr_scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">generator_losses</span> <span class="o">+=</span> <span class="p">[</span><span class="n">gen_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()]</span>
+
+            <span class="k">if</span> <span class="n">should_run</span><span class="p">(</span><span class="n">labeler_training_interval</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_train_labelers</span><span class="p">(</span><span class="n">real_cells</span><span class="p">)</span>
+
+            <span class="c1"># Log and visualize progress</span>
+            <span class="k">if</span> <span class="n">should_run</span><span class="p">(</span><span class="n">summary_freq</span><span class="p">):</span>
+                <span class="n">gen_mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">generator_losses</span><span class="p">[</span><span class="o">-</span><span class="n">summary_freq</span><span class="p">:])</span> <span class="o">/</span> <span class="n">summary_freq</span>
+                <span class="n">crit_mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">critic_losses</span><span class="p">[</span><span class="o">-</span><span class="n">summary_freq</span><span class="p">:])</span> <span class="o">/</span> <span class="n">summary_freq</span>
+
+                <span class="c1"># if self.step == summary_freq:</span>
+                <span class="c1">#     self._add_tensorboard_graph(output_dir, fake_noise, fake)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_update_tensorboard</span><span class="p">(</span>
+                    <span class="n">gen_mean</span><span class="p">,</span>
+                    <span class="n">crit_mean</span><span class="p">,</span>
+                    <span class="n">gp</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">gen_lr_scheduler</span><span class="o">.</span><span class="n">get_last_lr</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">crit_lr_scheduler</span><span class="o">.</span><span class="n">get_last_lr</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">output_dir</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">should_run</span><span class="p">(</span><span class="n">plt_freq</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_generate_tsne_plot</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">should_run</span><span class="p">(</span><span class="n">save_feq</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;done training step&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
