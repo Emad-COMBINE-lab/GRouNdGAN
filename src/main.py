@@ -4,6 +4,9 @@ from __future__ import absolute_import
 import os
 import shutil
 
+import numpy as np
+import scanpy as sc
+
 from custom_parser import get_argparser, get_configparser
 from factory import get_factory
 from preprocessing import grn_creation, preprocess
@@ -41,4 +44,14 @@ if __name__ == "__main__":
         fac.get_trainer()()
 
     if args.generate:
-        raise NotImplementedError()
+        simulated_cells = fac.get_gan().generate_cells(
+            int(cfg_parser.get("Generation", "number of cells to generate")),
+            checkpoint=cfg_parser.get("EXPERIMENT", "checkpoint"),
+        )
+
+        simulated_cells = sc.AnnData(simulated_cells)
+        simulated_cells.obs_names = np.repeat("fake", simulated_cells.shape[0])
+        simulated_cells.obs_names_make_unique()
+        simulated_cells.write(
+            cfg_parser.get("EXPERIMENT", "output directory") + "/simulated.h5ad"
+        )
