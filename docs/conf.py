@@ -58,3 +58,14 @@ html_context = {
   'github_version': 'master/',
   'conf_py_path': "docs/", # Path in the checkout to the docs root
 }
+
+pygments_style = "monokai"  # or xcode'
+html_logo = "figs/logo.png"
+
+
+html_theme_options = {
+    'logo_only': True,
+    'display_version': True,
+    'style_external_links': True,
+    'style_nav_header_background': 'white',
+}

@@ -1,5 +1,10 @@
-# GRouNdGAN
+# <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png" width="250"> 
+ 
+
 _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata using Causal **G**enerative **A**dversarial **N**etworks_
+
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Femad-combine-lab.github.io%2FGRouNdGAN%2F)](https://emad-combine-lab.github.io/GRouNdGAN/)
+[![CI](https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master)](https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions)
 
 ---
 Implementation of GRouNdGAN as described in:
