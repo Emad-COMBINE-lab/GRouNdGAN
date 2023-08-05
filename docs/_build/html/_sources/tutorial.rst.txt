@@ -27,14 +27,14 @@ GRouNdGAN is developed and testes with Python version 3.9.6. After loading the a
     
         pip install -r requirements.txt
 
-We recommend doing this step in a python virtual environment. 
+We recommend doing this step in a python virtual environment. This should take less than 15 minutes.
 
 How to run GRouNdGAN
 --------------------
 
 Preprocessing 
 ~~~~~~~~~~~~~
-GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in ``data/raw/``.
+GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in ``data/raw/``. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from `here https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX`_.
 
 * ``raw/barcodes.tsv``
 * ``raw/genes.tsv``
@@ -157,6 +157,7 @@ GRouNdGAN can be trained by running ``main.py`` with the ``--train`` argument an
     python src/main.py --config path/to/config_file --train
 
 
+Training time primarily depends on the density of the imposed GRN. It takes about 5 days with a very dense GRN (15 TFs per gene) imposed on a single NVidia V100SXM2 (16G memory) GPU.
 
 In-silico Single-Cell Simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -169,3 +170,4 @@ One training is done, you can simulate cells by running the following command:
 .. note::
     You have to first populate the ``checkpoint`` field with the path to the saved model (with ``.pth`` extension).
 
+The output is a ``.h5ad`` file containing the simulated dataset.

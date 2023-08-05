@@ -114,13 +114,13 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>We recommend doing this step in a python virtual environment.</p>
+<p>We recommend doing this step in a python virtual environment. This should take less than 15 minutes.</p>
 </section>
 <section id="how-to-run-groundgan">
 <h2>How to run GRouNdGAN<a class="headerlink" href="#how-to-run-groundgan" title="Permalink to this heading"></a></h2>
 <section id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading"></a></h3>
-<p>GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in <code class="docutils literal notranslate"><span class="pre">data/raw/</span></code>.</p>
+<p>GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in <code class="docutils literal notranslate"><span class="pre">data/raw/</span></code>. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from <a href="#id1"><span class="problematic" id="id2">`here https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX`_</span></a>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">raw/barcodes.tsv</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">raw/genes.tsv</span></code></p></li>
@@ -235,6 +235,7 @@
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--train
 </pre></div>
 </div>
+<p>Training time primarily depends on the density of the imposed GRN. It takes about 5 days with a very dense GRN (15 TFs per gene) imposed on a single NVidia V100SXM2 (16G memory) GPU.</p>
 </section>
 <section id="in-silico-single-cell-simulation">
 <h3>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Permalink to this heading"></a></h3>
@@ -246,6 +247,7 @@
 <p class="admonition-title">Note</p>
 <p>You have to first populate the <code class="docutils literal notranslate"><span class="pre">checkpoint</span></code> field with the path to the saved model (with <code class="docutils literal notranslate"><span class="pre">.pth</span></code> extension).</p>
 </div>
+<p>The output is a <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file containing the simulated dataset.</p>
 </section>
 </section>
 </section>
