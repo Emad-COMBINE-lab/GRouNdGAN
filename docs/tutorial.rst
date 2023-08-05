@@ -11,7 +11,7 @@ Start by cloning GRouNdGAN's official Github `repo <https://github.com/Emad-COMB
     cd GRouNdGAN/
 
 .. note::
-    You can optionally clone the BEELINE and scGAN submodules to reproduce our studies.
+    You can optionally clone the scGAN, BEELINE, scDESIGN2, and SPARSim submodules to reproduce our studies.
     
     .. code-block:: sh
     
