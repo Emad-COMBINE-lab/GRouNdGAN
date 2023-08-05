@@ -34,7 +34,7 @@ How to run GRouNdGAN
 
 Preprocessing 
 ~~~~~~~~~~~~~
-GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in ``data/raw/``. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from `here https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX`_.
+GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in ``data/raw/``. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from `here <https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX>`_.
 
 * ``raw/barcodes.tsv``
 * ``raw/genes.tsv``
