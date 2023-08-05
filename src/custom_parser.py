@@ -56,4 +56,11 @@ def get_argparser() -> argparse.ArgumentParser:
         help="Preprocess raw data for GAN training",
     )
 
+    parser.add_argument(
+        "--create_grn",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Infer a GRN from preprocessed data using GRNBoost2 and appropriately format it to input to GRouNdGAN as causal graph",
+    )
     return parser

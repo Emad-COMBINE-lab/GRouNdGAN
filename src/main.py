@@ -3,9 +3,10 @@ from __future__ import absolute_import
 
 import os
 import shutil
-from parser import get_argparser, get_configparser
 
+from custom_parser import get_argparser, get_configparser
 from factory import get_factory
+from preprocessing import grn_creation, preprocess
 
 if __name__ == "__main__":
     """
@@ -31,9 +32,10 @@ if __name__ == "__main__":
     fac = get_factory(cfg_parser)
 
     if args.preprocess:
-        raise NotImplementedError(
-            "directly call preprocessing script (src/preprocessing/preprocess.py) for the moment."
-        )
+        preprocess.preprocess(cfg_parser)
+
+    if args.create_grn:
+        grn_creation.create_GRN(cfg_parser)
 
     if args.train:
         fac.get_trainer()()

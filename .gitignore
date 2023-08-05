@@ -1,5 +1,5 @@
 # Virtual environment
-env/
+*env/
 
 # Large raw data files
 data/raw/fresh68k/
