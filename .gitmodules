@@ -4,3 +4,9 @@
 [submodule "scGAN"]
 	path = scGAN
 	url = https://github.com/imsb-uke/scGAN.git
+[submodule "sparsim"]
+	path = sparsim
+	url = https://gitlab.com/sysbiobig/sparsim.git
+[submodule "scDesign2"]
+	path = scDesign2
+	url = https://github.com/JSB-UCLA/scDesign2.git
