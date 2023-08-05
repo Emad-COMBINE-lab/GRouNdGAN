@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gans package &mdash; GRouNdGAN 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="layers package" href="layers.html" />
+    <link rel="prev" title="factory module" href="factory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png?raw=true" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gans package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans.causal_gan">gans.causal_gan module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gans.causal_gan.CausalGAN"><code class="docutils literal notranslate"><span class="pre">CausalGAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans.conditional_gan">gans.conditional_gan module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gans.conditional_gan.ConditionalGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalGAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans.conditional_gan_cat">gans.conditional_gan_cat module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gans.conditional_gan_cat.ConditionalCatGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans.conditional_gan_proj">gans.conditional_gan_proj module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gans.conditional_gan_proj.ConditionalProjGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans.gan">gans.gan module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gans.gan.GAN"><code class="docutils literal notranslate"><span class="pre">GAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gans">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">networks package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GRouNdGAN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API</a></li>
+      <li class="breadcrumb-item active">gans package</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/gans.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gans-package">
+<h1>gans package<a class="headerlink" href="#gans-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-gans.causal_gan">
+<span id="gans-causal-gan-module"></span><h2>gans.causal_gan module<a class="headerlink" href="#module-gans.causal_gan" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gans.causal_gan.</span></span><span class="sig-name descname"><span class="pre">CausalGAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_pretrained_checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">causal_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gans.gan.GAN" title="gans.gan.GAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">GAN</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_per_gene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_pretrained_checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">causal_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Causal single-cell RNA-seq GAN (TODO: find a unique name).</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl>
+<dt>genes_no<span class="classifier">int</span></dt><dd><p>Number of genes in the dataset.</p>
+</dd>
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>Training batch size.</p>
+</dd>
+<dt>latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vector used by the causal controller is sampled.</p>
+</dd>
+<dt>noise_per_gene<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vectors used by target generators is sampled.</p>
+</dd>
+<dt>depth_per_gene<span class="classifier">int</span></dt><dd><p>Depth of the target generator networks.</p>
+</dd>
+<dt>width_per_gene<span class="classifier">int</span></dt><dd><p>The width scale used for the target generator networks.</p>
+</dd>
+<dt>cc_latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vector to the causal controller is sampled.</p>
+</dd>
+<dt>cc_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each causal controller layer.</p>
+</dd>
+<dt>cc_pretrained_checkpoint<span class="classifier">str</span></dt><dd><p>Path to the  pretrained causal controller.</p>
+</dd>
+<dt>crit_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each critic layer.</p>
+</dd>
+<dt>causal_graph<span class="classifier">typing.Dict[int, typing.Set[int]]</span></dt><dd><p>The causal graph is a dictionary representing the TRN to impose. It has the following format:
+{target gene index: {TF1 index, TF2 index, …}}. This causal graph has to be acyclic and bipartite.
+A TF cannot be regulated by another TF.
+Invalid: {1: {2, 3, {4, 6}}, …} - a regulator (TF) is regulated by another regulator (TF)
+Invalid: {1: {2, 3, 4}, 2: {4, 3, 5}, …} - a regulator (TF) is also regulated
+Invalid: {4: {2, 3}, 2: {4, 3}} - contains a cycle</p>
+<p>Valid causal graph example: {1: {2, 3, 4}, 6: {5, 4, 2}, …}</p>
+</dd>
+<dt>labeler_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the width of each labeler layer.</p>
+</dd>
+<dt>device<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specifies to train on ‘cpu’ or ‘cuda’. Only ‘cuda’ is supported for training the
+GAN but ‘cpu’ can be used for inference, by default “cuda” if torch.cuda.is_available() else”cpu”.</p>
+</dd>
+<dt>library_size<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Total number of counts per generated cell, by default 20000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN._build_model">
+<span class="sig-name descname"><span class="pre">_build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN._build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN._build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiates the Generator and Critic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN._save">
+<span class="sig-name descname"><span class="pre">_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN._save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN._save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the model.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the model.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN._load">
+<span class="sig-name descname"><span class="pre">_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inference'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN._load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN._load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads a saved causal GAN model (.pth file).</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Path to the saved model.</p>
+</dd>
+<dt>mode<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specify if the loaded model is used for ‘inference’ or ‘training’, by default “inference”.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h3>Raises<a class="headerlink" href="#raises" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If a mode other than ‘inference’ or ‘training’ is specified.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN._train_labelers">
+<span class="sig-name descname"><span class="pre">_train_labelers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN._train_labelers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN._train_labelers" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the labeler (on real and fake) and anti-labeler (on fake only).</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real_cells<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real cells.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN._train_generator">
+<span class="sig-name descname"><span class="pre">_train_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN._train_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN._train_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the causal generator for one iteration.
+Returns
+——-
+torch.Tensor</p>
+<blockquote>
+<div><p>Tensor containing only 1 item, the generator loss.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.causal_gan.CausalGAN.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">critic_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_alpha_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_alpha_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_alpha_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_alpha_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler_alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antilabeler_alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeler_training_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plt_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_feq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/causal_gan.html#CausalGAN.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.causal_gan.CausalGAN.train" title="Permalink to this definition"></a></dt>
+<dd><p>Method for training the causal GAN.</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>train_files<span class="classifier">str</span></dt><dd><p>Path to training set files (TFrecords supported for now).</p>
+</dd>
+<dt>valid_files<span class="classifier">str</span></dt><dd><p>Path to validation set files (TFrecords supported for now).</p>
+</dd>
+<dt>critic_iter<span class="classifier">int</span></dt><dd><p>Number of training iterations of the critic for each iteration on the generator.</p>
+</dd>
+<dt>max_steps<span class="classifier">int</span></dt><dd><p>Maximum number of steps to train the GAN.</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter for gradient penalty.</p>
+</dd>
+<dt>beta1<span class="classifier">float</span></dt><dd><p>Coefficients used for computing running averages of gradient in the optimizer.</p>
+</dd>
+<dt>beta2<span class="classifier">float</span></dt><dd><p>Coefficient used for computing running averages of gradient squares in the optimizer.</p>
+</dd>
+<dt>gen_alpha_0<span class="classifier">float</span></dt><dd><p>Generator’s initial learning rate value.</p>
+</dd>
+<dt>gen_alpha_final<span class="classifier">float</span></dt><dd><p>Generator’s final learning rate value.</p>
+</dd>
+<dt>crit_alpha_0<span class="classifier">float</span></dt><dd><p>Critic’s initial learning rate value.</p>
+</dd>
+<dt>crit_alpha_final<span class="classifier">float</span></dt><dd><p>Critic’s final learning rate value.</p>
+</dd>
+<dt>labeler_alpha<span class="classifier">float</span></dt><dd><p>Labeler’s learning rate value.</p>
+</dd>
+<dt>antilabeler_alpha<span class="classifier">float</span></dt><dd><p>Anti-labeler’s learning rate value.</p>
+</dd>
+<dt>labeler_training_interval: int</dt><dd><p>The number of steps after which the labeler and anti-labeler are trained.
+If 20, the labeler and anti-labeler will be trained every 20 steps.</p>
+</dd>
+<dt>checkpoint<span class="classifier">typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span></dt><dd><p>Path to a trained model; if specified, the checkpoint is be used to resume training, by default None.</p>
+</dd>
+<dt>output_dir<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Directory to which plots, tfevents, and checkpoints will be saved, by default “output”.</p>
+</dd>
+<dt>summary_freq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between summary logs to TensorBoard, by default 5000.</p>
+</dd>
+<dt>plt_freq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between t-SNE plots, by default 10000.</p>
+</dd>
+<dt>save_feq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between saves of the model, by default 10000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gans.conditional_gan">
+<span id="gans-conditional-gan-module"></span><h2>gans.conditional_gan module<a class="headerlink" href="#module-gans.conditional_gan" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gans.conditional_gan.ConditionalGAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gans.conditional_gan.</span></span><span class="sig-name descname"><span class="pre">ConditionalGAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gans/conditional_gan.html#ConditionalGAN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan.ConditionalGAN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gans.gan.GAN" title="gans.gan.GAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">GAN</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan.ConditionalGAN._sample_pseudo_labels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_sample_pseudo_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_ratios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan.html#ConditionalGAN._sample_pseudo_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan.ConditionalGAN._sample_pseudo_labels" title="Permalink to this definition"></a></dt>
+<dd><p>Randomly samples cluster labels following a multinomial distribution.</p>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The number of samples to generate (normally equal to training batch size).</p>
+</dd>
+<dt>cluster_ratios<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing the parameters of the multinomial distribution
+(ex: torch.Tensor([0.5, 0.3, 0.2]) for 3 clusters with occurence
+probabilities of  0.5, 0.3, and 0.2 for clusters 0, 1, and 2, respectively).</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Tensor containing a batch of samples cluster labels.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan.ConditionalGAN._generate_tsne_plot">
+<span class="sig-name descname"><span class="pre">_generate_tsne_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valid_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan.html#ConditionalGAN._generate_tsne_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan.ConditionalGAN._generate_tsne_plot" title="Permalink to this definition"></a></dt>
+<dd><p>Generate t-SNE plot during training.</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>valid_loader<span class="classifier">DataLoader</span></dt><dd><p>Validation set DataLoader.</p>
+</dd>
+<dt>output_dir<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the t-SNE plots.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gans.conditional_gan.ConditionalGAN._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gans.conditional_gan.ConditionalGAN._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gans.conditional_gan_cat">
+<span id="gans-conditional-gan-cat-module"></span><h2>gans.conditional_gan_cat module<a class="headerlink" href="#module-gans.conditional_gan_cat" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gans.conditional_gan_cat.</span></span><span class="sig-name descname"><span class="pre">ConditionalCatGAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_ratios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gans.conditional_gan.ConditionalGAN" title="gans.conditional_gan.ConditionalGAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConditionalGAN</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_ratios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Conditional single-cell RNA-seq GAN using the conditioning method by concatenation.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>genes_no<span class="classifier">int</span></dt><dd><p>Number of genes in the dataset.</p>
+</dd>
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>Training batch size.</p>
+</dd>
+<dt>latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vector is sampled.</p>
+</dd>
+<dt>gen_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each generator layer.</p>
+</dd>
+<dt>crit_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each critic layer.</p>
+</dd>
+<dt>num_classes<span class="classifier">int</span></dt><dd><p>Number of classes in the dataset.</p>
+</dd>
+<dt>label_ratios<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing the ratio of each class in the dataset.</p>
+</dd>
+<dt>device<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specifies to train on ‘cpu’ or ‘cuda’. Only ‘cuda’ is supported for training the
+GAN but ‘cpu’ can be used for inference, by default “cuda” if torch.cuda.is_available() else”cpu”.</p>
+</dd>
+<dt>library_size<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Total number of counts per generated cell, by default 20000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._get_gradient">
+<span class="sig-name descname"><span class="pre">_get_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN._get_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._get_gradient" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the gradient of the critic’s scores with respect to interpolations
+of real and fake cells.</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of real cells.</p>
+</dd>
+<dt>fake<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of fake cells.</p>
+</dd>
+<dt>epsilon<span class="classifier">torch.Tensor</span></dt><dd><p>A vector of the uniformly random proportions of real/fake per interpolated cells.</p>
+</dd>
+<dt>labels<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of real class labels.</p>
+</dd>
+<dt><a href="#id9"><span class="problematic" id="id10">*</span></a>args</dt><dd><p>Variable length argument list.</p>
+</dd>
+<dt><a href="#id11"><span class="problematic" id="id12">**</span></a>kwargs</dt><dd><p>Arbitrary keyword arguments.</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Returns<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Gradient of the critic’s score with respect to interpolated data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._cat_one_hot_labels">
+<span class="sig-name descname"><span class="pre">_cat_one_hot_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN._cat_one_hot_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._cat_one_hot_labels" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenates one-hot encoded labels to a tensor.</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>cells<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor to which to concatenate one-hot encoded class labels.</p>
+</dd>
+<dt>labels<span class="classifier">torch.Tensor</span></dt><dd><p>Class labels to concatenate.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Tensor with one-hot encoded labels concatenated at the tail.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN.generate_cells">
+<span class="sig-name descname"><span class="pre">generate_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN.generate_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN.generate_cells" title="Permalink to this definition"></a></dt>
+<dd><p>Generate cells from the Conditional GAN model.</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>cells_no<span class="classifier">int</span></dt><dd><p>Number of cells to generate.</p>
+</dd>
+<dt>checkpoint<span class="classifier">typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span></dt><dd><p>Path to the saved trained model, by default None.</p>
+</dd>
+<dt><a href="#id60"><span class="problematic" id="id61">class_</span></a>: typing.Optional[typing.Union[int, None]] = None</dt><dd><p>Class of the cells to generate. If None, cells with the same ratio per class
+will be generated.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[np.ndarray, np.ndarray]</dt><dd><p>Gene expression matrix of generated cells and their corresponding class labels.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._build_model">
+<span class="sig-name descname"><span class="pre">_build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN._build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the Generator and Critic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._train_critic">
+<span class="sig-name descname"><span class="pre">_train_critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_cells</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN._train_critic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._train_critic" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the critic for one iteration.</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real_cells<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real cells.</p>
+</dd>
+<dt>real_labels<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real labels (corresponding to real_cells).</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter for gradient penalty.</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[torch.Tensor, torch.Tensor]</dt><dd><p>The computed critic loss and gradient penalty.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._train_generator">
+<span class="sig-name descname"><span class="pre">_train_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_cat.html#ConditionalCatGAN._train_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._train_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the generator for one iteration.</p>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Tensor containing only 1 item, the generator loss.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gans.conditional_gan_cat.ConditionalCatGAN._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gans.conditional_gan_cat.ConditionalCatGAN._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gans.conditional_gan_proj">
+<span id="gans-conditional-gan-proj-module"></span><h2>gans.conditional_gan_proj module<a class="headerlink" href="#module-gans.conditional_gan_proj" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gans.conditional_gan_proj.</span></span><span class="sig-name descname"><span class="pre">ConditionalProjGAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_ratios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gans.conditional_gan.ConditionalGAN" title="gans.conditional_gan.ConditionalGAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConditionalGAN</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_ratios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Conditional single-cell RNA-seq GAN using the projection conditioning method.</p>
+<section id="id21">
+<h3>Parameters<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>genes_no<span class="classifier">int</span></dt><dd><p>Number of genes in the dataset.</p>
+</dd>
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>Training batch size.</p>
+</dd>
+<dt>latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vector is sampled.</p>
+</dd>
+<dt>gen_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each generator layer.</p>
+</dd>
+<dt>crit_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each critic layer.</p>
+</dd>
+<dt>num_classes<span class="classifier">int</span></dt><dd><p>Number of classes in the dataset.</p>
+</dd>
+<dt>label_ratios<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing the ratio of each class in the dataset.</p>
+</dd>
+<dt>device<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specifies to train on ‘cpu’ or ‘cuda’. Only ‘cuda’ is supported for training the
+GAN but ‘cpu’ can be used for inference, by default “cuda” if torch.cuda.is_available() else”cpu”.</p>
+</dd>
+<dt>library_size<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Total number of counts per generated cell, by default 20000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN._get_gradient">
+<span class="sig-name descname"><span class="pre">_get_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN._get_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN._get_gradient" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the gradient of the critic’s scores with respect to interpolations
+of real and fake cells.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of real cells.</p>
+</dd>
+<dt>fake<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of fake cells.</p>
+</dd>
+<dt>epsilon<span class="classifier">torch.Tensor</span></dt><dd><p>A vector of the uniformly random proportions of real/fake per interpolated cells.</p>
+</dd>
+<dt>labels<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of real class labels.</p>
+</dd>
+<dt><a href="#id23"><span class="problematic" id="id24">*</span></a>args</dt><dd><p>Variable length argument list.</p>
+</dd>
+<dt><a href="#id25"><span class="problematic" id="id26">**</span></a>kwargs</dt><dd><p>Arbitrary keyword arguments.</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Returns<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Gradient of the critic’s score with respect to interpolated data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN.generate_cells">
+<span class="sig-name descname"><span class="pre">generate_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN.generate_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN.generate_cells" title="Permalink to this definition"></a></dt>
+<dd><p>Generate cells from the Conditional GAN model.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>cells_no<span class="classifier">int</span></dt><dd><p>Number of cells to generate.</p>
+</dd>
+<dt>checkpoint<span class="classifier">typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span></dt><dd><p>Path to the saved trained model, by default None.</p>
+</dd>
+<dt><a href="#id62"><span class="problematic" id="id63">class_</span></a>: typing.Optional[typing.Union[int, None]] = None</dt><dd><p>Class of the cells to generate. If None, cells with the same ratio per class
+will be generated.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[np.ndarray, np.ndarray]</dt><dd><p>Gene expression matrix of generated cells and their corresponding class labels.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN._build_model">
+<span class="sig-name descname"><span class="pre">_build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN._build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN._build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the Generator and Critic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN._train_critic">
+<span class="sig-name descname"><span class="pre">_train_critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_cells</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN._train_critic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN._train_critic" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the critic for one iteration.</p>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real_cells<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real cells.</p>
+</dd>
+<dt>real_labels<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real labels (corresponding to real_cells).</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter for gradient penalty.</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[torch.Tensor, torch.Tensor]</dt><dd><p>The computed critic loss and gradient penalty.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN._train_generator">
+<span class="sig-name descname"><span class="pre">_train_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/conditional_gan_proj.html#ConditionalProjGAN._train_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN._train_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the generator for one iteration.</p>
+<section id="id32">
+<h3>Returns<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Tensor containing only 1 item, the generator loss.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gans.conditional_gan_proj.ConditionalProjGAN._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gans.conditional_gan_proj.ConditionalProjGAN._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gans.gan">
+<span id="gans-gan-module"></span><h2>gans.gan module<a class="headerlink" href="#module-gans.gan" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gans.gan.GAN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gans.gan.</span></span><span class="sig-name descname"><span class="pre">GAN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gans/gan.html#GAN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genes_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Non-conditional single-cell RNA-seq GAN.</p>
+<section id="id33">
+<h3>Parameters<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>genes_no<span class="classifier">int</span></dt><dd><p>Number of genes in the dataset.</p>
+</dd>
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>Training batch size.</p>
+</dd>
+<dt>latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space from which the noise vector is sampled.</p>
+</dd>
+<dt>gen_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each generator layer.</p>
+</dd>
+<dt>crit_layers<span class="classifier">typing.List[int]</span></dt><dd><p>List of integers corresponding to the number of neurons of each critic layer.</p>
+</dd>
+<dt>device<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specifies to train on ‘cpu’ or ‘cuda’. Only ‘cuda’ is supported for training the
+GAN but ‘cpu’ can be used for inference, by default “cuda” if torch.cuda.is_available() else”cpu”.</p>
+</dd>
+<dt>library_size<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Total number of counts per generated cell, by default 20000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._generate_noise">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_generate_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._generate_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._generate_noise" title="Permalink to this definition"></a></dt>
+<dd><p>Function for creating noise vectors: Given the dimensions (batch_size, latent_dim).</p>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>batch_size<span class="classifier">int</span></dt><dd><p>The number of samples to generate (normally equal to training batch size).</p>
+</dd>
+<dt>latent_dim<span class="classifier">int</span></dt><dd><p>Dimension of the latent space to sample from.</p>
+</dd>
+<dt>device<span class="classifier">str</span></dt><dd><p>The device type.</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>A tensor filled with random numbers from the standard normal distribution.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._set_exponential_lr">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_set_exponential_lr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ExponentialLR</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._set_exponential_lr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._set_exponential_lr" title="Permalink to this definition"></a></dt>
+<dd><p>Sets up exponentially decaying learning rate scheduler to be used
+with the optimizer.</p>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>optimizer<span class="classifier">torch.optim.Optimizer</span></dt><dd><p>Optimizer for which to create an exponential learning rate scheduler.</p>
+</dd>
+<dt>alpha_0<span class="classifier">float</span></dt><dd><p>Initial learning rate.</p>
+</dd>
+<dt>alpha_final<span class="classifier">float</span></dt><dd><p>Final learning rate.</p>
+</dd>
+<dt>max_steps<span class="classifier">int</span></dt><dd><p>Total number of training steps. When current_step=max_steps, alpha_final
+will be set as the learning rate.</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h3>Returns<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>ExponentialLR</dt><dd><p>Exponential learning rate scheduler. Call the step() function on this
+scheduler in the training loop.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._critic_loss">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_critic_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crit_fake_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_real_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._critic_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._critic_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute critic’s loss given the its scores on real and fake cells,
+the gradient penalty, and gradient penalty regularization hyper-parameter.</p>
+<section id="id38">
+<h3>Parameters<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>crit_fake_pred<span class="classifier">torch.Tensor</span></dt><dd><p>Critic’s score on fake cells.</p>
+</dd>
+<dt>crit_real_pred<span class="classifier">torch.Tensor</span></dt><dd><p>Critic’s score on real cells.</p>
+</dd>
+<dt>gp<span class="classifier">torch.Tensor</span></dt><dd><p>Unweighted gradient penalty</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter to be used with the gradient penalty
+in the WGAN loss.</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h3>Returns<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Critic’s loss for the current batch.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._generator_loss">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_generator_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crit_fake_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._generator_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._generator_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the generator loss from the critic’s score of the generated cells.</p>
+<section id="id40">
+<h3>Parameters<a class="headerlink" href="#id40" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>crit_fake_pred<span class="classifier">torch.Tensor</span></dt><dd><p>The critic’s score on fake generated cells.</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h3>Returns<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Generator’s loss value for the current batch.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._get_gradient">
+<span class="sig-name descname"><span class="pre">_get_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._get_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._get_gradient" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the gradient of the critic’s scores with respect to interpolations
+of real and fake cells.</p>
+<section id="id42">
+<h3>Parameters<a class="headerlink" href="#id42" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of real cells.</p>
+</dd>
+<dt>fake<span class="classifier">torch.Tensor</span></dt><dd><p>A batch of fake cells.</p>
+</dd>
+<dt>epsilon<span class="classifier">torch.Tensor</span></dt><dd><p>A vector of the uniformly random proportions of real/fake per interpolated cells.</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h3>Returns<a class="headerlink" href="#id43" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Gradient of the critic’s score with respect to interpolated data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._gradient_penalty">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_gradient_penalty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._gradient_penalty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._gradient_penalty" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the gradient penalty given a gradient.</p>
+<section id="id44">
+<h3>Parameters<a class="headerlink" href="#id44" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>gradient<span class="classifier">torch.Tensor</span></dt><dd><p>The gradient of the critic’s score with respect to
+the interpolated data.</p>
+</dd>
+</dl>
+</section>
+<section id="id45">
+<h3>Returns<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Gradient penalty of the given gradient.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN.generate_cells">
+<span class="sig-name descname"><span class="pre">generate_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN.generate_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN.generate_cells" title="Permalink to this definition"></a></dt>
+<dd><p>Generate cells from the GAN model.</p>
+<section id="id46">
+<h3>Parameters<a class="headerlink" href="#id46" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>cells_no<span class="classifier">int</span></dt><dd><p>Number of cells to generate.</p>
+</dd>
+<dt>checkpoint<span class="classifier">typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span></dt><dd><p>Path to the saved trained model, by default None.</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h3>Returns<a class="headerlink" href="#id47" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>Gene expression matrix of generated cells.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._save">
+<span class="sig-name descname"><span class="pre">_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the model.</p>
+<section id="id48">
+<h3>Parameters<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the model.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._load">
+<span class="sig-name descname"><span class="pre">_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inference'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads a saved model (.pth file).</p>
+<section id="id49">
+<h3>Parameters<a class="headerlink" href="#id49" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Path to the saved model.</p>
+</dd>
+<dt>mode<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Specify if the loaded model is used for ‘inference’ or ‘training’, by default “inference”.</p>
+</dd>
+</dl>
+</section>
+<section id="id50">
+<h3>Raises<a class="headerlink" href="#id50" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If a mode other than ‘inference’ or ‘training’ is specified.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._build_model">
+<span class="sig-name descname"><span class="pre">_build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiates the Generator and Critic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._get_loaders">
+<span class="sig-name descname"><span class="pre">_get_loaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataLoader</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataLoader</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._get_loaders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._get_loaders" title="Permalink to this definition"></a></dt>
+<dd><p>Gets training and validation DataLoaders for training.</p>
+<section id="id51">
+<h3>Parameters<a class="headerlink" href="#id51" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>train_file<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Path to training files.</p>
+</dd>
+<dt>validation_file<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Path to validation files.</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h3>Returns<a class="headerlink" href="#id52" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[DataLoader, DataLoader]</dt><dd><p>Train and Validation Dataloaders.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._add_tensorboard_graph">
+<span class="sig-name descname"><span class="pre">_add_tensorboard_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._add_tensorboard_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._add_tensorboard_graph" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the model graph to TensorBoard.</p>
+<section id="id53">
+<h3>Parameters<a class="headerlink" href="#id53" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>output_dir<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the tfevents.</p>
+</dd>
+<dt>gen_data<span class="classifier">typing.Union[torch.Tensor, typing.Tuple[torch.Tensor]]</span></dt><dd><p>Input to the generator.</p>
+</dd>
+<dt>crit_data<span class="classifier">typing.Union[torch.Tensor, typing.Tuple[torch.Tensor]]</span></dt><dd><p>Input to the critic.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._update_tensorboard">
+<span class="sig-name descname"><span class="pre">_update_tensorboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_loss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_lr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_lr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._update_tensorboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._update_tensorboard" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the TensorBoard summary logs.</p>
+<section id="id54">
+<h3>Parameters<a class="headerlink" href="#id54" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>gen_loss<span class="classifier">float</span></dt><dd><p>Generator loss.</p>
+</dd>
+<dt>crit_loss<span class="classifier">float</span></dt><dd><p>Critic loss.</p>
+</dd>
+<dt>gp<span class="classifier">torch.Tensor</span></dt><dd><p>Gradient penalty.</p>
+</dd>
+<dt>gen_lr<span class="classifier">float</span></dt><dd><p>Generator’s optimizer learning rate.</p>
+</dd>
+<dt>crit_lr<span class="classifier">float</span></dt><dd><p>Critic’s optimizer learning rate.</p>
+</dd>
+<dt>output_dir<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the tfevents.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._generate_tsne_plot">
+<span class="sig-name descname"><span class="pre">_generate_tsne_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valid_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._generate_tsne_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._generate_tsne_plot" title="Permalink to this definition"></a></dt>
+<dd><p>Generates t-SNE plots during training.</p>
+<section id="id55">
+<h3>Parameters<a class="headerlink" href="#id55" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>valid_loader<span class="classifier">DataLoader</span></dt><dd><p>Validation set DataLoader.</p>
+</dd>
+<dt>output_dir<span class="classifier">typing.Union[str, bytes, os.PathLike]</span></dt><dd><p>Directory to save the t-SNE plots.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._train_critic">
+<span class="sig-name descname"><span class="pre">_train_critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._train_critic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._train_critic" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the critic for one iteration.</p>
+<section id="id56">
+<h3>Parameters<a class="headerlink" href="#id56" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>real_cells<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real cells.</p>
+</dd>
+<dt>real_labels<span class="classifier">torch.Tensor</span></dt><dd><p>Tensor containing a batch of real labels (corresponding to real_cells).</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter for gradient penalty.</p>
+</dd>
+</dl>
+</section>
+<section id="id57">
+<h3>Returns<a class="headerlink" href="#id57" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>typing.Tuple[torch.Tensor, torch.Tensor]</dt><dd><p>The computed critic loss and gradient penalty.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN._train_generator">
+<span class="sig-name descname"><span class="pre">_train_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN._train_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN._train_generator" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the generator for one iteration.</p>
+<section id="id58">
+<h3>Returns<a class="headerlink" href="#id58" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>Tensor containing only 1 item, the generator loss.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gans.gan.GAN.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">critic_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_alpha_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_alpha_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_alpha_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crit_alpha_final</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plt_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_feq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/gans/gan.html#GAN.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gans.gan.GAN.train" title="Permalink to this definition"></a></dt>
+<dd><p>Method for training the GAN.</p>
+<section id="id59">
+<h3>Parameters<a class="headerlink" href="#id59" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>train_files<span class="classifier">str</span></dt><dd><p>Path to training set files (TFrecords supported for now).</p>
+</dd>
+<dt>valid_files<span class="classifier">str</span></dt><dd><p>Path to validation set files (TFrecords supported for now).</p>
+</dd>
+<dt>critic_iter<span class="classifier">int</span></dt><dd><p>Number of training iterations of the critic for each iteration on the generator.</p>
+</dd>
+<dt>max_steps<span class="classifier">int</span></dt><dd><p>Maximum number of steps to train the GAN.</p>
+</dd>
+<dt>c_lambda<span class="classifier">float</span></dt><dd><p>Regularization hyper-parameter for gradient penalty.</p>
+</dd>
+<dt>beta1<span class="classifier">float</span></dt><dd><p>Coefficients used for computing running averages of gradient in the optimizer.</p>
+</dd>
+<dt>beta2<span class="classifier">float</span></dt><dd><p>Coefficient used for computing running averages of gradient squares in the optimizer.</p>
+</dd>
+<dt>gen_alpha_0<span class="classifier">float</span></dt><dd><p>Generator’s initial learning rate value.</p>
+</dd>
+<dt>gen_alpha_final<span class="classifier">float</span></dt><dd><p>Generator’s final learning rate value.</p>
+</dd>
+<dt>crit_alpha_0<span class="classifier">float</span></dt><dd><p>Critic’s initial learning rate value.</p>
+</dd>
+<dt>crit_alpha_final<span class="classifier">float</span></dt><dd><p>Critic’s final learning rate value.</p>
+</dd>
+<dt>checkpoint<span class="classifier">typing.Optional[typing.Union[str, bytes, os.PathLike, None]], optional</span></dt><dd><p>Path to a trained model; if specified, the checkpoint is be used to resume training, by default None.</p>
+</dd>
+<dt>output_dir<span class="classifier">typing.Optional[str], optional</span></dt><dd><p>Directory to which plots, tfevents, and checkpoints will be saved, by default “output”.</p>
+</dd>
+<dt>summary_freq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between summary logs to TensorBoard, by default 5000.</p>
+</dd>
+<dt>plt_freq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between t-SNE plots, by default 10000.</p>
+</dd>
+<dt>save_feq<span class="classifier">typing.Optional[int], optional</span></dt><dd><p>Period between saves of the model, by default 10000.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gans">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gans" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="factory.html" class="btn btn-neutral float-left" title="factory module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layers.html" class="btn btn-neutral float-right" title="layers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

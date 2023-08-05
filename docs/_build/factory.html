@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>factory module &mdash; GRouNdGAN 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="gans package" href="gans.html" />
+    <link rel="prev" title="API" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png?raw=true" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">factory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#factory.parse_list"><code class="docutils literal notranslate"><span class="pre">parse_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.IGANFactory"><code class="docutils literal notranslate"><span class="pre">IGANFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory.IGANFactory.__init__"><code class="docutils literal notranslate"><span class="pre">IGANFactory.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.IGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">IGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.IGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">IGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.IGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">IGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.GANFactory"><code class="docutils literal notranslate"><span class="pre">GANFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory.GANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">GANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.GANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">GANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.GANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">GANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.ConditionalCatGANFactory"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalCatGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalCatGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalCatGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.ConditionalProjGANFactory"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalProjGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalProjGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.ConditionalProjGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.CausalGANFactory"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory.CausalGANFactory.get_cc"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_cc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.CausalGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.CausalGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory.CausalGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#factory.get_factory"><code class="docutils literal notranslate"><span class="pre">get_factory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">networks package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html">parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GRouNdGAN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API</a></li>
+      <li class="breadcrumb-item active">factory module</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/factory.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-factory">
+<span id="factory-module"></span><h1>factory module<a class="headerlink" href="#module-factory" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="factory.parse_list">
+<span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">parse_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/factory.html#parse_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.parse_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="factory.IGANFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">IGANFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/factory.html#IGANFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.IGANFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Factory that represents a GAN.
+This factory does not keep of created references.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.IGANFactory.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/factory.html#IGANFactory.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.IGANFactory.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the factory.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>parser<span class="classifier">ConfigParser</span></dt><dd><p>Parser for config file containing GAN model and training params.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.IGANFactory.get_gan">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_gan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.gan.GAN" title="gans.gan.GAN"><span class="pre">GAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#IGANFactory.get_gan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.IGANFactory.get_gan" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a GAN instance</p>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>GAN</dt><dd><p>GAN instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.IGANFactory.get_trainer">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_trainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/factory.html#IGANFactory.get_trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.IGANFactory.get_trainer" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the GAN train function.</p>
+<section id="id1">
+<h2>Returns<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>typing.Callable</dt><dd><p>GAN train() function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="factory.IGANFactory._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#factory.IGANFactory._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="factory.GANFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">GANFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/factory.html#GANFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.GANFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#factory.IGANFactory" title="factory.IGANFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGANFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.GANFactory.get_gan">
+<span class="sig-name descname"><span class="pre">get_gan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.gan.GAN" title="gans.gan.GAN"><span class="pre">GAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#GANFactory.get_gan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.GANFactory.get_gan" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a GAN instance</p>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>GAN</dt><dd><p>GAN instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.GANFactory.get_trainer">
+<span class="sig-name descname"><span class="pre">get_trainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/factory.html#GANFactory.get_trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.GANFactory.get_trainer" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the GAN train function.</p>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>typing.Callable</dt><dd><p>GAN train() function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="factory.GANFactory._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#factory.GANFactory._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="factory.ConditionalCatGANFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">ConditionalCatGANFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/factory.html#ConditionalCatGANFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalCatGANFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#factory.IGANFactory" title="factory.IGANFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGANFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.ConditionalCatGANFactory.get_gan">
+<span class="sig-name descname"><span class="pre">get_gan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN" title="gans.conditional_gan_cat.ConditionalCatGAN"><span class="pre">ConditionalCatGAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#ConditionalCatGANFactory.get_gan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalCatGANFactory.get_gan" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a GAN instance</p>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>GAN</dt><dd><p>GAN instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.ConditionalCatGANFactory.get_trainer">
+<span class="sig-name descname"><span class="pre">get_trainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/factory.html#ConditionalCatGANFactory.get_trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalCatGANFactory.get_trainer" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the GAN train function.</p>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>typing.Callable</dt><dd><p>GAN train() function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="factory.ConditionalCatGANFactory._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#factory.ConditionalCatGANFactory._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="factory.ConditionalProjGANFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">ConditionalProjGANFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/factory.html#ConditionalProjGANFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalProjGANFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#factory.IGANFactory" title="factory.IGANFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGANFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.ConditionalProjGANFactory.get_gan">
+<span class="sig-name descname"><span class="pre">get_gan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN" title="gans.conditional_gan_proj.ConditionalProjGAN"><span class="pre">ConditionalProjGAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#ConditionalProjGANFactory.get_gan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalProjGANFactory.get_gan" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a GAN instance</p>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>GAN</dt><dd><p>GAN instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.ConditionalProjGANFactory.get_trainer">
+<span class="sig-name descname"><span class="pre">get_trainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/factory.html#ConditionalProjGANFactory.get_trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.ConditionalProjGANFactory.get_trainer" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the GAN train function.</p>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>typing.Callable</dt><dd><p>GAN train() function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="factory.ConditionalProjGANFactory._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#factory.ConditionalProjGANFactory._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="factory.CausalGANFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">CausalGANFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/factory.html#CausalGANFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.CausalGANFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#factory.IGANFactory" title="factory.IGANFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGANFactory</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.CausalGANFactory.get_cc">
+<span class="sig-name descname"><span class="pre">get_cc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.gan.GAN" title="gans.gan.GAN"><span class="pre">GAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#CausalGANFactory.get_cc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.CausalGANFactory.get_cc" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.CausalGANFactory.get_gan">
+<span class="sig-name descname"><span class="pre">get_gan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN" title="gans.causal_gan.CausalGAN"><span class="pre">CausalGAN</span></a></span></span><a class="reference internal" href="_modules/factory.html#CausalGANFactory.get_gan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.CausalGANFactory.get_gan" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a GAN instance</p>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>GAN</dt><dd><p>GAN instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="factory.CausalGANFactory.get_trainer">
+<span class="sig-name descname"><span class="pre">get_trainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/factory.html#CausalGANFactory.get_trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.CausalGANFactory.get_trainer" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the GAN train function.</p>
+<section id="id9">
+<h2>Returns<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>typing.Callable</dt><dd><p>GAN train() function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="factory.CausalGANFactory._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#factory.CausalGANFactory._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="factory.get_factory">
+<span class="sig-prename descclassname"><span class="pre">factory.</span></span><span class="sig-name descname"><span class="pre">get_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfigParser</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#factory.IGANFactory" title="factory.IGANFactory"><span class="pre">IGANFactory</span></a></span></span><a class="reference internal" href="_modules/factory.html#get_factory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#factory.get_factory" title="Permalink to this definition"></a></dt>
+<dd><p>Return the factory for the GAN type based on ‘model’ key in the parser.</p>
+<section id="id10">
+<h2>Parameters<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>cfg<span class="classifier">ConfigParser</span></dt><dd><p>Parser for config file containing GAN model and training params.</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h2>Returns<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>IGANFactory</dt><dd><p>Factory for the specified GAN.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the model is unknown or not implemented.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gans.html" class="btn btn-neutral float-right" title="gans package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

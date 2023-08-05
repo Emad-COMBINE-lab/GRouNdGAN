@@ -4,6 +4,14 @@ preprocessing package
 Submodules
 ----------
 
+preprocessing.grn\_creation module
+----------------------------------
+
+.. automodule:: preprocessing.grn_creation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 preprocessing.preprocess module
 -------------------------------
 

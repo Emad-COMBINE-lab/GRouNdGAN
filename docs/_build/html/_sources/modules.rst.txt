@@ -9,7 +9,7 @@ API
    layers
    main
    networks
-   parser
+   custom_parser
    preprocessing
    sc_dataset
    tfrecord_loader

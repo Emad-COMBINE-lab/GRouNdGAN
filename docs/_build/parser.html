@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>parser module &mdash; GRouNdGAN 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="preprocessing package" href="preprocessing.html" />
+    <link rel="prev" title="networks package" href="networks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png?raw=true" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">networks package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parser.ParserError"><code class="docutils literal notranslate"><span class="pre">ParserError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.STType"><code class="docutils literal notranslate"><span class="pre">STType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser._pickler"><code class="docutils literal notranslate"><span class="pre">_pickler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.compilest"><code class="docutils literal notranslate"><span class="pre">compilest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.expr"><code class="docutils literal notranslate"><span class="pre">expr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.isexpr"><code class="docutils literal notranslate"><span class="pre">isexpr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.issuite"><code class="docutils literal notranslate"><span class="pre">issuite()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.sequence2st"><code class="docutils literal notranslate"><span class="pre">sequence2st()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.st2list"><code class="docutils literal notranslate"><span class="pre">st2list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.st2tuple"><code class="docutils literal notranslate"><span class="pre">st2tuple()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.suite"><code class="docutils literal notranslate"><span class="pre">suite()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parser.tuple2st"><code class="docutils literal notranslate"><span class="pre">tuple2st()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GRouNdGAN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API</a></li>
+      <li class="breadcrumb-item active">parser module</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/parser.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-parser">
+<span id="parser-module"></span><h1>parser module<a class="headerlink" href="#module-parser" title="Permalink to this heading"></a></h1>
+<p>This is an interface to Python’s internal parser.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="parser.ParserError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">ParserError</span></span><a class="headerlink" href="#parser.ParserError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="parser.STType">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">STType</span></span><a class="headerlink" href="#parser.STType" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">st</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser._pickler">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">_pickler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser._pickler" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the pickle magic to allow ST objects to be pickled.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.compilest">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">compilest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.compilest" title="Permalink to this definition"></a></dt>
+<dd><p>Compiles an ST object into a code object.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.expr">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">expr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.expr" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an ST object from an expression.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.isexpr">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">isexpr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.isexpr" title="Permalink to this definition"></a></dt>
+<dd><p>Determines if an ST object was created from an expression.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.issuite">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">issuite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.issuite" title="Permalink to this definition"></a></dt>
+<dd><p>Determines if an ST object was created from a suite.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.sequence2st">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">sequence2st</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.sequence2st" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an ST object from a tree representation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.st2list">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">st2list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.st2list" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list-tree representation of an ST.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.st2tuple">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">st2tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.st2tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a tuple-tree representation of an ST.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.suite">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">suite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.suite" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an ST object from a suite.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parser.tuple2st">
+<span class="sig-prename descclassname"><span class="pre">parser.</span></span><span class="sig-name descname"><span class="pre">tuple2st</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parser.tuple2st" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an ST object from a tree representation.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="networks.html" class="btn btn-neutral float-left" title="networks package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="preprocessing.html" class="btn btn-neutral float-right" title="preprocessing package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
