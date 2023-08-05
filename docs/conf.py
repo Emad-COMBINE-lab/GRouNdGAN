@@ -60,7 +60,7 @@ html_context = {
 }
 
 pygments_style = "monokai"  # or xcode'
-html_logo = "figs/logo.png"
+html_logo = "https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png?raw=true"
 
 
 html_theme_options = {
