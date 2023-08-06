@@ -1,4 +1,4 @@
-# <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/figs/logo.png" width="250"> 
+# <img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/_static_/logo.png" width="250"> 
  
 
 _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata using Causal **G**enerative **A**dversarial **N**etworks_
