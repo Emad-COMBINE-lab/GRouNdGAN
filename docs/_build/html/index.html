@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
@@ -14,7 +14,7 @@
   
   
   <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
@@ -31,6 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -39,8 +40,8 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -51,7 +52,7 @@
   </head>
   
   
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
   
   
@@ -118,8 +119,6 @@
   
     
     
-      
-    
     
     <img src="_static/logo.svg" class="logo__image only-light" alt="GRouNdGAN - Home"/>
     <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="GRouNdGAN - Home"/>`);</script>
@@ -179,7 +178,7 @@
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <ul class="nav bd-sidenav">
@@ -422,12 +421,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome to GRouNdGAN’s documentation!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -441,11 +437,13 @@ document.write(`
   <section id="welcome-to-groundgan-s-documentation">
 <h1>Welcome to GRouNdGAN’s documentation!<a class="headerlink" href="#welcome-to-groundgan-s-documentation" title="Permalink to this heading">#</a></h1>
 <p>This site serves as the documentation for the code released under the
-<strong>GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks</strong> (GRouNdGAN) project. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.</p>
-<dl class="simple">
-<dt>To find out more details about GRouNdGAN, you can check out our preprint on bioRxiv: </dt><dd><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2">Zinati, Y., Takiddeen, A., &amp; Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. bioRxiv. doi:10.1101/2023.07.25.550225</a>.</p>
-</dd>
-</dl>
+<strong>GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks</strong> project. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.</p>
+<blockquote class="epigraph">
+<div><p>To find out more details about GRouNdGAN, you can check out our preprint on bioRxiv:</p>
+<blockquote>
+<div><p>Zinati, Y., Takiddeen, A., &amp; Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. <em>bioRxiv</em>. <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2">doi:10.1101/2023.07.25.550225</a>.</p>
+</div></blockquote>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
@@ -460,9 +458,23 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="citation.html#bibtex-citation">Bibtex Citation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
+</div>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this heading">#</a></h2>
+<div class="admonition-have-a-question-or-found-a-bug admonition">
+<p class="admonition-title">Have a Question or Found a Bug?</p>
+<p>We’re here to help!</p>
+<p><strong>Asking Questions:</strong></p>
+<p>If you have any questions, whether they’re about how to use our software, troubleshooting, or understanding certain concepts, please don’t hesitate to ask by contacting <a class="reference external" href="mailto:yazdan&#46;zinati&#37;&#52;&#48;mail&#46;mcgill&#46;ca">Yazdan Zinati</a>.</p>
+<p><strong>Reporting Bugs:</strong></p>
+<p>If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN and ensure a better experience.</p>
+<p>You can reach out to us by opening an <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new">issue</a> on our GitHub repository.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
@@ -482,12 +494,13 @@ document.write(`
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
+</section>
 </section>
 
 
@@ -529,12 +542,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome to GRouNdGAN’s documentation!</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

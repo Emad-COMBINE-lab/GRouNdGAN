@@ -32,6 +32,7 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.napoleon",
     "sphinx_favicon",
+    "sphinx_copybutton",
 ]
 autodoc_default_options = {
     "members": True,
@@ -57,6 +58,7 @@ html_context = {
     "github_repo": "GRouNdGAN",
     "github_version": "master/",
     "conf_py_path": "docs/",  # Path in the checkout to the docs root
+    "default_mode": "light",
 }
 
 # pygments_style = "monokai"  # or xcode'
@@ -71,7 +73,7 @@ html_theme_options = {
     "repository_branch": "master",
     "path_to_docs": "docs",
     "use_edit_page_button": True,
-    "use_download_button" : True,
+    "use_download_button": True,
     "logo": {
         "alt_text": "GRouNdGAN - Home",
         # "text": "",

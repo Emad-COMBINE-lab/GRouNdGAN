@@ -13,18 +13,39 @@ Welcome to GRouNdGAN's documentation!
    Overview of GRouNdGAN's architecture
 
 This site serves as the documentation for the code released under the
-**GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks** (GRouNdGAN) project. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.
+**GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks** project. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.
 
+.. epigraph::
 
-To find out more details about GRouNdGAN, you can check out our preprint on bioRxiv: \
-   `Zinati, Y., Takiddeen, A., & Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. bioRxiv. doi:10.1101/2023.07.25.550225 <https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2>`_.
+   To find out more details about GRouNdGAN, you can check out our preprint on bioRxiv: 
+   
+      Zinati, Y., Takiddeen, A., & Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. *bioRxiv*. `doi:10.1101/2023.07.25.550225 <https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2>`_.
 
 .. toctree::
    :maxdepth: 3 
    
    tutorial
-   contact
+   citation
    license
+
+Contact
+-------
+
+.. admonition:: Have a Question or Found a Bug?
+
+   We're here to help!
+   
+   **Asking Questions:**
+   
+   If you have any questions, whether they're about how to use our software, troubleshooting, or understanding certain concepts, please don't hesitate to ask by contacting `Yazdan Zinati`_.    
+
+   **Reporting Bugs:**
+   
+   If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN and ensure a better experience. 
+
+   You can reach out to us by opening an `issue <https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new>`__ on our GitHub repository.
+
+.. _Yazdan Zinati: mailto:yazdan.zinati@mail.mcgill.ca
 
 .. toctree::
    :maxdepth: 2
@@ -32,7 +53,7 @@ To find out more details about GRouNdGAN, you can check out our preprint on bioR
    modules
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
