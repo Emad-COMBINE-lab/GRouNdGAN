@@ -645,27 +645,24 @@ output.</p>
 <dt class="sig sig-object py" id="layers.masked_linear.MaskedLinear.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/layers/masked_linear.html#MaskedLinear.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#layers.masked_linear.MaskedLinear.__init__" title="Permalink to this definition">#</a></dt>
 <dd><p>An extension of Pytorch’s linear module based on the following thread:
-<a class="reference external" href="https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13">https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13</a>
-:param mask: Mask Tensor with shape (n_input_feature, n_output_feature).</p>
-<blockquote>
-<div><p>the elements are 0 or 1 which declare un-connected or
+<a class="reference external" href="https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13">https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask</strong> (<em>torch.Tensor</em>) – <p>Mask Tensor with shape (n_input_feature, n_output_feature).
+the elements are 0 or 1 which declare un-connected or
 connected.</p>
 <p>Example: the following mask declares a 4-dim from-layer and 3-dim to-layer.
 Neurons 0, 2, and 3 of the from-layer are connected to neurons 0 and 2 of
 the to-layer. Neuron 1 of the from-layer is connected to neuron 1 of the
 to-layer.</p>
-<dl class="simple">
-<dt>mask = torch.tensor(</dt><dd><p>[[1, 0, 1],
+<p>mask = torch.tensor(
+[[1, 0, 1],
 [0, 1, 0],
 [1, 0, 1],
-[1, 0, 1],]</p>
-</dd>
-</dl>
-<p>)</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+[1, 0, 1],]
+)</p>
+</p></li>
 <li><p><strong>bias</strong> (<em>bool</em><em>, </em><em>optional</em>) – By default True</p></li>
 <li><p><strong>device</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Specifies to train on ‘cpu’ or ‘cuda’. Only ‘cuda’ is supported for training the
 GAN but ‘cpu’ can be used for inference, by default “cuda” if torch.cuda.is_available() else”cpu”.</p></li>

@@ -351,9 +351,12 @@ document.write(`
 
 
 <div class="viewcode-block" id="create_GRN"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.grn_creation.create_GRN">[docs]</a><span class="k">def</span> <span class="nf">create_GRN</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">ConfigParser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Infers a GRN using GRNBoost2 and uses it to construct a causal graph to impose onto GRouNdGAN.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Infers a GRN using GRNBoost2 and uses it to construct a causal graph to impose onto GRouNdGAN.</span>
 
-<span class="sd">    Args:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg : ConfigParser</span>
 <span class="sd">        Parser for config file containing GRN creation params.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">real_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">))</span>

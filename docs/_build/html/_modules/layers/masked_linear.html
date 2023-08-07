@@ -393,10 +393,11 @@ document.write(`
         <span class="n">mask</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
         <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">device</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+    <span class="p">):</span>    
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        An extension of Pytorch&#39;s linear module based on the following thread:</span>
 <span class="sd">        https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        mask : torch.Tensor</span>
@@ -410,10 +411,10 @@ document.write(`
 <span class="sd">            to-layer.</span>
 
 <span class="sd">            mask = torch.tensor(</span>
-<span class="sd">                [[1, 0, 1],</span>
-<span class="sd">                [0, 1, 0],</span>
-<span class="sd">                [1, 0, 1],</span>
-<span class="sd">                [1, 0, 1],]</span>
+<span class="sd">            [[1, 0, 1],</span>
+<span class="sd">            [0, 1, 0],</span>
+<span class="sd">            [1, 0, 1],</span>
+<span class="sd">            [1, 0, 1],]</span>
 <span class="sd">            )</span>
 
 <span class="sd">        bias : bool, optional</span>

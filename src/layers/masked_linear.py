@@ -51,10 +51,11 @@ class MaskedLinear(nn.Module):
         mask: torch.Tensor,
         bias: bool = True,
         device: typing.Optional[str] = "cuda" if torch.cuda.is_available() else "cpu",
-    ):
+    ):    
         """
         An extension of Pytorch's linear module based on the following thread:
         https://discuss.pytorch.org/t/custom-connections-in-neural-network-layers/3027/13
+
         Parameters
         ----------
         mask : torch.Tensor
@@ -68,10 +69,10 @@ class MaskedLinear(nn.Module):
             to-layer.
 
             mask = torch.tensor(
-                [[1, 0, 1],
-                [0, 1, 0],
-                [1, 0, 1],
-                [1, 0, 1],]
+            [[1, 0, 1],
+            [0, 1, 0],
+            [1, 0, 1],
+            [1, 0, 1],]
             )
 
         bias : bool, optional

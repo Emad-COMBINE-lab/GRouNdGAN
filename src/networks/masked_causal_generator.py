@@ -163,8 +163,7 @@ class CausalGenerator(nn.Module):
         to logically create independent generators for each gene. This is done by creating 3 masks:
 
         input mask: contains connections between genes and their regulating TFs/noise
-        hidden mask: contains connections between hidden layers such that there is no connection between
-                     hidden layers of two genes' generators
+        hidden mask: contains connections between hidden layers such that there is no connection between hidden layers of two genes' generators
         output mask: contains connections between hidden layers of each gene's generator and its expression (before LSN)
 
         The MaskedLinear module is used to mask weights and gradients in linear layers.

@@ -9,9 +9,12 @@ from tabulate import tabulate
 
 
 def create_GRN(cfg: ConfigParser) -> None:
-    """Infers a GRN using GRNBoost2 and uses it to construct a causal graph to impose onto GRouNdGAN.
+    """
+    Infers a GRN using GRNBoost2 and uses it to construct a causal graph to impose onto GRouNdGAN.
 
-    Args:
+    Parameters
+    ----------
+    cfg : ConfigParser
         Parser for config file containing GRN creation params.
     """
     real_cells = sc.read_h5ad(cfg.get("Data", "train"))

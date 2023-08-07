@@ -1191,11 +1191,8 @@ are needed before being passed to the LSN layer), which is very inefficient.</p>
 <p>Instead, we create a single large Causal Generator containing sparse connections
 to logically create independent generators for each gene. This is done by creating 3 masks:</p>
 <p>input mask: contains connections between genes and their regulating TFs/noise
-hidden mask: contains connections between hidden layers such that there is no connection between</p>
-<blockquote>
-<div><p>hidden layers of two genes’ generators</p>
-</div></blockquote>
-<p>output mask: contains connections between hidden layers of each gene’s generator and its expression (before LSN)</p>
+hidden mask: contains connections between hidden layers such that there is no connection between hidden layers of two genes’ generators
+output mask: contains connections between hidden layers of each gene’s generator and its expression (before LSN)</p>
 <p>The MaskedLinear module is used to mask weights and gradients in linear layers.</p>
 </dd></dl>
 
