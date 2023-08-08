@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.10.0-cuda11.3-cudnn8-runtime
+FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
 
 # Set environment variable to prevent timezone configuration prompt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libbz2-dev \ 
-    liblzma-dev
+    liblzma-dev \
+    vim 
 
 # Download and install Python 3.9.6
 RUN wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz
@@ -32,11 +33,15 @@ COPY .git groundgan.git
 RUN git clone groundgan.git
 WORKDIR /groundgan
 
+# these use git lfs and the above might cause issues
+# so manually copying is necessary
+COPY data/raw data/raw 
+
 RUN python3.9 --version 
 
-# # Install dependencies from requirements.txt
+# Install dependencies from requirements.txt
 RUN python3.9 -m pip install -r requirements.txt
 
 
 # Run the main Python script
-# CMD ["python3.9", "src/main.py", "--help"]
+CMD ["python3.9", "src/main.py", "--help"]
