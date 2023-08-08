@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
+FROM pytorch/pytorch:1.10.0-cuda11.3-cudnn8-runtime
 
 # Set environment variable to prevent timezone configuration prompt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     libpng-dev \
     libjpeg-dev \
-    libbz2-dev
+    libbz2-dev \ 
+    liblzma-dev
 
 # Download and install Python 3.9.6
 RUN wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz
@@ -38,4 +39,4 @@ RUN python3.9 -m pip install -r requirements.txt
 
 
 # Run the main Python script
-CMD ["python3.9", "src/main.py"]
+# CMD ["python3.9", "src/main.py", "--help"]
