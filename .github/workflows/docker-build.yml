@@ -1,0 +1,50 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - master 
+      - docker
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Get commit SHA
+      run: echo "COMMIT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      
+    - name: Determine image version
+      id: versioning
+      run: |
+        if [ -n "${GITHUB_REF##*/}" ]; then
+          echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+        else
+          echo "VERSION=${COMMIT_SHA}" >> $GITHUB_ENV
+        fi
+
+    - name: Build Docker image
+      run: |
+        IMAGE_VERSION=${VERSION}
+        docker build -t groundgan:$IMAGE_VERSION -f docker/Dockerfile .
+        docker tag groundgan:$IMAGE_VERSION groundgan:latest
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_UNAME }}
+        password: ${{ secrets.DOCKER_PASS }}
+        
+    - name: Print IMAGE_VERSION
+      run: echo "IMAGE_VERSION=${VERSION}"
+
+    - name: Push Docker image
+      run: |
+        IMAGE_VERSION=${VERSION}
+        # docker push yazdanz/groundgan:$IMAGE_VERSION
+        docker push yazdan/groundgan:latest
