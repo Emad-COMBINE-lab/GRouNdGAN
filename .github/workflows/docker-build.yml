@@ -16,23 +16,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: Get commit SHA
-      run: echo "COMMIT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
-      
-    - name: Determine image version
-      id: versioning
+    - name: Get version from tag or commit hash
+      id: get_version
       run: |
-        if [ -n "${GITHUB_REF##*/}" ]; then
-          echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+        if [[ "${GITHUB_REF#refs/tags/}" != "$GITHUB_REF" ]]; then
+          echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
         else
-          echo "VERSION=${COMMIT_SHA}" >> $GITHUB_ENV
+          echo "::set-output name=VERSION::$(git rev-parse --short HEAD)"
         fi
 
     - name: Build Docker image
       run: |
-        IMAGE_VERSION=${VERSION}
-        docker build -t groundgan:$IMAGE_VERSION -f docker/Dockerfile .
-        docker tag groundgan:$IMAGE_VERSION groundgan:latest
+        docker build -t groundgan:${{ steps.get_version.outputs.VERSION }} -f docker/Dockerfile .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
@@ -40,11 +35,7 @@ jobs:
         username: ${{ secrets.DOCKER_UNAME }}
         password: ${{ secrets.DOCKER_PASS }}
         
-    - name: Print IMAGE_VERSION
-      run: echo "IMAGE_VERSION=${VERSION}"
-
     - name: Push Docker image
       run: |
-        IMAGE_VERSION=${VERSION}
-        # docker push yazdanz/groundgan:$IMAGE_VERSION
-        docker push yazdan/groundgan:latest
+        docker tag groundgan:${{ steps.get_version.outputs.VERSION }} yazdanz/groundgan:${{ steps.get_version.outputs.VERSION }}
+        docker push yazdanz/groundgan:${{ steps.get_version.outputs.VERSION }}
