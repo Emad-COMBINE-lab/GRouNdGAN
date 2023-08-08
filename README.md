@@ -5,6 +5,8 @@ _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Femad-combine-lab.github.io%2FGRouNdGAN%2F)](https://emad-combine-lab.github.io/GRouNdGAN/)
 [![CI](https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master)](https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions)
+![Docker build status](https://img.shields.io/github/actions/workflow/status/Emad-COMBINE-lab/GRouNdGAN/docker-build.yml?logo=docker&label=docker%20build)
+![Docker Image Size with architecture (latest by date/latest semver)](https://img.shields.io/docker/image-size/yazdanz/groundgan?logo=docker)
 
 ---
 Implementation of GRouNdGAN as described in:
