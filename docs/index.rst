@@ -41,7 +41,7 @@ Contact
 
    **Reporting Bugs:**
    
-   If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN and ensure a better experience. 
+   If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN. 
 
    You can reach out to us by opening an `issue <https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new>`__ on our GitHub repository.
 
