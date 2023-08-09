@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git \
     wget \
+    curl \
     build-essential \
     libffi-dev \
     zlib1g-dev \
@@ -33,10 +34,13 @@ COPY .git groundgan.git
 RUN git clone groundgan.git
 WORKDIR /groundgan
 
-# these use git lfs and the above might cause issues
-# so manually copying is necessary
-COPY data/raw data/raw 
+RUN curl https://nextcloud.computecanada.ca/index.php/s/WqrCqkH5zjYYMw9/download --output demo_data.tar
+RUN tar -xvf demo_data.tar -C data/raw/
+RUN rm demo_data.tar
+RUN mv data/raw/demo/* data/raw
+RUN rm -rf data/raw/demo/
 
+# just to double check. Should be v3.9.6.
 RUN python3.9 --version 
 
 # Install dependencies from requirements.txt
