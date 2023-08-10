@@ -1,39 +1,8 @@
 Tutorial 
 ========
 
-Getting Started 
----------------
-Start by cloning GRouNdGAN's official Github `repo <https://github.com/Emad-COMBINE-lab/GRouNdGAN>`_ to your local machine:
-
-.. code-block:: sh
-
-    git clone https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
-    cd GRouNdGAN/
-
-.. note::
-    You can optionally clone the scGAN, BEELINE, scDESIGN2, and SPARSim submodules to reproduce our studies.
-    
-    .. code-block:: sh
-    
-        git clone --recurse-submodules https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
-        cd GRouNdGAN/
-
-
-Dependencies 
-------------
-GRouNdGAN is developed and testes with Python version 3.9.6. After loading the appropriate python version, install required pip dependencies from the ``requirements.txt`` file: 
-
-    .. code-block:: sh
-    
-        pip install -r requirements.txt
-
-We recommend doing this step in a python virtual environment. This should take less than 15 minutes.
-
-How to run GRouNdGAN
---------------------
-
 Preprocessing 
-~~~~~~~~~~~~~
+-------------
 GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in ``data/raw/``. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from `here <https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX>`_.
 
 * ``raw/barcodes.tsv``
@@ -49,7 +18,7 @@ Example:
     python src/preprocessing/preprocess.py data/raw/PBMC/ data/processed/PBMC/PBMC68k.h5ad --annotations data/raw/PBMC/barcodes_annotations.tsv
 
 Config Files
-~~~~~~~~~~~~
+------------
 GRouNdGAN uses `python INI config files <https://docs.python.org/3/library/configparser.html>`_ to receive its inputs and allow users the flexibility to tune various parameters. Template config files are provided to run GRouNdGAN, scGAN, cscGAN, and cWGAN under the ``configs/`` directory. 
 
 Below is an example cfg file for GRouNdGAN.
@@ -149,7 +118,7 @@ Below is an example cfg file for GRouNdGAN.
 
 
 Training 
-~~~~~~~~
+--------
 GRouNdGAN can be trained by running ``main.py`` with the ``--train`` argument and providing a config file detailing training parameters. A template detailing every argument can be found here. This repository also implements  `scGAN <https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/gan.cfg>`_, `_cscGAN with projection conditioning <https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg>`, and a `Wasserstein gan with conditioning by concatenation <https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg>`_.
 
 .. code-block:: sh
@@ -160,7 +129,7 @@ GRouNdGAN can be trained by running ``main.py`` with the ``--train`` argument an
 Training time primarily depends on the density of the imposed GRN. It takes about 5 days with a very dense GRN (15 TFs per gene) imposed on a single NVidia V100SXM2 (16G memory) GPU.
 
 In-silico Single-Cell Simulation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 One training is done, you can simulate cells by running the following command:
 
 .. code-block:: sh

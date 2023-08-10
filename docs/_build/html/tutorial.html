@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Citation" href="citation.html" />
-    <link rel="prev" title="Welcome to GRouNdGAN’s documentation!" href="index.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,6 +149,18 @@
           
           
           
+          <a href="https://hub.docker.com/repository/docker/yazdanz/groundgan/" title="Docker" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-docker"></i></span>
+            <label class="sr-only">Docker</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2" title="Manuscript" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-book"></i></span>
             <label class="sr-only">Manuscript</label></a>
         </li>
@@ -161,23 +173,13 @@
           
           
           
-          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Build" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Build"/></a>
-        </li>
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" title="Version" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/Version-1.0-blue" class="icon-link-image" alt="Version"/></a>
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Docs Build" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Docs Build"/></a>
         </li>
 </ul></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -422,15 +424,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-run-groundgan">How to run GRouNdGAN</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files">Config Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files">Config Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
 </ul>
             </nav>
         </div>
@@ -444,36 +441,8 @@ document.write(`
                   
   <section id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
-<p>Start by cloning GRouNdGAN’s official Github <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN">repo</a> to your local machine:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
-<span class="nb">cd</span><span class="w"> </span>GRouNdGAN/
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can optionally clone the scGAN, BEELINE, scDESIGN2, and SPARSim submodules to reproduce our studies.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
-<span class="nb">cd</span><span class="w"> </span>GRouNdGAN/
-</pre></div>
-</div>
-</div>
-</section>
-<section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">#</a></h2>
-<p>GRouNdGAN is developed and testes with Python version 3.9.6. After loading the appropriate python version, install required pip dependencies from the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
-<blockquote>
-<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</pre></div>
-</div>
-</div></blockquote>
-<p>We recommend doing this step in a python virtual environment. This should take less than 15 minutes.</p>
-</section>
-<section id="how-to-run-groundgan">
-<h2>How to run GRouNdGAN<a class="headerlink" href="#how-to-run-groundgan" title="Permalink to this heading">#</a></h2>
 <section id="preprocessing">
-<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h3>
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
 <p>GRouNDGAN expects three files when processing a new dataset. You should put them in the same directory. We recomment putting them in <code class="docutils literal notranslate"><span class="pre">data/raw/</span></code>. You can find the PBMC68k and bone marrow datasets with a list of human and mouse TFs used in our manuscript from <a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX">here</a>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">raw/barcodes.tsv</span></code></p></li>
@@ -487,7 +456,7 @@ document.write(`
 </div>
 </section>
 <section id="config-files">
-<h3>Config Files<a class="headerlink" href="#config-files" title="Permalink to this heading">#</a></h3>
+<h2>Config Files<a class="headerlink" href="#config-files" title="Permalink to this heading">#</a></h2>
 <p>GRouNdGAN uses <a class="reference external" href="https://docs.python.org/3/library/configparser.html">python INI config files</a> to receive its inputs and allow users the flexibility to tune various parameters. Template config files are provided to run GRouNdGAN, scGAN, cscGAN, and cWGAN under the <code class="docutils literal notranslate"><span class="pre">configs/</span></code> directory.</p>
 <p>Below is an example cfg file for GRouNdGAN.</p>
 <div class="highlight-INI notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span>
@@ -584,7 +553,7 @@ document.write(`
 </div>
 </section>
 <section id="training">
-<h3>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h3>
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
 <p>GRouNdGAN can be trained by running <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with the <code class="docutils literal notranslate"><span class="pre">--train</span></code> argument and providing a config file detailing training parameters. A template detailing every argument can be found here. This repository also implements  <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/gan.cfg">scGAN</a>, <cite>_cscGAN with projection conditioning &lt;https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg&gt;</cite>, and a <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/configs/conditional_gan.cfg">Wasserstein gan with conditioning by concatenation</a>.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--train
 </pre></div>
@@ -592,7 +561,7 @@ document.write(`
 <p>Training time primarily depends on the density of the imposed GRN. It takes about 5 days with a very dense GRN (15 TFs per gene) imposed on a single NVidia V100SXM2 (16G memory) GPU.</p>
 </section>
 <section id="in-silico-single-cell-simulation">
-<h3>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Permalink to this heading">#</a></h3>
+<h2>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Permalink to this heading">#</a></h2>
 <p>One training is done, you can simulate cells by running the following command:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--generate
 </pre></div>
@@ -602,7 +571,6 @@ document.write(`
 <p>You have to first populate the <code class="docutils literal notranslate"><span class="pre">checkpoint</span></code> field with the path to the saved model (with <code class="docutils literal notranslate"><span class="pre">.pth</span></code> extension).</p>
 </div>
 <p>The output is a <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code> file containing the simulated dataset.</p>
-</section>
 </section>
 </section>
 
@@ -619,12 +587,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="installation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to GRouNdGAN’s documentation!</p>
+        <p class="prev-next-title">Installation</p>
       </div>
     </a>
     <a class="right-next"
@@ -654,15 +622,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-run-groundgan">How to run GRouNdGAN</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files">Config Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files">Config Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
 </ul>
   </nav></div>
 
