@@ -8,8 +8,7 @@
 Welcome to GRouNdGAN's documentation!
 =====================================  
 
-This site documents the code released under the
-**GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks**. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.
+This site documents the code released under **GRouNdGAN (GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks)**. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.
 
 .. epigraph::
 

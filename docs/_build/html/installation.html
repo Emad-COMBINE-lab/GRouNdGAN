@@ -454,14 +454,14 @@ document.write(`
 <dt><strong>1.</strong> <strong>Docker Setup</strong>:</dt><dd><p>If you want a quick and hassle-free installation with GPU support, you can use Docker. This method is recommended if you prefer a pre-configured environment.</p>
 <ul class="simple">
 <li><p><strong>Option A:</strong> <a class="reference external" href="#option-a-using-pre-built-docker-image-recommended">Using Pre-built Docker Image (Recommended)</a>:
-We provide a pre-built Docker image for GRouNdGAN that is already configured with CUDA support for GPU acceleration. This option offers a convenient and straightforward way to get started.</p></li>
+We provide a pre-built Docker image for GRouNdGAN that is already configured with CUDA support for GPU acceleration. This option is the most convenient and straightforward way to get started.</p></li>
 <li><p><strong>Option B:</strong> <a class="reference external" href="#option-b-building-docker-image-from-dockerfile">Building Docker Image from Dockerfile</a>:
 Building the Docker image from the Dockerfile allows you to further finetune our provided environment to your specific requirements. It also provides the advantage of knowing exactly which dependencies and configurations are being used in your experiments. This option is ideal if you want fine-grained control or if you need to make modifications to GRouNdGAN’s default setup.</p></li>
 </ul>
 </dd>
 <dt><strong>2.</strong> <a class="reference external" href="#id1">Local Installation</a>:</dt><dd><p>If you prefer greater control over your environment, you can opt for a local installation of GRouNdGAN. This option is particularly recommended if you plan to use GRouNdGAN as a foundation for new projects.</p>
 </dd>
-<dt><strong>3.</strong> <a class="reference external" href="#singularity-setup">Singularity</a>:</dt><dd><p>Most HPC clusters restrict the use of docker, as it can be used to gain root access to their host system. Singularity is a secure and compatible alternative for containerization.</p>
+<dt><strong>3.</strong> <a class="reference external" href="#singularity-setup">Singularity</a>:</dt><dd><p>Most HPC clusters restrict the use of docker, as it can be used to gain root access to the host system. Singularity is a secure and compatible alternative for containerization.</p>
 </dd>
 </dl>
 <section id="docker-setup">
@@ -591,7 +591,7 @@ Building the Docker image from the Dockerfile allows you to further finetune our
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(venv)$ pip install -r requirements.txt
 </pre></div>
 </div>
-<p>If you’re a fellow Canadian using computecanada, consider using <code class="docutils literal notranslate"><span class="pre">requirements_computecanada.txt</span></code> instead.</p>
+<p>If you’re a fellow Canadian using ComputeCanada, consider using <code class="docutils literal notranslate"><span class="pre">requirements_computecanada.txt</span></code> instead.</p>
 </li>
 </ol>
 <p>You’re now ready to use GRouNdGAN locally!</p>
@@ -607,7 +607,7 @@ Building the Docker image from the Dockerfile allows you to further finetune our
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>pull<span class="w"> </span>groundgan.sif<span class="w"> </span>docker://yazdanz/groundgan:4b98686
 </pre></div>
 </div>
-<p>This command will create a Singularity image named <code class="docutils literal notranslate"><span class="pre">groundgan.sif</span></code> by pulling the Docker image <code class="docutils literal notranslate"><span class="pre">yazdanz/groundgan:4b98686</span></code> from Docker Hub.</p>
+<p>This command will create a Singularity image named <code class="docutils literal notranslate"><span class="pre">groundgan.sif</span></code> by pulling <code class="docutils literal notranslate"><span class="pre">yazdanz/groundgan:4b98686</span></code> from Docker Hub.</p>
 </section>
 <section id="running-a-singularity-container">
 <h3>Running a Singularity Container<a class="headerlink" href="#running-a-singularity-container" title="Permalink to this heading">#</a></h3>

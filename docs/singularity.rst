@@ -11,7 +11,7 @@ Converting Docker Image to Singularity
 
    $ singularity pull groundgan.sif docker://yazdanz/groundgan:4b98686
 
-This command will create a Singularity image named ``groundgan.sif`` by pulling the Docker image ``yazdanz/groundgan:4b98686`` from Docker Hub.
+This command will create a Singularity image named ``groundgan.sif`` by pulling ``yazdanz/groundgan:4b98686`` from Docker Hub.
 
 Running a Singularity Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

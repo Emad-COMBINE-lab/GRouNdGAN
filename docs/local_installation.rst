@@ -36,6 +36,6 @@ Local Installation
 
    (venv)$ pip install -r requirements.txt
 
-   If you're a fellow Canadian using computecanada, consider using ``requirements_computecanada.txt`` instead.
+   If you're a fellow Canadian using ComputeCanada, consider using ``requirements_computecanada.txt`` instead.
 
 You're now ready to use GRouNdGAN locally!
