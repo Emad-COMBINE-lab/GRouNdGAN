@@ -26,29 +26,21 @@ def get_argparser() -> argparse.ArgumentParser:
     argparse.ArgumentParser
         Argument CLI parser.
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        prog="GRouNdGAN",
+        description="GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods. \
+            This programs also contains cWGAN and unofficial implementations of scGAN and cscGAN (with projection conditioning)",
+    )
 
-    parser.add_argument(
+    parser._action_groups.pop()
+    required = parser.add_argument_group("required arguments")
+    optional = parser.add_argument_group("optional arguments")
+
+    required.add_argument(
         "--config", required=True, help="Path to the configuration file"
     )
 
-    parser.add_argument(
-        "--train",
-        required=False,
-        default=False,
-        action="store_true",
-        help="Use preprocessed data for training the model",
-    )
-
-    parser.add_argument(
-        "--generate",
-        required=False,
-        default=False,
-        action="store_true",
-        help="Generate in-silico cells",
-    )
-
-    parser.add_argument(
+    optional.add_argument(
         "--preprocess",
         required=False,
         default=False,
@@ -56,11 +48,28 @@ def get_argparser() -> argparse.ArgumentParser:
         help="Preprocess raw data for GAN training",
     )
 
-    parser.add_argument(
+    optional.add_argument(
         "--create_grn",
         required=False,
         default=False,
         action="store_true",
-        help="Infer a GRN from preprocessed data using GRNBoost2 and appropriately format it to input to GRouNdGAN as causal graph",
+        help="Infer a GRN from preprocessed data using GRNBoost2 and appropriately format as causal graph",
     )
+
+    optional.add_argument(
+        "--train",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Start or resume model training",
+    )
+
+    optional.add_argument(
+        "--generate",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Simulate single-cells RNA-seq data in-silico",
+    )
+
     return parser
