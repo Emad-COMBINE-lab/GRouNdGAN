@@ -46,7 +46,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="next" title="Installation" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,6 +148,18 @@
           
           
           
+          <a href="https://hub.docker.com/repository/docker/yazdanz/groundgan/" title="Docker" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-docker"></i></span>
+            <label class="sr-only">Docker</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2" title="Manuscript" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-book"></i></span>
             <label class="sr-only">Manuscript</label></a>
         </li>
@@ -160,23 +172,13 @@
           
           
           
-          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Build" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Build"/></a>
-        </li>
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" title="Version" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/Version-1.0-blue" class="icon-link-image" alt="Version"/></a>
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Docs Build" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Docs Build"/></a>
         </li>
 </ul></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -436,26 +438,31 @@ document.write(`
                   
   <section id="welcome-to-groundgan-s-documentation">
 <h1>Welcome to GRouNdGAN’s documentation!<a class="headerlink" href="#welcome-to-groundgan-s-documentation" title="Permalink to this heading">#</a></h1>
-<p>This site serves as the documentation for the code released under the
-<strong>GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks</strong> project. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.</p>
+<p>This site documents the code released under <strong>GRouNdGAN (GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks)</strong>. GRouNdGAN is a gene regulatory network (GRN)-guided causal implicit generative model for simulating single-cell RNA-seq data, in-silico perturbation experiments, and benchmarking GRN inference methods.</p>
 <blockquote class="epigraph">
-<div><p>To find out more details about GRouNdGAN, you can check out our preprint on bioRxiv:</p>
+<div><p>To find out more details about GRouNdGAN, check out our preprint on bioRxiv:</p>
 <blockquote>
 <div><p>Zinati, Y., Takiddeen, A., &amp; Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. <em>bioRxiv</em>. <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2">doi:10.1101/2023.07.25.550225</a>.</p>
 </div></blockquote>
 </div></blockquote>
+<aside class="sidebar">
+<p class="sidebar-title">GRN inference benchmarking workflow</p>
+<img alt="_images/workflow.svg" src="_images/workflow.svg" /></aside>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#how-to-run-groundgan">How to run GRouNdGAN</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#config-files">Config Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#training">Training</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#in-silico-single-cell-simulation">In-silico Single-Cell Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#docker-setup">Docker Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id1">Local Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#singularity-setup">Singularity Setup</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#config-files">Config Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#project-outline">Project outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#demo-datasets">Demo Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#steps">Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#references">References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a><ul>
@@ -473,7 +480,7 @@ document.write(`
 <p><strong>Asking Questions:</strong></p>
 <p>If you have any questions, whether they’re about how to use our software, troubleshooting, or understanding certain concepts, please don’t hesitate to ask by contacting <a class="reference external" href="mailto:yazdan&#46;zinati&#37;&#52;&#48;mail&#46;mcgill&#46;ca">Yazdan Zinati</a>.</p>
 <p><strong>Reporting Bugs:</strong></p>
-<p>If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN and ensure a better experience.</p>
+<p>If you encounter any issues, glitches, or unexpected behavior while using our software, please let us know. Reporting bugs helps us improve GRouNdGAN.</p>
 <p>You can reach out to us by opening an <a class="reference external" href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new">issue</a> on our GitHub repository.</p>
 </div>
 <div class="toctree-wrapper compound">
@@ -516,11 +523,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="tutorial.html"
+       href="installation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial</p>
+        <p class="prev-next-title">Installation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

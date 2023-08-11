@@ -66,7 +66,7 @@ class GANFactory(IGANFactory):
             gen_layers=parse_list(self.parser["Model"]["generator layers"], int),
             crit_layers=parse_list(self.parser["Model"]["critic layers"], int),
             device=self.parser.get("EXPERIMENT", "device", fallback=None),
-            library_size=self.parser.getint("Model", "library size"),
+            library_size=self.parser.getint("Preprocessing", "library size"),
         )
 
     def get_trainer(self) -> typing.Callable:
@@ -104,7 +104,7 @@ class ConditionalCatGANFactory(IGANFactory):
                 parse_list(self.parser["Data"]["label ratios"], float)
             ),
             device=self.parser.get("EXPERIMENT", "device", fallback=None),
-            library_size=self.parser.getint("Model", "library size"),
+            library_size=self.parser.getint("Preprocessing", "library size"),
         )
 
     def get_trainer(self) -> typing.Callable:
@@ -142,7 +142,7 @@ class ConditionalProjGANFactory(IGANFactory):
                 parse_list(self.parser["Data"]["label ratios"], float)
             ),
             device=self.parser.get("EXPERIMENT", "device", fallback=None),
-            library_size=self.parser.getint("Model", "library size"),
+            library_size=self.parser.getint("Preprocessing", "library size"),
         )
 
     def get_trainer(self) -> typing.Callable:
@@ -176,7 +176,7 @@ class CausalGANFactory(IGANFactory):
             gen_layers=parse_list(self.parser["CC Model"]["generator layers"], int),
             crit_layers=parse_list(self.parser["CC Model"]["critic layers"], int),
             device=self.parser.get("EXPERIMENT", "device", fallback=None),
-            library_size=self.parser.getint("CC Model", "library size"),
+            library_size=self.parser.getint("Preprocessing", "library size"),
         )
 
     def get_gan(self) -> CausalGAN:
@@ -198,7 +198,7 @@ class CausalGANFactory(IGANFactory):
             causal_graph=causal_graph,
             labeler_layers=parse_list(self.parser["Model"]["labeler layers"], int),
             device=self.parser.get("EXPERIMENT", "device", fallback=None),
-            library_size=self.parser.getint("Model", "library size"),
+            library_size=self.parser.getint("Preprocessing", "library size"),
         )
 
     def get_trainer(self) -> typing.Callable:

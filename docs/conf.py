@@ -91,6 +91,12 @@ html_theme_options = {
             "type": "fontawesome",
         },
         {
+            "name": "Docker",
+            "url": "https://hub.docker.com/repository/docker/yazdanz/groundgan/",
+            "icon": "fa-brands fa-docker",
+            "type": "fontawesome",
+        },
+        {
             # Label for this link
             "name": "Manuscript",
             "url": "https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2",
@@ -98,15 +104,9 @@ html_theme_options = {
             "type": "fontawesome",
         },
         {
-            "name": "Build",
+            "name": "Docs Build",
             "url": "https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions",
             "icon": "https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master",
-            "type": "url",
-        },
-        {
-            "name": "Version",
-            "url": "https://github.com/Emad-COMBINE-lab/GRouNdGAN",
-            "icon": "https://img.shields.io/badge/Version-1.0-blue",
             "type": "url",
         },
     ],
