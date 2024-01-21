@@ -25,6 +25,7 @@ This site documents the code released under **GRouNdGAN (GRN-guided simulation o
 
    installation
    tutorial
+   benchmarking
    citation
    license
 
