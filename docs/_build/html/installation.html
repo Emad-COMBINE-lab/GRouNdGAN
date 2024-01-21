@@ -577,7 +577,7 @@ Building the Docker image from the Dockerfile allows you to further finetune our
 </section>
 <section id="id1">
 <h2>Local Installation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><strong>Prerequisites:</strong> Before setting up GRouNdGAN locally, ensure you have Python 3.9.6 installed. If you do not have Python 3.9.6, you can use <cite>pyenv</cite> to manage multiple Python versions. Detailed installation instructions for various platforms can be found in the <cite>pyenv</cite> documentation: <a class="github reference external" href="https://github.com/pyenv/pyenv#installation">pyenv/pyenv</a>.</p>
+<p><strong>Prerequisites:</strong> Before setting up GRouNdGAN locally, ensure you have Python 3.9.6 installed. If you do not have Python 3.9.6, you can use <cite>pyenv</cite> to manage multiple Python versions. Detailed installation instructions for various platforms can be found in the <cite>pyenv</cite> documentation: <a class="github reference external" href="https://github.com/pyenv/pyenv#installation">pyenv/pyenv</a>.  In the case you are using pyenv, please use <a class="reference external" href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a> to manage and activate your virtual environment.</p>
 <ol class="arabic">
 <li><p>Clone the GRouNdGAN repository to a directory of your choice:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/Emad-COMBINE-lab/GRouNdGAN.git
@@ -601,6 +601,9 @@ Building the Docker image from the Dockerfile allows you to further finetune our
 </pre></div>
 </div>
 </li>
+</ol>
+<p>In the case you are using pyenv, please use <a class="reference external" href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a> to manage and activate your virtual environment.</p>
+<ol class="arabic" start="4">
 <li><p>Activate the virtual environment</p>
 <ul>
 <li><p><strong>Linux/macOS</strong>:</p>
@@ -623,6 +626,14 @@ Building the Docker image from the Dockerfile allows you to further finetune our
 </li>
 </ol>
 <p>You’re now ready to use GRouNdGAN locally!</p>
+<div class="admonition-troubleshooting admonition">
+<p class="admonition-title">Troubleshooting</p>
+<p><strong>Known Installation Issues</strong></p>
+<p>If you’re encountering issues with installation to ubuntu, it might be because you are missing one or more of the following packages:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>libffi-dev<span class="w">     </span>zlib1g-dev<span class="w">     </span>libncurses5-dev<span class="w">     </span>libgdbm-dev<span class="w">     </span>libnss3-dev<span class="w">     </span>libssl-dev<span class="w">     </span>libreadline-dev<span class="w">     </span>libsqlite3-dev<span class="w">     </span>libpng-dev<span class="w">     </span>libjpeg-dev<span class="w">     </span>libbz2-dev<span class="w">  </span>liblzma-dev<span class="w"> </span>tk-dev
+</pre></div>
+</div>
+</div>
 </section>
 <section id="singularity-setup">
 <h2>Singularity Setup<a class="headerlink" href="#singularity-setup" title="Permalink to this heading">#</a></h2>

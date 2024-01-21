@@ -103,7 +103,7 @@ Reference dataset: Dataset corresponding to cells labelled as "malignant" in the
 
 ------------
 
-.. admonition:: Help Us Expand this list: Request GRouNdGAN Training on new GRNs and reference datasets
+.. admonition:: Help us expand this list: request GRouNdGAN training on new GRNs and reference datasets
 
     We are eager to grow this list and welcome your contributions. If you would like us to train GRouNdGAN on a new reference dataset with different GRNs, please submit a request by opening an `issue <https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new>`__ on our GitHub repository. Be sure to include a link to the reference dataset in your request.
 
