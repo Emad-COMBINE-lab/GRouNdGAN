@@ -71,19 +71,21 @@ def preprocess(cfg: ConfigParser) -> None:
         anndata.obs["barcodes"] = anndata.obs.index
         anndata.obs["celltype"] = anndata.obs["barcodes"].map(annotation_dict)
 
+    canndata = anndata.copy()
+
     # identify highly variable genes
-    sc.pp.log1p(anndata)  # logarithmize the data
+    sc.pp.log1p(canndata)  # logarithmize the data
     sc.pp.highly_variable_genes(
-        anndata, n_top_genes=int(cfg.get("Preprocessing", "highly variable number"))
+        canndata, n_top_genes=int(cfg.get("Preprocessing", "highly variable number"))
     )
 
-    if issparse(anndata.X):
-        anndata.X = np.exp(anndata.X.toarray()) - 1  # get back original data
+    if issparse(canndata.X):
+        canndata.X = np.exp(canndata.X.toarray()) - 1  # get back original data
     else:
-        anndata.X = np.exp(anndata.X) - 1  # get back original data
+        canndata.X = np.exp(canndata.X) - 1  # get back original data
 
     anndata = anndata[
-        :, anndata.var["highly_variable"]
+        :, canndata.var["highly_variable"]
     ]  # only keep highly variable genes
 
     # sort genes by name (not needed)
