@@ -55,9 +55,11 @@ def preprocess(cfg: ConfigParser) -> None:
     anndata.uns["cells_no"] = anndata.shape[0]
     anndata.uns["genes_no"] = anndata.shape[1]
 
+    canndata = anndata.copy()
+
     # library-size normalization
     sc.pp.normalize_per_cell(
-        anndata, counts_per_cell_after=int(cfg.get("Preprocessing", "library size"))
+        canndata, counts_per_cell_after=int(cfg.get("Preprocessing", "library size"))
     )
 
     if cfg.get("Preprocessing", "annotations") is not None:
@@ -70,8 +72,6 @@ def preprocess(cfg: ConfigParser) -> None:
         }
         anndata.obs["barcodes"] = anndata.obs.index
         anndata.obs["celltype"] = anndata.obs["barcodes"].map(annotation_dict)
-
-    canndata = anndata.copy()
 
     # identify highly variable genes
     sc.pp.log1p(canndata)  # logarithmize the data
@@ -87,6 +87,10 @@ def preprocess(cfg: ConfigParser) -> None:
     anndata = anndata[
         :, canndata.var["highly_variable"]
     ]  # only keep highly variable genes
+
+    sc.pp.normalize_per_cell(
+        anndata, counts_per_cell_after=int(cfg.get("Preprocessing", "library size"))
+    )
 
     # sort genes by name (not needed)
     sorted_genes = np.sort(anndata.var_names)
