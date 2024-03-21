@@ -27,7 +27,7 @@ def create_GRN(cfg: ConfigParser) -> None:
     TFs = list(set(TFs).intersection(gene_names))
 
     # preparing GRNBoost2's input
-    real_cells_df = pd.DataFrame(real_cells.X, columns=real_cells.var_names)
+    real_cells_df = pd.DataFrame(real_cells.X.toarray(), columns=real_cells.var_names)
 
     # we can optionally pass a list of TFs to GRNBoost2
     print(f"Using {len(TFs)} TFs for GRN inference.")
