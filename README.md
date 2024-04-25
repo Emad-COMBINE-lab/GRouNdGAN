@@ -8,6 +8,8 @@ _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata
 [![Docker build status](https://img.shields.io/github/actions/workflow/status/Emad-COMBINE-lab/GRouNdGAN/docker-build.yml?logo=docker&label=docker%20build)](https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/docker-build.yml)
 [![Docker Image Size with architecture (latest by date/latest semver)](https://img.shields.io/docker/image-size/yazdanz/groundgan?logo=docker)](https://hub.docker.com/r/yazdanz/groundgan)
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11068246.svg)](https://doi.org/10.5281/zenodo.11068246)
+
 ---
 Implementation of GRouNdGAN as described in:
 > Yazdan Zinati, Abdulrahman Takiddeen, Amin Emad, GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks, bioRxiv, 2023-07, https://doi.org/10.1101/2023.07.25.550225 
