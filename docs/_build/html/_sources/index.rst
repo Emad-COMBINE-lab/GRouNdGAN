@@ -12,9 +12,9 @@ This site documents the code released under **GRouNdGAN (GRN-guided simulation o
 
 .. epigraph::
 
-   To find out more details about GRouNdGAN, check out our preprint on bioRxiv: 
-   
-      Zinati, Y., Takiddeen, A., & Emad, A. (2023). GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. *bioRxiv*. `doi:10.1101/2023.07.25.550225 <https://www.biorxiv.org/content/10.1101/2023.07.25.550225v2>`_.
+   To find out more details about GRouNdGAN, check out our paper: 
+
+      Zinati, Y., Takiddeen, A. & Emad, A. GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. *Nat Commun* **15**, 4055 (2024). https://doi.org/10.1038/s41467-024-48516-6.
 
 .. sidebar:: GRN inference benchmarking workflow
 
