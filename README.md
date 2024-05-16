@@ -23,13 +23,15 @@ For a detailed tutorial and comprehensive API references, please visit our proje
 
 ## BibTex Citation
 ```
-@article{zinati2023groundgan,
+@article{zinati2024groundgan,
   title={GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks},
   author={Zinati, Yazdan and Takiddeen, Abdulrahman and Emad, Amin},
-  journal={bioRxiv},
-  pages={2023--07},
-  year={2023},
-  publisher={Cold Spring Harbor Laboratory}
+  journal={Nature Communications},
+  volume={15},
+  number={1},
+  pages={1--18},
+  year={2024},
+  publisher={Nature Publishing Group}
 }
 ```
 
