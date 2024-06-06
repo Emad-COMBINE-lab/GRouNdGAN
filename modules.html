@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="_static/logo.svg" rel="icon" type="image/svg+xml">
+    <title>API References &#8212; GRouNdGAN 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="_static/documentation_options.js?v=a681ed88"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="factory module" href="factory.html" />
+    <link rel="prev" title="License" href="license.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="GRouNdGAN - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="GRouNdGAN - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hub.docker.com/repository/docker/yazdanz/groundgan/" title="Docker" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-docker fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Docker</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.1038/s41467-024-48516-6" title="Manuscript" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Manuscript</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Docs Build" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Docs Build"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">networks package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_parser.html">custom_parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/blob/master/docs/modules.rst?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/edit/master/docs/modules.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new?title=Issue%20on%20page%20%2Fmodules.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/modules.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>API References</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="api-references">
+<h1>API References<a class="headerlink" href="#api-references" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="factory.html">factory module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.parse_list"><code class="docutils literal notranslate"><span class="pre">parse_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.IGANFactory"><code class="docutils literal notranslate"><span class="pre">IGANFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.IGANFactory.__init__"><code class="docutils literal notranslate"><span class="pre">IGANFactory.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.IGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">IGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.IGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">IGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.IGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">IGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.GANFactory"><code class="docutils literal notranslate"><span class="pre">GANFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.GANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">GANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.GANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">GANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.GANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">GANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.ConditionalCatGANFactory"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalCatGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalCatGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalCatGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.ConditionalProjGANFactory"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalProjGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalProjGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.ConditionalProjGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.CausalGANFactory"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.CausalGANFactory.get_cc"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_cc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.CausalGANFactory.get_gan"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_gan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.CausalGANFactory.get_trainer"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory.get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="factory.html#factory.CausalGANFactory._abc_impl"><code class="docutils literal notranslate"><span class="pre">CausalGANFactory._abc_impl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html#factory.get_factory"><code class="docutils literal notranslate"><span class="pre">get_factory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gans.html">gans package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans.causal_gan">gans.causal_gan module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN"><code class="docutils literal notranslate"><span class="pre">CausalGAN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN.__init__"><code class="docutils literal notranslate"><span class="pre">CausalGAN.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN._build_model"><code class="docutils literal notranslate"><span class="pre">CausalGAN._build_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN._save"><code class="docutils literal notranslate"><span class="pre">CausalGAN._save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN._load"><code class="docutils literal notranslate"><span class="pre">CausalGAN._load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN._train_labelers"><code class="docutils literal notranslate"><span class="pre">CausalGAN._train_labelers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN._train_generator"><code class="docutils literal notranslate"><span class="pre">CausalGAN._train_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.causal_gan.CausalGAN.train"><code class="docutils literal notranslate"><span class="pre">CausalGAN.train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans.conditional_gan">gans.conditional_gan module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gans.html#gans.conditional_gan.ConditionalGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalGAN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan.ConditionalGAN._sample_pseudo_labels"><code class="docutils literal notranslate"><span class="pre">ConditionalGAN._sample_pseudo_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan.ConditionalGAN._generate_tsne_plot"><code class="docutils literal notranslate"><span class="pre">ConditionalGAN._generate_tsne_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan.ConditionalGAN._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalGAN._abc_impl</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans.conditional_gan_cat">gans.conditional_gan_cat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._get_gradient"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._get_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._cat_one_hot_labels"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._cat_one_hot_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN.generate_cells"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN.generate_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._build_model"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._build_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._train_critic"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._train_critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._train_generator"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._train_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalCatGAN._abc_impl</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans.conditional_gan_proj">gans.conditional_gan_proj module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN._get_gradient"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN._get_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN.generate_cells"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN.generate_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN._build_model"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN._build_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN._train_critic"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN._train_critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN._train_generator"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN._train_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.conditional_gan_proj.ConditionalProjGAN._abc_impl"><code class="docutils literal notranslate"><span class="pre">ConditionalProjGAN._abc_impl</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans.gan">gans.gan module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gans.html#gans.gan.GAN"><code class="docutils literal notranslate"><span class="pre">GAN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN.__init__"><code class="docutils literal notranslate"><span class="pre">GAN.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._generate_noise"><code class="docutils literal notranslate"><span class="pre">GAN._generate_noise()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._set_exponential_lr"><code class="docutils literal notranslate"><span class="pre">GAN._set_exponential_lr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._critic_loss"><code class="docutils literal notranslate"><span class="pre">GAN._critic_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._generator_loss"><code class="docutils literal notranslate"><span class="pre">GAN._generator_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._get_gradient"><code class="docutils literal notranslate"><span class="pre">GAN._get_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._gradient_penalty"><code class="docutils literal notranslate"><span class="pre">GAN._gradient_penalty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN.generate_cells"><code class="docutils literal notranslate"><span class="pre">GAN.generate_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._save"><code class="docutils literal notranslate"><span class="pre">GAN._save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._load"><code class="docutils literal notranslate"><span class="pre">GAN._load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._build_model"><code class="docutils literal notranslate"><span class="pre">GAN._build_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._get_loaders"><code class="docutils literal notranslate"><span class="pre">GAN._get_loaders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._add_tensorboard_graph"><code class="docutils literal notranslate"><span class="pre">GAN._add_tensorboard_graph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._update_tensorboard"><code class="docutils literal notranslate"><span class="pre">GAN._update_tensorboard()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._generate_tsne_plot"><code class="docutils literal notranslate"><span class="pre">GAN._generate_tsne_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._train_critic"><code class="docutils literal notranslate"><span class="pre">GAN._train_critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN._train_generator"><code class="docutils literal notranslate"><span class="pre">GAN._train_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gans.html#gans.gan.GAN.train"><code class="docutils literal notranslate"><span class="pre">GAN.train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gans.html#module-gans">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">layers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html#module-layers.cbn">layers.cbn module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layers.html#layers.cbn.ConditionalBatchNorm"><code class="docutils literal notranslate"><span class="pre">ConditionalBatchNorm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.cbn.ConditionalBatchNorm.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalBatchNorm.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.cbn.ConditionalBatchNorm.forward"><code class="docutils literal notranslate"><span class="pre">ConditionalBatchNorm.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html#module-layers.lsn">layers.lsn module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layers.html#layers.lsn.LSN"><code class="docutils literal notranslate"><span class="pre">LSN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.lsn.LSN.__init__"><code class="docutils literal notranslate"><span class="pre">LSN.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.lsn.LSN.forward"><code class="docutils literal notranslate"><span class="pre">LSN.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html#module-layers.masked_linear">layers.masked_linear module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinearFunction"><code class="docutils literal notranslate"><span class="pre">MaskedLinearFunction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinearFunction.forward"><code class="docutils literal notranslate"><span class="pre">MaskedLinearFunction.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinearFunction.backward"><code class="docutils literal notranslate"><span class="pre">MaskedLinearFunction.backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinearFunction._backward_cls"><code class="docutils literal notranslate"><span class="pre">MaskedLinearFunction._backward_cls</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear"><code class="docutils literal notranslate"><span class="pre">MaskedLinear</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear.__init__"><code class="docutils literal notranslate"><span class="pre">MaskedLinear.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear.reapply_mask"><code class="docutils literal notranslate"><span class="pre">MaskedLinear.reapply_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear.reset_parameters"><code class="docutils literal notranslate"><span class="pre">MaskedLinear.reset_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear.forward"><code class="docutils literal notranslate"><span class="pre">MaskedLinear.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="layers.html#layers.masked_linear.MaskedLinear.extra_repr"><code class="docutils literal notranslate"><span class="pre">MaskedLinear.extra_repr()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html#module-layers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networks.html">networks package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#module-networks.critic">networks.critic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.critic.Critic"><code class="docutils literal notranslate"><span class="pre">Critic</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.Critic.__init__"><code class="docutils literal notranslate"><span class="pre">Critic.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.Critic.forward"><code class="docutils literal notranslate"><span class="pre">Critic.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.Critic._create_critic"><code class="docutils literal notranslate"><span class="pre">Critic._create_critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.Critic._create_critic_block"><code class="docutils literal notranslate"><span class="pre">Critic._create_critic_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.critic.ConditionalCritic"><code class="docutils literal notranslate"><span class="pre">ConditionalCritic</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCritic.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalCritic.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCritic.forward"><code class="docutils literal notranslate"><span class="pre">ConditionalCritic.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCritic._create_critic"><code class="docutils literal notranslate"><span class="pre">ConditionalCritic._create_critic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.critic.ConditionalCriticProj"><code class="docutils literal notranslate"><span class="pre">ConditionalCriticProj</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCriticProj.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalCriticProj.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCriticProj.forward"><code class="docutils literal notranslate"><span class="pre">ConditionalCriticProj.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.critic.ConditionalCriticProj._create_critic"><code class="docutils literal notranslate"><span class="pre">ConditionalCriticProj._create_critic()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#module-networks.generator">networks.generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.generator.Generator"><code class="docutils literal notranslate"><span class="pre">Generator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.Generator.__init__"><code class="docutils literal notranslate"><span class="pre">Generator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.Generator.forward"><code class="docutils literal notranslate"><span class="pre">Generator.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.Generator._create_generator"><code class="docutils literal notranslate"><span class="pre">Generator._create_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.Generator._create_generator_block"><code class="docutils literal notranslate"><span class="pre">Generator._create_generator_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.generator.ConditionalGenerator"><code class="docutils literal notranslate"><span class="pre">ConditionalGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.ConditionalGenerator.__init__"><code class="docutils literal notranslate"><span class="pre">ConditionalGenerator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.ConditionalGenerator.forward"><code class="docutils literal notranslate"><span class="pre">ConditionalGenerator.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.ConditionalGenerator._create_generator"><code class="docutils literal notranslate"><span class="pre">ConditionalGenerator._create_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.generator.ConditionalGenerator._create_generator_block"><code class="docutils literal notranslate"><span class="pre">ConditionalGenerator._create_generator_block()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#module-networks.labeler">networks.labeler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.labeler.Labeler"><code class="docutils literal notranslate"><span class="pre">Labeler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.labeler.Labeler.__init__"><code class="docutils literal notranslate"><span class="pre">Labeler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.labeler.Labeler.forward"><code class="docutils literal notranslate"><span class="pre">Labeler.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.labeler.Labeler._create_labeler"><code class="docutils literal notranslate"><span class="pre">Labeler._create_labeler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#module-networks.masked_causal_generator">networks.masked_causal_generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator"><code class="docutils literal notranslate"><span class="pre">CausalGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator.__init__"><code class="docutils literal notranslate"><span class="pre">CausalGenerator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator.forward"><code class="docutils literal notranslate"><span class="pre">CausalGenerator.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator._create_generator"><code class="docutils literal notranslate"><span class="pre">CausalGenerator._create_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator._create_labeler"><code class="docutils literal notranslate"><span class="pre">CausalGenerator._create_labeler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator._create_generator_block"><code class="docutils literal notranslate"><span class="pre">CausalGenerator._create_generator_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="networks.html#networks.masked_causal_generator.CausalGenerator.freeze_causal_controller"><code class="docutils literal notranslate"><span class="pre">CausalGenerator.freeze_causal_controller()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html#module-networks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_parser.html">custom_parser module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_parser.html#custom_parser.get_configparser"><code class="docutils literal notranslate"><span class="pre">get_configparser()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_parser.html#custom_parser.get_argparser"><code class="docutils literal notranslate"><span class="pre">get_argparser()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing.grn_creation">preprocessing.grn_creation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preprocessing.html#preprocessing.grn_creation.create_GRN"><code class="docutils literal notranslate"><span class="pre">create_GRN()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing.preprocess">preprocessing.preprocess module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="preprocessing.html#preprocessing.preprocess.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html#sc_dataset.SCDataset"><code class="docutils literal notranslate"><span class="pre">SCDataset</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sc_dataset.html#sc_dataset.SCDataset.__init__"><code class="docutils literal notranslate"><span class="pre">SCDataset.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sc_dataset.html#sc_dataset.SCDataset.__getitem__"><code class="docutils literal notranslate"><span class="pre">SCDataset.__getitem__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sc_dataset.html#sc_dataset.SCDataset.__len__"><code class="docutils literal notranslate"><span class="pre">SCDataset.__len__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sc_dataset.html#sc_dataset.get_loader"><code class="docutils literal notranslate"><span class="pre">get_loader()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html#tfrecord_loader.get_loader"><code class="docutils literal notranslate"><span class="pre">get_loader()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="license.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">License</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="factory.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">factory module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yazdan Zinati
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
