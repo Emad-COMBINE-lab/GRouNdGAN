@@ -5,6 +5,7 @@ from itertools import chain
 import pandas as pd
 import scanpy as sc
 from arboreto.algo import grnboost2
+from scipy.sparse import issparse
 from tabulate import tabulate
 
 
@@ -25,6 +26,9 @@ def create_GRN(cfg: ConfigParser) -> None:
     gene_names = real_cells.var_names.tolist()
     TFs = pd.read_csv(cfg.get("GRN Preparation", "TFs"), sep="\t")["Symbol"]
     TFs = list(set(TFs).intersection(gene_names))
+
+    if issparse(real_cells.X):
+        real_cells.X = real_cells.X.toarray()
 
     # preparing GRNBoost2's input
     real_cells_df = pd.DataFrame(real_cells.X, columns=real_cells.var_names)
