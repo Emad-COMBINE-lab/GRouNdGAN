@@ -12,7 +12,8 @@ _**GR**N-guided in silic**o** sim**u**lation of single-cell R**N**A-seq **d**ata
 
 ---
 Implementation of GRouNdGAN as described in:
-> Yazdan Zinati, Abdulrahman Takiddeen, Amin Emad, GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks, bioRxiv, 2023-07, https://doi.org/10.1101/2023.07.25.550225 
+> Zinati, Y., Takiddeen, A. & Emad, A. GRouNdGAN: GRN-guided simulation of single-cell RNA-seq data using causal generative adversarial networks. Nat Commun 15, 4055 (2024). https://doi.org/10.1038/s41467-024-48516-6
+
 
 ## Simulated Datasets and Ground Truth GRNs
 Simulated dataset and their underlying ground truth GRNs are available for download on [our website](https://emad-combine-lab.github.io/GRouNdGAN/benchmarking.html#bonemarrow-paul-et-al-2015).
