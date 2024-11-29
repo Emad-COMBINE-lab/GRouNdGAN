@@ -25,6 +25,9 @@ def preprocess(cfg: ConfigParser) -> None:
     else:
         anndata = sc.read_h5ad(cfg.get("Preprocessing", "raw"))
 
+    if issparse(anndata.X):
+        anndata.X = anndata.X.toarray() # convert to dense matrix if anndata is sparse
+
     original_order = np.arange(anndata.n_obs)  # Store the original cell order
     np.random.shuffle(original_order)  # Shuffle the indices
 
