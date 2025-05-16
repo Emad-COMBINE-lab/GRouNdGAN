@@ -513,6 +513,8 @@ class GAN:
         fake_noise = self._generate_noise(self.batch_size, self.latent_dim, self.device)
         fake = self.gen(fake_noise)
 
+        self.tb_fake = fake # for tensorboard model graph
+
         crit_fake_pred = self.crit(fake.detach())
         crit_real_pred = self.crit(real_cells)
 
@@ -545,6 +547,8 @@ class GAN:
         fake_noise = self._generate_noise(
             self.batch_size, self.latent_dim, device=self.device
         )
+
+        self.tb_fake_noise = fake_noise # for tensorboard model graph
 
         fake = self.gen(fake_noise)
         crit_fake_pred = self.crit(fake)
@@ -691,7 +695,7 @@ class GAN:
                 crit_mean = sum(critic_losses[-summary_freq:]) / summary_freq
 
                 # if self.step == summary_freq:
-                #     self._add_tensorboard_graph(output_dir, fake_noise, fake)
+                    # self._add_tensorboard_graph(output_dir, self.tb_fake_noise, self.tb_fake)
 
                 self._update_tensorboard(
                     gen_mean,

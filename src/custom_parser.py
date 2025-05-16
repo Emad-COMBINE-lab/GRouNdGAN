@@ -72,4 +72,28 @@ def get_argparser() -> argparse.ArgumentParser:
         help="Simulate single-cells RNA-seq data in-silico",
     )
 
+    optional.add_argument(
+        "--evaluate",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Evaluate the data quality of the simulated dataset",
+    )
+
+    optional.add_argument(
+        "--benchmark_grn",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Evaluate the performance of a GRN inference method in inferring the ground truth GRN",
+    )
+
+    optional.add_argument(
+        "--perturb",
+        required=False,
+        default=False,
+        action="store_true",
+        help="Perform a perturbation experiment using a trained GRouNdGAN model",
+    )
+
     return parser
