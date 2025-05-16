@@ -127,6 +127,7 @@ class Generator(nn.Module):
             )
             torch.nn.init.zeros_(linear_layer.bias)
 
+            # library_size = None
             if library_size is not None:
                 return nn.Sequential(linear_layer, ReLU(), LSN(library_size))
             else:

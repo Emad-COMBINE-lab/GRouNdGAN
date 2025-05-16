@@ -251,6 +251,8 @@ class CausalGAN(GAN):
             self.batch_size, self.latent_dim, device=self.device
         )
 
+        self.tb_fake_noise = fake_noise # for tensorboard model graph
+
         fake = self.gen(fake_noise)
 
         predicted_tfs = self.labeler(fake[:, self.gen.module.genes])
@@ -448,8 +450,8 @@ class CausalGAN(GAN):
                 gen_mean = sum(generator_losses[-summary_freq:]) / summary_freq
                 crit_mean = sum(critic_losses[-summary_freq:]) / summary_freq
 
-                # if self.step == summary_freq:
-                #     self._add_tensorboard_graph(output_dir, fake_noise, fake)
+                if self.step == summary_freq:
+                    self._add_tensorboard_graph(output_dir, self.tb_fake_noise, self.tb_fake)
 
                 self._update_tensorboard(
                     gen_mean,

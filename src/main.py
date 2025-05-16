@@ -10,6 +10,8 @@ import scanpy as sc
 from custom_parser import get_argparser, get_configparser
 from factory import get_factory
 from preprocessing import grn_creation, preprocess
+from evaluation import data_quality, grn_inference
+from perturbation import perturbation
 
 if __name__ == "__main__":
     """
@@ -52,6 +54,21 @@ if __name__ == "__main__":
         simulated_cells = sc.AnnData(simulated_cells)
         simulated_cells.obs_names = np.repeat("fake", simulated_cells.shape[0])
         simulated_cells.obs_names_make_unique()
-        simulated_cells.write(
-            cfg_parser.get("EXPERIMENT", "output directory") + "/simulated.h5ad"
-        )
+
+        # Get generation path if defined, otherwise fallback
+        generation_path = cfg_parser.get("Generation", "generation path", fallback="")
+        if not generation_path:
+            generation_path = (
+                cfg_parser.get("EXPERIMENT", "output directory") + "simulated.h5ad"
+            )
+
+        simulated_cells.write(generation_path)
+
+    if args.evaluate:
+        data_quality.evaluate(cfg_parser)
+
+    if args.benchmark_grn:
+        grn_inference.evaluate(cfg_parser)
+
+    if args.perturb: 
+        perturbation.perturb(cfg_parser)

@@ -43,12 +43,27 @@ def create_GRN(cfg: ConfigParser) -> None:
     causal_graph = dict(real_grn.groupby("target")["TF"].apply(list))
 
     k = int(cfg.get("GRN Preparation", "k"))
-    causal_graph = {
-        gene: set(tfs[:k])  # to sample the top k edges
-        # gene: set(tfs[0:10:2]) # sample even indices
-        # gene: set(tfs[1:10:2]) # sample odd indices
-        for (gene, tfs) in causal_graph.items()
-    }
+
+    if cfg.get("GRN Preparation", "strategy") == "top":
+        causal_graph = {
+            gene: set(tfs[:k])  # to sample the top k edges
+            for (gene, tfs) in causal_graph.items()
+        }
+    elif cfg.get("GRN Preparation", "strategy") == "pos ctr":
+        print("Creating positive control GRN from even indexed top TFs (top 1, 3, 5, ...)")
+        causal_graph = {
+            gene: set(tfs[0:k:2]) # sample even indices
+            for (gene, tfs) in causal_graph.items()
+        }    
+
+    elif cfg.get("GRN Preparation", "strategy") == "neg ctr":
+        print("Creating negative control GRN from odd indexed top TFs (top 2, 4, 6, ...)")
+        causal_graph = {
+            gene: set(tfs[1:k:2]) # sample odd indices
+            for (gene, tfs) in causal_graph.items()
+        }    
+    else: 
+        print("GRN preparation strategy not valid")    
 
     # get gene, TF names
     regulators = list(chain.from_iterable(causal_graph.values()))
