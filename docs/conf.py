@@ -74,6 +74,7 @@ html_theme_options = {
     "path_to_docs": "docs",
     "use_edit_page_button": True,
     "use_download_button": True,
+    # 'collapse_navigation': False,
     "logo": {
         "alt_text": "GRouNdGAN - Home",
         # "text": "",
