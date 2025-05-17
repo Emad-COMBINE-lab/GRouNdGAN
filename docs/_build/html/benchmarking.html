@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" data-theme="light">
+<html lang="en" data-content_root="" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
     <link href="_static/logo.svg" rel="icon" type="image/svg+xml">
     <title>Benchmarking &#8212; GRouNdGAN 1.0 documentation</title>
   
@@ -18,31 +19,31 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=a681ed88"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'benchmarking';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,23 +58,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,13 +100,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -211,7 +211,7 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
@@ -221,8 +221,8 @@
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -238,7 +238,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,7 +247,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -474,15 +474,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="benchmarking">
-<h1>Benchmarking<a class="headerlink" href="#benchmarking" title="Link to this heading">#</a></h1>
+<h1>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this heading">#</a></h1>
 <figure class="align-center" id="id1">
 <a class="with-border reference internal image-reference" href="_images/workflow.svg"><img alt="Benchmarking workflow using GRouNdGAN" class="with-border" src="_images/workflow.svg" width="600" /></a>
 <figcaption>
-<p><span class="caption-text">GRN inference benchmarking workflow using GRouNdGAN.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">GRN inference benchmarking workflow using GRouNdGAN.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="simulated-datasets">
-<h2>Simulated datasets<a class="headerlink" href="#simulated-datasets" title="Link to this heading">#</a></h2>
+<h2>Simulated datasets<a class="headerlink" href="#simulated-datasets" title="Permalink to this heading">#</a></h2>
 <p>You need 2 elements to benchmark GRN inference methods:</p>
 <ol class="arabic simple numbered">
 <li><p>Gene Expression Data [rows (genes) x columns (cells)]</p></li>
@@ -508,7 +508,7 @@ document.write(`
 <p>Feel free to reduce dataset size if you intend to use fewer cells for benchmarking.</p>
 </div>
 <section id="bonemarrow-paul-et-al-2015">
-<h3>BoneMarrow (Paul et al., 2015)<a class="headerlink" href="#bonemarrow-paul-et-al-2015" title="Link to this heading">#</a></h3>
+<h3>BoneMarrow (Paul et al., 2015)<a class="headerlink" href="#bonemarrow-paul-et-al-2015" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Differentiation of hematopoietic stem cells to different lineages from mouse bone marrow (GEO accession number: GSE72857).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/aekSWdwociMfQ9p/download">BoneMarrow Expression Data (H5AD)</a></p></li>
@@ -517,7 +517,7 @@ document.write(`
 </ul>
 </section>
 <section id="pbmc-all-zheng-et-al-2017">
-<h3>PBMC-ALL (Zheng et al., 2017)<a class="headerlink" href="#pbmc-all-zheng-et-al-2017" title="Link to this heading">#</a></h3>
+<h3>PBMC-ALL (Zheng et al., 2017)<a class="headerlink" href="#pbmc-all-zheng-et-al-2017" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Human peripheral blood mononuclear cell (PBMC Donor A) dataset from <a class="reference external" href="https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/fresh_68k_pbmc_donor_a">10x Genomics</a>.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/m6eKj8i7qyydp2P/download">PBMC-ALL Expression Data (H5AD)</a></p></li>
@@ -526,7 +526,7 @@ document.write(`
 </ul>
 </section>
 <section id="pbmc-ctl">
-<h3>PBMC-CTL<a class="headerlink" href="#pbmc-ctl" title="Link to this heading">#</a></h3>
+<h3>PBMC-CTL<a class="headerlink" href="#pbmc-ctl" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Dataset corresponding to the most common cell type (CD8+ Cytotoxic T-cells) in PBMC-All (Zheng et al., 2017).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/pgQxmJ5LNrMtNBD/download">PBMC-CTL Expression Data (H5AD)</a></p></li>
@@ -535,7 +535,7 @@ document.write(`
 </ul>
 </section>
 <section id="dahlin-dahlin-et-al-2018">
-<h3>Dahlin (Dahlin et al., 2018)<a class="headerlink" href="#dahlin-dahlin-et-al-2018" title="Link to this heading">#</a></h3>
+<h3>Dahlin (Dahlin et al., 2018)<a class="headerlink" href="#dahlin-dahlin-et-al-2018" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Hematopoietic dataset corresponding to the scRNA-seq (10x Genomics) profiles of mouse bone marrow hematopoietic stem and progenitor cells (HSPCs) differentiating towards different lineages from  GEO (accession number: GSE107727).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/WXLKasKsjrGaEAR/download">Dahlin Expression Data (H5AD)</a></p></li>
@@ -544,7 +544,7 @@ document.write(`
 </ul>
 </section>
 <section id="tumor-all-han-et-al-2022">
-<h3>Tumor-ALL (Han et al., 2022)<a class="headerlink" href="#tumor-all-han-et-al-2022" title="Link to this heading">#</a></h3>
+<h3>Tumor-ALL (Han et al., 2022)<a class="headerlink" href="#tumor-all-han-et-al-2022" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Malignant cells as well as cells in the tumor microenvironment (called Tumor-All dataset here) from 20 fresh core needle biopsies of follicular lymphoma patients from <a class="reference external" href="https://cellxgene.cziscience.com/collections/968834a0-1895-40df-8720-666029b3bbac">cellxgene</a>.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/AAZ6rLAA4iyBQnT/download">Tumor-ALL Expression Data (H5AD)</a></p></li>
@@ -553,7 +553,7 @@ document.write(`
 </ul>
 </section>
 <section id="tumor-malignant">
-<h3>Tumor-malignant<a class="headerlink" href="#tumor-malignant" title="Link to this heading">#</a></h3>
+<h3>Tumor-malignant<a class="headerlink" href="#tumor-malignant" title="Permalink to this heading">#</a></h3>
 <p>Reference dataset: Dataset corresponding to cells labelled as “malignant” in the Tumor-ALL (Han et al., 2022) dataset.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/xmKioe8ddFRing4/download">Tumor-malignant Expression Data (H5AD)</a></p></li>
@@ -569,7 +569,7 @@ document.write(`
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>Paul, F., Arkin, Y., Giladi, A., Jaitin, D. A., Kenigsberg, E., Keren-Shaul, H., Winter, D. R., Lara-Astiaso, D., Gury, M., Weiner, A., David, E., Cohen, N., Lauridsen, F. K. B., Haas, S., Schlitzer, A., Mildner, A., Ginhoux, F., Jung, S., Trumpp, A., … Tanay, A. (2015). Transcriptional heterogeneity and lineage commitment in myeloid progenitors. Cell, 163(7), 1663–1677. <a class="reference external" href="https://doi.org/10.1016/j.cell.2015.11.013">https://doi.org/10.1016/j.cell.2015.11.013</a></p>
 <p>Zheng, G., Terry, J. M., Belgrader, P., Ryvkin, P., Bent, Z., Wilson, R. J., Ziraldo, S. B., Wheeler, T. D., McDermott, G. P., Zhu, J., Gregory, M., Shuga, J., Montesclaros, L., Underwood, J. G., Masquelier, D. A., Nishimura, S. Y., Schnall-Levin, M., Wyatt, P., Hindson, C. M., … Bielas, J. H. (2017). Massively parallel digital transcriptional profiling of single cells. Nature Communications, 8(1). <a class="reference external" href="https://doi.org/10.1038/ncomms14049">https://doi.org/10.1038/ncomms14049</a></p>
 <p>Moerman, T., Aibar, S., González-Blas, C. B., Simm, J., Moreau, Y., Aerts, J., &amp; Aerts, S. (2018). GRNBoost2 and Arboreto: efficient and scalable inference of gene regulatory networks. Bioinformatics, 35(12), 2159–2161. <a class="reference external" href="https://doi.org/10.1093/bioinformatics/bty916">https://doi.org/10.1093/bioinformatics/bty916</a></p>
@@ -586,7 +586,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -681,8 +681,8 @@ By Yazdan Zinati
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

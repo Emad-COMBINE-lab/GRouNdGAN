@@ -91,8 +91,8 @@ def create_GRN(cfg: ConfigParser) -> None:
         "Causal Graph",
         tabulate(
             [
-                ("TFs", len(tfs)),
-                ("Targets", len(targets)),
+                ("``TFs``", len(tfs)),
+                ("``Targets``", len(targets)),
                 ("Genes", len(genes)),
                 ("Possible Edges", len(tfs) * len(targets)),
                 ("Imposed Edges", k * len(targets)),

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" data-theme="light">
+<html lang="en" data-content_root="" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
     <link href="_static/logo.svg" rel="icon" type="image/svg+xml">
     <title>Tutorial &#8212; GRouNdGAN 1.0 documentation</title>
   
@@ -18,31 +19,31 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=a681ed88"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,23 +58,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,13 +100,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -211,7 +211,7 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
@@ -221,8 +221,8 @@
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -238,7 +238,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,7 +247,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -479,32 +479,32 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h1>
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h1>
 <section id="cli">
-<h2>CLI<a class="headerlink" href="#cli" title="Link to this heading">#</a></h2>
+<h2>CLI<a class="headerlink" href="#cli" title="Permalink to this heading">#</a></h2>
 <p>GRouNdGAN comes with a command-line interface. This section outlines available commands and arguments.</p>
 <p>To use the CLI, run the <code class="docutils literal notranslate"><span class="pre">src/main.py</span></code> script with the desired command and any applicable options.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Use <code class="code docutils literal notranslate"><span class="pre">python3.9</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">python</span></code> if you’re running through docker or singularity.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>src/main.py<span class="w"> </span>--help
-usage:<span class="w"> </span>GRouNdGAN<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>--config<span class="w"> </span>CONFIG<span class="w"> </span><span class="o">[</span>--preprocess<span class="o">]</span><span class="w"> </span><span class="o">[</span>--create_grn<span class="o">]</span><span class="w"> </span><span class="o">[</span>--train<span class="o">]</span><span class="w"> </span><span class="o">[</span>--generate<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python src/main.py --help
+usage: GRouNdGAN <span class="o">[</span>-h<span class="o">]</span> --config CONFIG <span class="o">[</span>--preprocess<span class="o">]</span> <span class="o">[</span>--create_grn<span class="o">]</span> <span class="o">[</span>--train<span class="o">]</span> <span class="o">[</span>--generate<span class="o">]</span>
 
-GRouNdGAN<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>gene<span class="w"> </span>regulatory<span class="w"> </span>network<span class="w"> </span><span class="o">(</span>GRN<span class="o">)</span>-guided<span class="w"> </span>causal<span class="w"> </span>implicit<span class="w"> </span>generative<span class="w"> </span>model<span class="w"> </span><span class="k">for</span>
-simulating<span class="w"> </span>single-cell<span class="w"> </span>RNA-seq<span class="w"> </span>data,<span class="w"> </span><span class="k">in</span>-silico<span class="w"> </span>perturbation<span class="w"> </span>experiments,<span class="w"> </span>and<span class="w"> </span>benchmarking<span class="w"> </span>GRN
-inference<span class="w"> </span>methods.<span class="w"> </span>This<span class="w"> </span>programs<span class="w"> </span>also<span class="w"> </span>contains<span class="w"> </span>cWGAN<span class="w"> </span>and<span class="w"> </span>unofficial<span class="w"> </span>implementations<span class="w"> </span>of<span class="w"> </span>scGAN<span class="w"> </span>and
-cscGAN<span class="w"> </span><span class="o">(</span>with<span class="w"> </span>projection<span class="w"> </span>conditioning<span class="o">)</span>
+GRouNdGAN is a gene regulatory network <span class="o">(</span>GRN<span class="o">)</span>-guided causal implicit generative model <span class="k">for</span>
+simulating single-cell RNA-seq data, <span class="k">in</span>-silico perturbation experiments, and benchmarking GRN
+inference methods. This programs also contains cWGAN and unofficial implementations of scGAN and
+cscGAN <span class="o">(</span>with projection conditioning<span class="o">)</span>
 
-required<span class="w"> </span>arguments:
---config<span class="w"> </span>CONFIG<span class="w">  </span>Path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span>file
+required arguments:
+--config CONFIG  Path to the configuration file
 
-optional<span class="w"> </span>arguments:
---preprocess<span class="w">     </span>Preprocess<span class="w"> </span>raw<span class="w"> </span>data<span class="w"> </span><span class="k">for</span><span class="w"> </span>GAN<span class="w"> </span>training
---create_grn<span class="w">     </span>Infer<span class="w"> </span>a<span class="w"> </span>GRN<span class="w"> </span>from<span class="w"> </span>preprocessed<span class="w"> </span>data<span class="w"> </span>using<span class="w"> </span>GRNBoost2
-<span class="w">                 </span>and<span class="w"> </span>appropriately<span class="w"> </span>format<span class="w"> </span>as<span class="w"> </span>causal<span class="w"> </span>graph
---train<span class="w">          </span>Start<span class="w"> </span>or<span class="w"> </span>resume<span class="w"> </span>model<span class="w"> </span>training
---generate<span class="w">       </span>Simulate<span class="w"> </span>single-cells<span class="w"> </span>RNA-seq<span class="w"> </span>data<span class="w"> </span><span class="k">in</span>-silico
+optional arguments:
+--preprocess     Preprocess raw data <span class="k">for</span> GAN training
+--create_grn     Infer a GRN from preprocessed data using GRNBoost2
+                 and appropriately format as causal graph
+--train          Start or resume model training
+--generate       Simulate single-cells RNA-seq data <span class="k">in</span>-silico
 </pre></div>
 </div>
 <p>There are essentially four commands available: <code class="docutils literal notranslate"><span class="pre">--preprocess</span></code>, <code class="docutils literal notranslate"><span class="pre">--create_grn</span></code>, <code class="docutils literal notranslate"><span class="pre">--train</span></code>, and <code class="docutils literal notranslate"><span class="pre">--generate</span></code>. You must provide a config file containing inputs and hyperparameters with each command through the <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</p>
@@ -521,7 +521,7 @@ optional<span class="w"> </span>arguments:
 </div>
 </section>
 <section id="config-files">
-<h2>Config Files<a class="headerlink" href="#config-files" title="Link to this heading">#</a></h2>
+<h2>Config Files<a class="headerlink" href="#config-files" title="Permalink to this heading">#</a></h2>
 <p>GRouNdGAN uses a configuration syntax similar to INI implemented by python’s <a class="reference external" href="https://docs.python.org/3/library/configparser.html#module-configparser">configparser</a> module.</p>
 <p>We provide three sample config files in the <code class="docutils literal notranslate"><span class="pre">configs/</span></code> directory:</p>
 <ul class="simple">
@@ -531,109 +531,109 @@ optional<span class="w"> </span>arguments:
 </ul>
 <p>Most of the configuration file consists of hyperparameters. You only need to modify input and output parameters which we will go through in each section. GRouNdGAN isn’t very sensitive to hyperparameters. However, it is still advisable to test different choices of hyperparameters using a validation set.</p>
 <p>Below is the demo <code class="docutils literal notranslate"><span class="pre">causal_gan.cfg</span></code> config file for training GRouNdGAN using the PBMC68k dataset:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span>
-<span class="na">output directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">results/GRouNdGAN</span>
-<span class="na">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cuda</span><span class="w"> </span><span class="c1">; we will let the program choose what is available</span>
-<span class="na">checkpoint  ; set value to use a trained model</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span><span class="w"></span>
+<span class="na">output directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">results/GRouNdGAN</span><span class="w"></span>
+<span class="na">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cuda ; we will let the program choose what is available</span><span class="w"></span>
+<span class="na">checkpoint  ; set value to use a trained model</span><span class="w"></span>
 
-<span class="k">[Preprocessing]</span>
-<span class="na">10x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-<span class="na">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/</span>
-<span class="na">validation set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
-<span class="na">test set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
-<span class="na">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/barcodes_annotations.tsv</span>
-<span class="na">min cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="c1">; genes expressed in less than 3 cells are discarded</span>
-<span class="na">min genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; cells with less than 10 genes expressed are discarded</span>
-<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; library size used for library-size normalization</span>
-<span class="na">louvain res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.15</span><span class="w"> </span><span class="c1">; Louvain clustering resolution (higher resolution means finding more and smaller clusters)</span>
-<span class="na">highly variable number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">; number of highly variable genes to identify</span>
+<span class="k">[Preprocessing]</span><span class="w"></span>
+<span class="na">10x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"></span>
+<span class="na">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/</span><span class="w"></span>
+<span class="na">validation set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"></span>
+<span class="na">test set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"></span>
+<span class="na">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/barcodes_annotations.tsv</span><span class="w"></span>
+<span class="na">min cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3 ; genes expressed in less than 3 cells are discarded</span><span class="w"></span>
+<span class="na">min genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10 ; cells with less than 10 genes expressed are discarded</span><span class="w"></span>
+<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000 ; library size used for library-size normalization</span><span class="w"></span>
+<span class="na">louvain res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.15 ; Louvain clustering resolution (higher resolution means finding more and smaller clusters)</span><span class="w"></span>
+<span class="na">highly variable number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000 ; number of highly variable genes to identify</span><span class="w"></span>
 
-<span class="k">[GRN Preparation]</span>
-<span class="na">TFs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/Homo_sapiens_TF.csv</span>
-<span class="na">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15</span><span class="w"> </span><span class="c1">; k is the number of top most important TFs per gene to include in the GRN</span>
-<span class="na">Inferred GRN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/inferred_grnboost2.csv</span>
+<span class="k">[GRN Preparation]</span><span class="w"></span>
+<span class="na">TFs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/Homo_sapiens_TF.csv</span><span class="w"></span>
+<span class="na">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15 ; k is the number of top most important TFs per gene to include in the GRN</span><span class="w"></span>
+<span class="na">Inferred GRN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/inferred_grnboost2.csv</span><span class="w"></span>
 
-<span class="k">[Data]</span>
-<span class="na">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_train.h5ad</span>
-<span class="na">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_validation.h5ad</span>
-<span class="na">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_test.h5ad</span>
-<span class="na">number of genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
-<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/causal_graph.pkl</span>
+<span class="k">[Data]</span><span class="w"></span>
+<span class="na">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_train.h5ad</span><span class="w"></span>
+<span class="na">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_validation.h5ad</span><span class="w"></span>
+<span class="na">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_test.h5ad</span><span class="w"></span>
+<span class="na">number of genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"></span>
+<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/causal_graph.pkl</span><span class="w"></span>
 
-<span class="k">[Generation]</span>
-<span class="na">number of cells to generate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<span class="k">[Generation]</span><span class="w"></span>
+<span class="na">number of cells to generate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
 
-<span class="k">[Model]</span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">causal GAN</span>
-<span class="na">noise per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-<span class="na">depth per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
-<span class="na">width per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
-<span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span>
-<span class="na">labeler layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2000 2000 2000</span>
-<span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"> </span><span class="c1">; noise vector dimensions</span>
-<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; UMI count</span>
-<span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; regularization hyper-parameter for gradient penalty</span>
-
-
-<span class="k">[Training]</span>
-<span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024</span>
-<span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="c1">; iterations to train the critic for each iteration of the generator</span>
-<span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000000</span>
-<span class="na">labeler and antilabeler training intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-
-<span class="w">    </span><span class="k">[Optimizer]</span>
-<span class="w">    </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span>
-<span class="w">    </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
-<span class="w">    </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span>
-
-<span class="w">    </span><span class="k">[Learning Rate]</span>
-<span class="w">    </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
-<span class="w">    </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
-<span class="w">    </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
-<span class="w">    </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span>
-<span class="w">    </span><span class="na">labeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
-<span class="w">    </span><span class="na">antilabeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
+<span class="k">[Model]</span><span class="w"></span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">causal GAN</span><span class="w"></span>
+<span class="na">noise per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">depth per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span><span class="w"></span>
+<span class="na">width per gene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span><span class="w"></span>
+<span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span><span class="w"></span>
+<span class="na">labeler layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2000 2000 2000</span><span class="w"></span>
+<span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128 ; noise vector dimensions</span><span class="w"></span>
+<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000 ; UMI count</span><span class="w"></span>
+<span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10 ; regularization hyper-parameter for gradient penalty</span><span class="w"></span>
 
 
-<span class="w">    </span><span class="k">[Logging]</span>
-<span class="w">    </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
-<span class="w">    </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
-<span class="w">    </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span>
+<span class="k">[Training]</span><span class="w"></span>
+<span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024</span><span class="w"></span>
+<span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5 ; iterations to train the critic for each iteration of the generator</span><span class="w"></span>
+<span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000000</span><span class="w"></span>
+<span class="na">labeler and antilabeler training intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
 
-<span class="k">[CC Model]</span>
-<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">GAN</span><span class="w"> </span><span class="c1">; Non-conditional single-cell RNA-seq GAN</span>
-<span class="na">generator layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256 512 1024</span>
-<span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span>
-<span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"> </span><span class="c1">; noise vector dimensions</span>
-<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; UMI count (hardcoded to None in the code)</span>
-<span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; regularization hyper-parameter for gradient penalty</span>
+<span class="w">    </span><span class="k">[Optimizer]</span><span class="w"></span>
+<span class="w">    </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span><span class="w"></span>
+<span class="w">    </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span><span class="w"></span>
+<span class="w">    </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">[Learning Rate]</span><span class="w"></span>
+<span class="w">    </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span><span class="w"></span>
+<span class="w">    </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span><span class="w"></span>
+<span class="w">    </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span><span class="w"></span>
+<span class="w">    </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.001</span><span class="w"></span>
+<span class="w">    </span><span class="na">labeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span><span class="w"></span>
+<span class="w">    </span><span class="na">antilabeler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span><span class="w"></span>
 
 
-<span class="k">[CC Training]</span>
-<span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span>
-<span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="c1">; iterations to train the critic for each iteration of the generator</span>
-<span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">200000</span>
+<span class="w">    </span><span class="k">[Logging]</span><span class="w"></span>
+<span class="w">    </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
+<span class="w">    </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
+<span class="w">    </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">[CC Optimizer]</span>
-<span class="w">    </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span>
-<span class="w">    </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
-<span class="w">    </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span>
+<span class="k">[CC Model]</span><span class="w"></span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">GAN ; Non-conditional single-cell RNA-seq GAN</span><span class="w"></span>
+<span class="na">generator layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256 512 1024</span><span class="w"></span>
+<span class="na">critic layers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1024 512 256</span><span class="w"></span>
+<span class="na">latent dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128 ; noise vector dimensions</span><span class="w"></span>
+<span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000 ; UMI count (hardcoded to None in the code)</span><span class="w"></span>
+<span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10 ; regularization hyper-parameter for gradient penalty</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">[CC Learning Rate]</span>
-<span class="w">    </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
-<span class="w">    </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span>
-<span class="w">    </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span>
-<span class="w">    </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span>
 
-<span class="w">    </span><span class="k">[CC Logging]</span>
-<span class="w">    </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
-<span class="w">    </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
-<span class="w">    </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span>
+<span class="k">[CC Training]</span><span class="w"></span>
+<span class="na">batch size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"></span>
+<span class="na">critic iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5 ; iterations to train the critic for each iteration of the generator</span><span class="w"></span>
+<span class="na">maximum steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">200000</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">[CC Optimizer]</span><span class="w"></span>
+<span class="w">    </span><span class="c1">; coefficients used for computing running averages of gradient and its square</span><span class="w"></span>
+<span class="w">    </span><span class="na">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span><span class="w"></span>
+<span class="w">    </span><span class="na">beta2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.9</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">[CC Learning Rate]</span><span class="w"></span>
+<span class="w">    </span><span class="na">generator initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span><span class="w"></span>
+<span class="w">    </span><span class="na">generator final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span><span class="w"></span>
+<span class="w">    </span><span class="na">critic initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0001</span><span class="w"></span>
+<span class="w">    </span><span class="na">critic final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.00001</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">[CC Logging]</span><span class="w"></span>
+<span class="w">    </span><span class="na">summary frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
+<span class="w">    </span><span class="na">plot frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
+<span class="w">    </span><span class="na">save frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="project-outline">
-<h2>Project outline<a class="headerlink" href="#project-outline" title="Link to this heading">#</a></h2>
+<h2>Project outline<a class="headerlink" href="#project-outline" title="Permalink to this heading">#</a></h2>
 <p>GRouNdGAN is structured as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 |-- .git
@@ -681,54 +681,54 @@ optional<span class="w"> </span>arguments:
 </div>
 </section>
 <section id="demo-datasets">
-<h2>Demo Datasets<a class="headerlink" href="#demo-datasets" title="Link to this heading">#</a></h2>
+<h2>Demo Datasets<a class="headerlink" href="#demo-datasets" title="Permalink to this heading">#</a></h2>
 <p>The provided docker image comes prepackaged with the unprocessed Mouse BoneMarrow (Paul et al., 2015) and Human PBMC68k (Zheng et al., 2017) datasets (<code class="docutils literal notranslate"><span class="pre">data/raw/PBMC</span></code> and <code class="docutils literal notranslate"><span class="pre">data/raw/BoneMarrow</span></code>) and human and mouse TFs, downloaded from AnimalTFDB (<code class="docutils literal notranslate"><span class="pre">data/raw/Homo_sapiens_TF.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">data/raw/Mus_musculus_TF.csv</span></code>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you have opted for a local installation, you can download these files from <a class="reference external" href="https://nextcloud.computecanada.ca/index.php/s/pXKQ2isr47AwKEX">here</a> and place them in <code class="docutils literal notranslate"><span class="pre">data/raw/</span></code>.</p>
 <p>If that’s too hard, this will do it in bash (you need curl and tar installed):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://nextcloud.computecanada.ca/index.php/s/WqrCqkH5zjYYMw9/download<span class="w"> </span>--output<span class="w"> </span>demo_data.tar<span class="w"> </span><span class="o">&amp;&amp;</span>
-tar<span class="w"> </span>-xvf<span class="w"> </span>demo_data.tar<span class="w"> </span>-C<span class="w"> </span>data/raw/<span class="w"> </span><span class="o">&amp;&amp;</span>
-mv<span class="w"> </span>data/raw/demo/*<span class="w"> </span>data/raw<span class="w"> </span><span class="o">&amp;&amp;</span>
-rm<span class="w"> </span>demo_data.tar<span class="w"> </span><span class="o">&amp;&amp;</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>data/raw/demo/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://nextcloud.computecanada.ca/index.php/s/WqrCqkH5zjYYMw9/download --output demo_data.tar <span class="o">&amp;&amp;</span>
+tar -xvf demo_data.tar -C data/raw/ <span class="o">&amp;&amp;</span>
+mv data/raw/demo/* data/raw <span class="o">&amp;&amp;</span>
+rm demo_data.tar <span class="o">&amp;&amp;</span>
+rm -rf data/raw/demo/
 </pre></div>
 </div>
 </div>
 </section>
 <section id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Link to this heading">#</a></h2>
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this heading">#</a></h2>
 <section id="preprocessing">
-<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h3>
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h3>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Don’t skip the preprocessing step, GRouNdGAN requires library-size normalized data as input.</p>
 </div>
 <p>To run our preprocessing pipeline, your config file should contain the following arguments:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EXPERIMENT]</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">[Preprocessing]</span>
-<span class="w">    </span><span class="c1">; set True if data is 10x (like PBMC)</span>
-<span class="w">    </span><span class="c1">; set False if you&#39;re providing an .h5ad file (like BoneMarrow.h5ad)</span>
-<span class="w">    </span><span class="na">10x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="w">    </span><span class="k">[Preprocessing]</span><span class="w"></span>
+<span class="w">    </span><span class="c1">; set True if data is 10x (like PBMC)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">; set False if you&#39;re providing an .h5ad file (like BoneMarrow.h5ad)</span><span class="w"></span>
+<span class="w">    </span><span class="na">10x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">; If 10x = True, path to the directory containing matrix.mtx, genes.tsv, and barcodes.tsv</span>
-<span class="w">    </span><span class="c1">; If 10x = False, path to the .h5ad file containing the expression matrix</span>
-<span class="w">    </span><span class="na">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/</span>
+<span class="w">    </span><span class="c1">; If 10x = True, path to the directory containing matrix.mtx, genes.tsv, and barcodes.tsv</span><span class="w"></span>
+<span class="w">    </span><span class="c1">; If 10x = False, path to the .h5ad file containing the expression matrix</span><span class="w"></span>
+<span class="w">    </span><span class="na">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/</span><span class="w"></span>
 
-<span class="w">    </span><span class="na">validation set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">; size of the validation set to create</span>
-<span class="w">    </span><span class="na">test set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">; size of the test set to create</span>
-<span class="w">    </span><span class="na">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/barcodes_annotations.tsv</span><span class="w"> </span><span class="c1">; optional, leave empty if you don&#39;t have annotations</span>
-<span class="w">    </span><span class="na">min cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span><span class="w"> </span><span class="c1">; genes expressed in less than 3 cells are discarded</span>
-<span class="w">    </span><span class="na">min genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1">; cells with less than 10 genes expressed are discarded</span>
-<span class="w">    </span><span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000</span><span class="w"> </span><span class="c1">; library size used for library-size normalization</span>
-<span class="w">    </span><span class="na">louvain res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.15</span><span class="w"> </span><span class="c1">; Louvain clustering resolution (higher resolution means finding more and smaller clusters)</span>
-<span class="w">    </span><span class="na">highly variable number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">; number of highly variable genes to identify</span>
+<span class="w">    </span><span class="na">validation set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000 ; size of the validation set to create</span><span class="w"></span>
+<span class="w">    </span><span class="na">test set size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000 ; size of the test set to create</span><span class="w"></span>
+<span class="w">    </span><span class="na">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/PBMC/barcodes_annotations.tsv ; optional, leave empty if you don&#39;t have annotations</span><span class="w"></span>
+<span class="w">    </span><span class="na">min cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3 ; genes expressed in less than 3 cells are discarded</span><span class="w"></span>
+<span class="w">    </span><span class="na">min genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10 ; cells with less than 10 genes expressed are discarded</span><span class="w"></span>
+<span class="w">    </span><span class="na">library size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20000 ; library size used for library-size normalization</span><span class="w"></span>
+<span class="w">    </span><span class="na">louvain res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.15 ; Louvain clustering resolution (higher resolution means finding more and smaller clusters)</span><span class="w"></span>
+<span class="w">    </span><span class="na">highly variable number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000 ; number of highly variable genes to identify</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">[Data]</span>
-<span class="w">    </span><span class="na">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_train.h5ad</span><span class="w"> </span><span class="c1">; path to output the train set</span>
-<span class="w">    </span><span class="na">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_validation.h5ad</span><span class="w"> </span><span class="c1">; path to output the validation set</span>
-<span class="w">    </span><span class="na">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_test.h5ad</span><span class="w"> </span><span class="c1">; path to output the test set</span>
+<span class="w">    </span><span class="k">[Data]</span><span class="w"></span>
+<span class="w">    </span><span class="na">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_train.h5ad ; path to output the train set</span><span class="w"></span>
+<span class="w">    </span><span class="na">validation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_validation.h5ad ; path to output the validation set</span><span class="w"></span>
+<span class="w">    </span><span class="na">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/PBMC68k_test.h5ad ; path to output the test set</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Then, run the following:</p>
@@ -738,20 +738,20 @@ rm<span class="w"> </span>-rf<span class="w"> </span>data/raw/demo/
 <p>Once completed, you will see a success message. Train, validation, and test sets should be created in the paths defined under the <code class="docutils literal notranslate"><span class="pre">[Data]</span></code> section of the config file.</p>
 </section>
 <section id="grn-creation">
-<h3>GRN Creation<a class="headerlink" href="#grn-creation" title="Link to this heading">#</a></h3>
+<h3>GRN Creation<a class="headerlink" href="#grn-creation" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>GRN creation isn’t needed for scGAN, cscGAN, and cWGAN; you can skip the <code class="docutils literal notranslate"><span class="pre">--create_grn</span></code> command.</p>
 </div>
 <p>This command uses GRNBoost2 (Moerman et al., 2018) to infer a GRN on the preprocessed train set. It then converts it into the a format that GRouNdGAN accepts.</p>
 <p>In addition to what was required in the previous step, you need to provide the following arguments:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GRN Preparation]</span>
-<span class="na">TFs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/Homo_sapiens_TF.csv</span><span class="w"> </span><span class="c1">; Path to file containing TFs (accepts AnimalTFDB csv formats)</span>
-<span class="na">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15</span><span class="w"> </span><span class="c1">; k is the number of top most important TFs per gene to include in the GRN</span>
-<span class="na">Inferred GRN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/inferred_grnboost2.csv</span><span class="w"> </span><span class="c1">; where to write GRNBoost2&#39;s output</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[GRN Preparation]</span><span class="w"></span>
+<span class="na">TFs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/raw/Homo_sapiens_TF.csv ; Path to file containing TFs (accepts AnimalTFDB csv formats)</span><span class="w"></span>
+<span class="na">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15 ; k is the number of top most important TFs per gene to include in the GRN</span><span class="w"></span>
+<span class="na">Inferred GRN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/inferred_grnboost2.csv ; where to write GRNBoost2&#39;s output</span><span class="w"></span>
 
-<span class="k">[Data]</span>
-<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/causal_graph.pkl</span><span class="w"> </span><span class="c1">; where to write the created GRN</span>
+<span class="k">[Data]</span><span class="w"></span>
+<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">data/processed/PBMC/causal_graph.pkl ; where to write the created GRN</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Run using:</p>
@@ -759,29 +759,29 @@ rm<span class="w"> </span>-rf<span class="w"> </span>data/raw/demo/
 </pre></div>
 </div>
 <p>Once done, you will see the properties of the created GRN.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Using<span class="w"> </span><span class="m">63</span><span class="w"> </span>TFs<span class="w"> </span><span class="k">for</span><span class="w"> </span>GRN<span class="w"> </span>inference.
-preparing<span class="w"> </span>dask<span class="w"> </span>client
-parsing<span class="w"> </span>input
-creating<span class="w"> </span>dask<span class="w"> </span>graph
-<span class="m">4</span><span class="w"> </span>partitions
-computing<span class="w"> </span>dask<span class="w"> </span>graph
-shutting<span class="w"> </span>down<span class="w"> </span>client<span class="w"> </span>and<span class="w"> </span><span class="nb">local</span><span class="w"> </span>cluster
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Using <span class="m">63</span> TFs <span class="k">for</span> GRN inference.
+preparing dask client
+parsing input
+creating dask graph
+<span class="m">4</span> partitions
+computing dask graph
+shutting down client and <span class="nb">local</span> cluster
 finished
 
-Causal<span class="w"> </span>Graph
------------------<span class="w">  </span>------------
-TFs<span class="w">                          </span><span class="m">63</span>
-Targets<span class="w">                     </span><span class="m">937</span>
-Genes<span class="w">                      </span><span class="m">1000</span>
-Possible<span class="w"> </span>Edges<span class="w">            </span><span class="m">59031</span>
-Imposed<span class="w"> </span>Edges<span class="w">             </span><span class="m">14055</span>
-GRN<span class="w"> </span>density<span class="w"> </span>Edges<span class="w">      </span><span class="m">0</span>.238095
------------------<span class="w">  </span>------------
+Causal Graph
+-----------------  ------------
+TFs                          <span class="m">63</span>
+Targets                     <span class="m">937</span>
+Genes                      <span class="m">1000</span>
+Possible Edges            <span class="m">59031</span>
+Imposed Edges             <span class="m">14055</span>
+GRN density Edges      <span class="m">0</span>.238095
+-----------------  ------------
 </pre></div>
 </div>
 <p>The causal graph will be written to the path specified by <code class="docutils literal notranslate"><span class="pre">[Data]/causal</span> <span class="pre">graph</span></code> in the config file.</p>
 <section id="imposing-custom-grns">
-<h4>Imposing Custom GRNs<a class="headerlink" href="#imposing-custom-grns" title="Link to this heading">#</a></h4>
+<h4>Imposing Custom GRNs<a class="headerlink" href="#imposing-custom-grns" title="Permalink to this heading">#</a></h4>
 <p>It is possible to instead impose your own GRN onto GRouNdGAN. If you’re opting for this option, skip the <code class="docutils literal notranslate"><span class="pre">--create_grn</span></code> command. Instead, create a python dictionary where keys are gene indices (<code class="docutils literal notranslate"><span class="pre">int</span></code>). For each key (gene index), the value is the set of indices <code class="docutils literal notranslate"><span class="pre">set[int]</span></code> coresponding to TFs that regulate the gene.</p>
 <img alt="_images/sampleGRN.svg" src="_images/sampleGRN.svg" /><p>The GRN in the picture above can be written in dictionary form as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">causal_graph</span> <span class="o">=</span> <span class="p">{</span>
@@ -809,8 +809,8 @@ GRN<span class="w"> </span>density<span class="w"> </span>Edges<span class="w"> 
 </pre></div>
 </div>
 <p>Don’t forget to edit the causal graph path in the config file.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Data]</span>
-<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">path/to/write/causal_graph.pkl</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Data]</span><span class="w"></span>
+<span class="na">causal graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">path/to/write/causal_graph.pkl</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -825,7 +825,7 @@ GRN<span class="w"> </span>density<span class="w"> </span>Edges<span class="w"> 
 </section>
 </section>
 <section id="training">
-<h3>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
+<h3>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h3>
 <p>You can start training the model using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python src/main.py --config configs/causal_gan.cfg --train
 </pre></div>
@@ -853,22 +853,22 @@ GRN<span class="w"> </span>density<span class="w"> </span>Edges<span class="w"> 
 </div>
 </section>
 <section id="in-silico-single-cell-simulation">
-<h3>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Link to this heading">#</a></h3>
+<h3>In-silico Single-Cell Simulation<a class="headerlink" href="#in-silico-single-cell-simulation" title="Permalink to this heading">#</a></h3>
 <p>One training is done, populate the <code class="docutils literal notranslate"><span class="pre">[EXPERIMENT]/checkpoint</span></code> field with the path of the <code class="docutils literal notranslate"><span class="pre">.pth</span></code> checkpoint you want to use in the config file (usually the latest).</p>
 <p>You can change the number of cells to simulate in the config file (10000 by default)</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Generation]</span>
-<span class="na">number of cells to generate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Generation]</span><span class="w"></span>
+<span class="na">number of cells to generate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10000</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Then run</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>src/main.py<span class="w"> </span>--config<span class="w"> </span>path/to/config_file<span class="w"> </span>--generate
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python src/main.py --config path/to/config_file --generate
 </pre></div>
 </div>
 <p>This will output a <code class="docutils literal notranslate"><span class="pre">simulated.h5ad</span></code> file to <code class="docutils literal notranslate"><span class="pre">[EXPERIMENT]/output</span> <span class="pre">directory</span></code> containing the simulated expression matrix.</p>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>Marouf, M., Machart, P., Bansal, V., Kilian, C., Magruder, D. S., Krebs, C., &amp; Bonn, S. (2020). Realistic in silico generation and augmentation of single-cell RNA-seq data using generative adversarial networks. Nature Communications, 11(1). <a class="reference external" href="https://doi.org/10.1038/s41467-019-14018-z">https://doi.org/10.1038/s41467-019-14018-z</a></p>
 <p>Paul, F., Arkin, Y., Giladi, A., Jaitin, D. A., Kenigsberg, E., Keren-Shaul, H., Winter, D. R., Lara-Astiaso, D., Gury, M., Weiner, A., David, E., Cohen, N., Lauridsen, F. K. B., Haas, S., Schlitzer, A., Mildner, A., Ginhoux, F., Jung, S., Trumpp, A., … Tanay, A. (2015). Transcriptional heterogeneity and lineage commitment in myeloid progenitors. Cell, 163(7), 1663–1677. <a class="reference external" href="https://doi.org/10.1016/j.cell.2015.11.013">https://doi.org/10.1016/j.cell.2015.11.013</a></p>
 <p>Zheng, G., Terry, J. M., Belgrader, P., Ryvkin, P., Bent, Z., Wilson, R. J., Ziraldo, S. B., Wheeler, T. D., McDermott, G. P., Zhu, J., Gregory, M., Shuga, J., Montesclaros, L., Underwood, J. G., Masquelier, D. A., Nishimura, S. Y., Schnall-Levin, M., Wyatt, P., Hindson, C. M., … Bielas, J. H. (2017). Massively parallel digital transcriptional profiling of single cells. Nature Communications, 8(1). <a class="reference external" href="https://doi.org/10.1038/ncomms14049">https://doi.org/10.1038/ncomms14049</a></p>
@@ -884,7 +884,7 @@ GRN<span class="w"> </span>density<span class="w"> </span>Edges<span class="w"> 
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -984,8 +984,8 @@ By Yazdan Zinati
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

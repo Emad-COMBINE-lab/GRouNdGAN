@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" data-theme="light">
+<html lang="en" data-content_root="" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
@@ -17,31 +18,31 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=a681ed88"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -54,23 +55,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -92,13 +97,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -210,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API References</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="factory.html">factory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gans.html">gans package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layers.html">layers package</a></li>
@@ -218,10 +218,12 @@
 <li class="toctree-l2"><a class="reference internal" href="networks.html">networks package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_parser.html">custom_parser module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">evaluation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="perturbation.html">perturbation package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc_dataset.html">sc_dataset module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tfrecord_loader.html">tfrecord_loader module</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -237,7 +239,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -246,7 +248,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -396,9 +398,11 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sc_dataset.html#sc_dataset.SCDataset.__getitem__">__getitem__() (sc_dataset.SCDataset method)</a>
 </li>
-      <li><a href="factory.html#factory.IGANFactory.__init__">__init__() (factory.IGANFactory method)</a>
+      <li><a href="evaluation.html#evaluation.MMD.MMD.__init__">__init__() (evaluation.MMD.MMD method)</a>
 
       <ul>
+        <li><a href="factory.html#factory.IGANFactory.__init__">(factory.IGANFactory method)</a>
+</li>
         <li><a href="gans.html#gans.causal_gan.CausalGAN.__init__">(gans.causal_gan.CausalGAN method)</a>
 </li>
         <li><a href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN.__init__">(gans.conditional_gan_cat.ConditionalCatGAN method)</a>
@@ -454,6 +458,50 @@ document.write(`
 </li>
       <li><a href="layers.html#layers.masked_linear.MaskedLinearFunction._backward_cls">_backward_cls (layers.masked_linear.MaskedLinearFunction attribute)</a>
 </li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._backward_hooks">_backward_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._backward_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._backward_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._backward_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._backward_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._backward_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._backward_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._backward_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._backward_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._backward_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._buffers">_buffers (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._buffers">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._buffers">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._buffers">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._buffers">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._buffers">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._buffers">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._buffers">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._buffers">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._buffers">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
       <li><a href="gans.html#gans.causal_gan.CausalGAN._build_model">_build_model() (gans.causal_gan.CausalGAN method)</a>
 
       <ul>
@@ -474,8 +522,6 @@ document.write(`
         <li><a href="networks.html#networks.critic.Critic._create_critic">(networks.critic.Critic method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networks.html#networks.critic.Critic._create_critic_block">_create_critic_block() (networks.critic.Critic static method)</a>
 </li>
       <li><a href="networks.html#networks.generator.ConditionalGenerator._create_generator">_create_generator() (networks.generator.ConditionalGenerator method)</a>
@@ -502,6 +548,50 @@ document.write(`
       </ul></li>
       <li><a href="gans.html#gans.gan.GAN._critic_loss">_critic_loss() (gans.gan.GAN static method)</a>
 </li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._forward_hooks">_forward_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._forward_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._forward_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._forward_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._forward_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._forward_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._forward_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._forward_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._forward_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._forward_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._forward_pre_hooks">_forward_pre_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._forward_pre_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._forward_pre_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._forward_pre_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._forward_pre_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._forward_pre_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._forward_pre_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._forward_pre_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._forward_pre_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._forward_pre_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
       <li><a href="gans.html#gans.gan.GAN._generate_noise">_generate_noise() (gans.gan.GAN static method)</a>
 </li>
       <li><a href="gans.html#gans.conditional_gan.ConditionalGAN._generate_tsne_plot">_generate_tsne_plot() (gans.conditional_gan.ConditionalGAN method)</a>
@@ -510,6 +600,8 @@ document.write(`
         <li><a href="gans.html#gans.gan.GAN._generate_tsne_plot">(gans.gan.GAN method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gans.html#gans.gan.GAN._generator_loss">_generator_loss() (gans.gan.GAN static method)</a>
 </li>
       <li><a href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._get_gradient">_get_gradient() (gans.conditional_gan_cat.ConditionalCatGAN method)</a>
@@ -524,10 +616,142 @@ document.write(`
 </li>
       <li><a href="gans.html#gans.gan.GAN._gradient_penalty">_gradient_penalty() (gans.gan.GAN static method)</a>
 </li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._is_full_backward_hook">_is_full_backward_hook (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._is_full_backward_hook">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._is_full_backward_hook">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._is_full_backward_hook">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._is_full_backward_hook">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._is_full_backward_hook">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._is_full_backward_hook">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._is_full_backward_hook">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._is_full_backward_hook">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._is_full_backward_hook">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
       <li><a href="gans.html#gans.causal_gan.CausalGAN._load">_load() (gans.causal_gan.CausalGAN method)</a>
 
       <ul>
         <li><a href="gans.html#gans.gan.GAN._load">(gans.gan.GAN method)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._load_state_dict_post_hooks">_load_state_dict_post_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._load_state_dict_post_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._load_state_dict_post_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._load_state_dict_post_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._load_state_dict_post_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._load_state_dict_post_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._load_state_dict_post_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._load_state_dict_post_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._load_state_dict_post_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._load_state_dict_post_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._load_state_dict_pre_hooks">_load_state_dict_pre_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._load_state_dict_pre_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._load_state_dict_pre_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._load_state_dict_pre_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._load_state_dict_pre_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._load_state_dict_pre_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._load_state_dict_pre_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._load_state_dict_pre_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._load_state_dict_pre_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._load_state_dict_pre_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._modules">_modules (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._modules">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._modules">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._modules">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._modules">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._modules">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._modules">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._modules">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._modules">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._modules">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._non_persistent_buffers_set">_non_persistent_buffers_set (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._non_persistent_buffers_set">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._non_persistent_buffers_set">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._non_persistent_buffers_set">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._non_persistent_buffers_set">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._non_persistent_buffers_set">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._non_persistent_buffers_set">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._non_persistent_buffers_set">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._non_persistent_buffers_set">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._non_persistent_buffers_set">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._parameters">_parameters (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._parameters">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._parameters">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._parameters">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._parameters">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._parameters">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._parameters">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._parameters">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._parameters">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._parameters">(networks.masked_causal_generator.CausalGenerator attribute)</a>
 </li>
       </ul></li>
       <li><a href="gans.html#gans.conditional_gan.ConditionalGAN._sample_pseudo_labels">_sample_pseudo_labels() (gans.conditional_gan.ConditionalGAN static method)</a>
@@ -540,6 +764,28 @@ document.write(`
       </ul></li>
       <li><a href="gans.html#gans.gan.GAN._set_exponential_lr">_set_exponential_lr() (gans.gan.GAN static method)</a>
 </li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm._state_dict_hooks">_state_dict_hooks (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN._state_dict_hooks">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear._state_dict_hooks">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic._state_dict_hooks">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj._state_dict_hooks">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic._state_dict_hooks">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator._state_dict_hooks">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator._state_dict_hooks">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler._state_dict_hooks">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator._state_dict_hooks">(networks.masked_causal_generator.CausalGenerator attribute)</a>
+</li>
+      </ul></li>
       <li><a href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN._train_critic">_train_critic() (gans.conditional_gan_cat.ConditionalCatGAN method)</a>
 
       <ul>
@@ -582,8 +828,24 @@ document.write(`
 </li>
       <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator">CausalGenerator (class in networks.masked_causal_generator)</a>
 </li>
+      <li><a href="evaluation.html#evaluation.MMD.MMD.compute">compute() (evaluation.MMD.MMD method)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.data_quality.compute_distances">compute_distances() (in module evaluation.data_quality)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.lisi.compute_lisi">compute_lisi() (in module evaluation.lisi)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.grn_inference.compute_PR">compute_PR() (in module evaluation.grn_inference)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.grn_inference.compute_precision_at_k">compute_precision_at_k() (in module evaluation.grn_inference)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.data_quality.compute_RF_AUROC">compute_RF_AUROC() (in module evaluation.data_quality)</a>
+</li>
+      <li><a href="evaluation.html#evaluation.lisi.compute_simpson">compute_simpson() (in module evaluation.lisi)</a>
+</li>
       <li><a href="layers.html#layers.cbn.ConditionalBatchNorm">ConditionalBatchNorm (class in layers.cbn)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN">ConditionalCatGAN (class in gans.conditional_gan_cat)</a>
 </li>
       <li><a href="factory.html#factory.ConditionalCatGANFactory">ConditionalCatGANFactory (class in factory)</a>
@@ -592,8 +854,6 @@ document.write(`
 </li>
       <li><a href="networks.html#networks.critic.ConditionalCriticProj">ConditionalCriticProj (class in networks.critic)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gans.html#gans.conditional_gan.ConditionalGAN">ConditionalGAN (class in gans.conditional_gan)</a>
 </li>
       <li><a href="networks.html#networks.generator.ConditionalGenerator">ConditionalGenerator (class in networks.generator)</a>
@@ -619,6 +879,49 @@ document.write(`
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evaluation.html#evaluation.data_quality.evaluate">evaluate() (in module evaluation.data_quality)</a>
+
+      <ul>
+        <li><a href="evaluation.html#evaluation.grn_inference.evaluate">(in module evaluation.grn_inference)</a>
+</li>
+      </ul></li>
+      <li>
+    evaluation
+
+      <ul>
+        <li><a href="evaluation.html#module-evaluation">module</a>
+</li>
+      </ul></li>
+      <li>
+    evaluation.data_quality
+
+      <ul>
+        <li><a href="evaluation.html#module-evaluation.data_quality">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    evaluation.grn_inference
+
+      <ul>
+        <li><a href="evaluation.html#module-evaluation.grn_inference">module</a>
+</li>
+      </ul></li>
+      <li>
+    evaluation.lisi
+
+      <ul>
+        <li><a href="evaluation.html#module-evaluation.lisi">module</a>
+</li>
+      </ul></li>
+      <li>
+    evaluation.MMD
+
+      <ul>
+        <li><a href="evaluation.html#module-evaluation.MMD">module</a>
+</li>
+      </ul></li>
       <li><a href="layers.html#layers.masked_linear.MaskedLinear.extra_repr">extra_repr() (layers.masked_linear.MaskedLinear method)</a>
 </li>
   </ul></td>
@@ -714,6 +1017,8 @@ document.write(`
         <li><a href="gans.html#module-gans.gan">module</a>
 </li>
       </ul></li>
+      <li><a href="evaluation.html#evaluation.MMD.MMD.gaussian_kernel">gaussian_kernel() (evaluation.MMD.MMD method)</a>
+</li>
       <li><a href="gans.html#gans.conditional_gan_cat.ConditionalCatGAN.generate_cells">generate_cells() (gans.conditional_gan_cat.ConditionalCatGAN method)</a>
 
       <ul>
@@ -734,6 +1039,8 @@ document.write(`
 </li>
       <li><a href="factory.html#factory.get_factory">get_factory() (in module factory)</a>
 </li>
+      <li><a href="evaluation.html#evaluation.grn_inference.get_fake_grn">get_fake_grn() (in module evaluation.grn_inference)</a>
+</li>
       <li><a href="factory.html#factory.CausalGANFactory.get_gan">get_gan() (factory.CausalGANFactory method)</a>
 
       <ul>
@@ -746,6 +1053,8 @@ document.write(`
         <li><a href="factory.html#factory.IGANFactory.get_gan">(factory.IGANFactory method)</a>
 </li>
       </ul></li>
+      <li><a href="evaluation.html#evaluation.grn_inference.get_imposed_grn">get_imposed_grn() (in module evaluation.grn_inference)</a>
+</li>
       <li><a href="sc_dataset.html#sc_dataset.get_loader">get_loader() (in module sc_dataset)</a>
 
       <ul>
@@ -829,11 +1138,23 @@ document.write(`
 </li>
       <li><a href="layers.html#layers.masked_linear.MaskedLinearFunction">MaskedLinearFunction (class in layers.masked_linear)</a>
 </li>
+      <li><a href="evaluation.html#evaluation.MMD.MMD">MMD (class in evaluation.MMD)</a>
+</li>
       <li>
     module
 
       <ul>
         <li><a href="custom_parser.html#module-custom_parser">custom_parser</a>
+</li>
+        <li><a href="evaluation.html#module-evaluation">evaluation</a>
+</li>
+        <li><a href="evaluation.html#module-evaluation.data_quality">evaluation.data_quality</a>
+</li>
+        <li><a href="evaluation.html#module-evaluation.grn_inference">evaluation.grn_inference</a>
+</li>
+        <li><a href="evaluation.html#module-evaluation.lisi">evaluation.lisi</a>
+</li>
+        <li><a href="evaluation.html#module-evaluation.MMD">evaluation.MMD</a>
 </li>
         <li><a href="factory.html#module-factory">factory</a>
 </li>
@@ -868,6 +1189,10 @@ document.write(`
         <li><a href="networks.html#module-networks.labeler">networks.labeler</a>
 </li>
         <li><a href="networks.html#module-networks.masked_causal_generator">networks.masked_causal_generator</a>
+</li>
+        <li><a href="perturbation.html#module-perturbation">perturbation</a>
+</li>
+        <li><a href="perturbation.html#module-perturbation.perturbation">perturbation.perturbation</a>
 </li>
         <li><a href="preprocessing.html#module-preprocessing">preprocessing</a>
 </li>
@@ -931,6 +1256,28 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="factory.html#factory.parse_list">parse_list() (in module factory)</a>
 </li>
+      <li><a href="perturbation.html#perturbation.perturbation.perturb">perturb() (in module perturbation.perturbation)</a>
+</li>
+      <li>
+    perturbation
+
+      <ul>
+        <li><a href="perturbation.html#module-perturbation">module</a>
+</li>
+      </ul></li>
+      <li>
+    perturbation.perturbation
+
+      <ul>
+        <li><a href="perturbation.html#module-perturbation.perturbation">module</a>
+</li>
+      </ul></li>
+      <li><a href="evaluation.html#evaluation.data_quality.plot_tSNE">plot_tSNE() (in module evaluation.data_quality)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="perturbation.html#perturbation.perturbation.plot_UMAP">plot_UMAP() (in module perturbation.perturbation)</a>
+</li>
       <li><a href="preprocessing.html#preprocessing.preprocess.preprocess">preprocess() (in module preprocessing.preprocess)</a>
 </li>
       <li>
@@ -940,8 +1287,6 @@ document.write(`
         <li><a href="preprocessing.html#module-preprocessing">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     preprocessing.grn_creation
 
@@ -962,10 +1307,12 @@ document.write(`
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="layers.html#layers.masked_linear.MaskedLinear.reapply_mask">reapply_mask() (layers.masked_linear.MaskedLinear method)</a>
+      <li><a href="evaluation.html#evaluation.data_quality.read_datasets">read_datasets() (in module evaluation.data_quality)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="layers.html#layers.masked_linear.MaskedLinear.reapply_mask">reapply_mask() (layers.masked_linear.MaskedLinear method)</a>
+</li>
       <li><a href="layers.html#layers.masked_linear.MaskedLinear.reset_parameters">reset_parameters() (layers.masked_linear.MaskedLinear method)</a>
 </li>
   </ul></td>
@@ -985,6 +1332,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sc_dataset.html#sc_dataset.SCDataset">SCDataset (class in sc_dataset)</a>
 </li>
+      <li><a href="evaluation.html#evaluation.MMD.MMD.squaredDistance">squaredDistance() (evaluation.MMD.MMD method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -998,12 +1347,32 @@ document.write(`
         <li><a href="tfrecord_loader.html#module-tfrecord_loader">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gans.html#gans.causal_gan.CausalGAN.train">train() (gans.causal_gan.CausalGAN method)</a>
 
       <ul>
         <li><a href="gans.html#gans.gan.GAN.train">(gans.gan.GAN method)</a>
+</li>
+      </ul></li>
+      <li><a href="layers.html#layers.cbn.ConditionalBatchNorm.training">training (layers.cbn.ConditionalBatchNorm attribute)</a>
+
+      <ul>
+        <li><a href="layers.html#layers.lsn.LSN.training">(layers.lsn.LSN attribute)</a>
+</li>
+        <li><a href="layers.html#layers.masked_linear.MaskedLinear.training">(layers.masked_linear.MaskedLinear attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCritic.training">(networks.critic.ConditionalCritic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.ConditionalCriticProj.training">(networks.critic.ConditionalCriticProj attribute)</a>
+</li>
+        <li><a href="networks.html#networks.critic.Critic.training">(networks.critic.Critic attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.ConditionalGenerator.training">(networks.generator.ConditionalGenerator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.generator.Generator.training">(networks.generator.Generator attribute)</a>
+</li>
+        <li><a href="networks.html#networks.labeler.Labeler.training">(networks.labeler.Labeler attribute)</a>
+</li>
+        <li><a href="networks.html#networks.masked_causal_generator.CausalGenerator.training">(networks.masked_causal_generator.CausalGenerator attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1018,7 +1387,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
 </div>
@@ -1027,6 +1396,8 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1071,8 +1442,8 @@ By Yazdan Zinati
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
