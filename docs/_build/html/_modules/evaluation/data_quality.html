@@ -392,6 +392,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
 
 <span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
 <span class="kn">import</span> <span class="nn">evaluation.MMD</span> <span class="k">as</span> <span class="nn">MMD</span>
@@ -431,7 +432,7 @@ document.write(`
     <span class="k">if</span> <span class="p">(</span>
         <span class="ow">not</span> <span class="n">fake_cells_path</span>
     <span class="p">):</span>  <span class="c1"># Fall back on default save dir if generation path is also empty</span>
-        <span class="n">fake_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;output directory&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;simulated.h5ad&quot;</span>
+        <span class="n">fake_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;output directory&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/simulated.h5ad&quot;</span>
 
     <span class="n">real_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">test_cells_path</span><span class="p">)</span>
     <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">fake_cells_path</span><span class="p">)[:</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -628,6 +629,8 @@ document.write(`
 <span class="sd">        Parser for config file containing program params.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">read_datasets</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">real_cells</span><span class="p">):</span>
+        <span class="n">real_cells</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 
     <span class="c1"># Split the test set into 2 to compute the control metrics</span>
     <span class="n">num_rows</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

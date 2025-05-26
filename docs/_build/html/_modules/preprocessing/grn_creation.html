@@ -385,6 +385,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
 <span class="kn">from</span> <span class="nn">arboreto.algo</span> <span class="kn">import</span> <span class="n">grnboost2</span>
 <span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
 
 
 <div class="viewcode-block" id="create_GRN"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.grn_creation.create_GRN">[docs]</a><span class="k">def</span> <span class="nf">create_GRN</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">ConfigParser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -404,6 +405,9 @@ document.write(`
     <span class="n">gene_names</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
     <span class="n">TFs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GRN Preparation&quot;</span><span class="p">,</span> <span class="s2">&quot;TFs&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)[</span><span class="s2">&quot;Symbol&quot;</span><span class="p">]</span>
     <span class="n">TFs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">TFs</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">gene_names</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">real_cells</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+        <span class="n">real_cells</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 
     <span class="c1"># preparing GRNBoost2&#39;s input</span>
     <span class="n">real_cells_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">real_cells</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">real_cells</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span>
@@ -412,6 +416,7 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TFs</span><span class="p">)</span><span class="si">}</span><span class="s2"> TFs for GRN inference.&quot;</span><span class="p">)</span>
     <span class="n">real_grn</span> <span class="o">=</span> <span class="n">grnboost2</span><span class="p">(</span><span class="n">real_cells_df</span><span class="p">,</span> <span class="n">tf_names</span><span class="o">=</span><span class="n">TFs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">real_grn</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GRN Preparation&quot;</span><span class="p">,</span> <span class="s2">&quot;Inferred GRN&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully saved GRN inferred by GRNBoost2 GRN to&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GRN Preparation&quot;</span><span class="p">,</span> <span class="s2">&quot;Inferred GRN&quot;</span><span class="p">))</span>
 
     <span class="c1"># read GRN csv output, group TFs regulating genes, sort by importance</span>
     <span class="n">real_grn</span> <span class="o">=</span> <span class="p">(</span>
@@ -490,7 +495,9 @@ document.write(`
 
     <span class="c1"># save causal graph</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;causal graph&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span></div>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully saved GRouNdGAN causal graph to&quot;</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;causal graph&quot;</span><span class="p">))</span></div>
 </pre></div>
 
                 </article>
