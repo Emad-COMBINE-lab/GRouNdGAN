@@ -4,6 +4,7 @@ import typing
 import scanpy as sc
 import torch
 from torch.utils.data import DataLoader, Dataset
+from scipy import sparse
 
 
 class SCDataset(Dataset):
@@ -19,6 +20,9 @@ class SCDataset(Dataset):
             Path to the h5ad file.
         """
         self.data = sc.read_h5ad(path)
+
+        if sparse.issparse(self.data.X):
+            self.data.X = self.data.X.todense()
 
         self.cells = torch.from_numpy(self.data.X)
         self.clusters = torch.from_numpy(

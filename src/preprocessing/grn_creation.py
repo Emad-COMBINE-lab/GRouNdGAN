@@ -6,6 +6,7 @@ import pandas as pd
 import scanpy as sc
 from arboreto.algo import grnboost2
 from tabulate import tabulate
+from scipy import sparse
 
 
 def create_GRN(cfg: ConfigParser) -> None:
@@ -25,6 +26,9 @@ def create_GRN(cfg: ConfigParser) -> None:
     gene_names = real_cells.var_names.tolist()
     TFs = pd.read_csv(cfg.get("GRN Preparation", "TFs"), sep="\t")["Symbol"]
     TFs = list(set(TFs).intersection(gene_names))
+    
+    if sparse.issparse(real_cells.X):
+        real_cells.X = real_cells.X.todense()
 
     # preparing GRNBoost2's input
     real_cells_df = pd.DataFrame(real_cells.X, columns=real_cells.var_names)
@@ -33,6 +37,7 @@ def create_GRN(cfg: ConfigParser) -> None:
     print(f"Using {len(TFs)} TFs for GRN inference.")
     real_grn = grnboost2(real_cells_df, tf_names=TFs, verbose=True, seed=1)
     real_grn.to_csv(cfg.get("GRN Preparation", "Inferred GRN"))
+    print("Successfully saved GRN inferred by GRNBoost2 GRN to", cfg.get("GRN Preparation", "Inferred GRN"))
 
     # read GRN csv output, group TFs regulating genes, sort by importance
     real_grn = (
@@ -112,3 +117,5 @@ def create_GRN(cfg: ConfigParser) -> None:
     # save causal graph
     with open(cfg.get("Data", "causal graph"), "wb") as fp:
         pickle.dump(causal_graph, fp, protocol=pickle.HIGHEST_PROTOCOL)
+
+    print("Successfully saved GRouNdGAN causal graph to", cfg.get("Data", "causal graph"))

@@ -705,11 +705,16 @@ class GAN:
                     self.crit_lr_scheduler.get_last_lr()[0],
                     output_dir,
                 )
+                print("Saved logs")
 
             if should_run(plt_freq):
                 self._generate_tsne_plot(valid_loader, output_dir)
+                print("Saved t-SNE plot")
+
+            print("Done training causal controller step", self.step, flush=True)
 
             if should_run(save_feq):
                 self._save(output_dir)
-            print("done training step", self.step, flush=True)
+                print("Saved checkpoint")
+
             self.step += 1
