@@ -13,6 +13,7 @@ import sklearn.metrics as metrics
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import pandas as pd
+from scipy import sparse
 
 from configparser import ConfigParser
 import evaluation.MMD as MMD
@@ -52,7 +53,7 @@ def read_datasets(cfg: ConfigParser) -> typing.Tuple[np.ndarray, np.ndarray]:
     if (
         not fake_cells_path
     ):  # Fall back on default save dir if generation path is also empty
-        fake_cells_path = cfg.get("EXPERIMENT", "output directory") + "simulated.h5ad"
+        fake_cells_path = cfg.get("EXPERIMENT", "output directory") + "/simulated.h5ad"
 
     real_cells = sc.read_h5ad(test_cells_path)
     fake_cells = sc.read_h5ad(fake_cells_path)[: real_cells.shape[0]]
@@ -249,6 +250,8 @@ def evaluate(cfg: ConfigParser) -> None:
         Parser for config file containing program params.
     """
     real_cells, fake_cells = read_datasets(cfg)
+    if sparse.issparse(real_cells):
+        real_cells = real_cells.todense()
 
     # Split the test set into 2 to compute the control metrics
     num_rows = real_cells.shape[0]

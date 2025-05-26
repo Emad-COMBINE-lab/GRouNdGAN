@@ -44,6 +44,7 @@ if __name__ == "__main__":
 
     if args.train:
         fac.get_trainer()()
+        print("Finished training")
 
     if args.generate:
         simulated_cells = fac.get_gan().generate_cells(
@@ -59,10 +60,12 @@ if __name__ == "__main__":
         generation_path = cfg_parser.get("Generation", "generation path", fallback="")
         if not generation_path:
             generation_path = (
-                cfg_parser.get("EXPERIMENT", "output directory") + "simulated.h5ad"
+                cfg_parser.get("EXPERIMENT", "output directory") + "/simulated.h5ad"
             )
 
         simulated_cells.write(generation_path)
+        print("Simulated cells saved to", generation_path)
+
 
     if args.evaluate:
         data_quality.evaluate(cfg_parser)
