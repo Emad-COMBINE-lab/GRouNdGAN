@@ -116,10 +116,10 @@ class CausalGAN(GAN):
         # the number of genes and TFs are resolved by the causal generator during its instantiation
         self.labeler = Labeler(
             self.gen.num_genes, self.gen.num_tfs, self.labeler_layers
-        )
+        ).to(self.device)
         self.antilabeler = Labeler(
             self.gen.num_genes, self.gen.num_tfs, self.labeler_layers
-        )
+        ).to(self.device)
 
     def _save(self, path: typing.Union[str, bytes, os.PathLike]) -> None:
         """
