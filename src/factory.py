@@ -227,7 +227,8 @@ class CausalGANFactory(IGANFactory):
                 crit_alpha_final=self.parser.getfloat(
                     "CC Learning Rate", "critic final"
                 ),
-                checkpoint=self.parser.get("EXPERIMENT", "checkpoint", fallback=None),
+                checkpoint=self.parser.get("EXPERIMENT", "output directory")
+                + f"_CC/checkpoints/step_{self.parser.getint('CC Training', 'maximum steps')}.pth",
                 summary_freq=self.parser.getint("CC Logging", "summary frequency"),
                 plt_freq=self.parser.getint("CC Logging", "plot frequency"),
                 save_feq=self.parser.getint("CC Logging", "save frequency"),
