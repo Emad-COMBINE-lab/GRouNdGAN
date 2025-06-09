@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>evaluation.data_quality &#8212; GRouNdGAN 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/evaluation/data_quality';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="GRouNdGAN - Home"/>
+    <script>document.write(`<img src="../../_static/logo.svg" class="logo__image only-dark" alt="GRouNdGAN - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hub.docker.com/repository/docker/yazdanz/groundgan/" title="Docker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-docker fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Docker</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.1038/s41467-024-48516-6" title="Manuscript" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Manuscript</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Docs Build" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Docs Build"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../factory.html">factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gans.html">gans package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../networks.html">networks package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../custom_parser.html">custom_parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../evaluation.html">evaluation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../perturbation.html">perturbation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new?title=Issue%20on%20page%20%2F_modules/evaluation/data_quality.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for evaluation.data_quality</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">typing</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.font_manager</span> <span class="k">as</span> <span class="nn">font_manager</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+
+<span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
+<span class="kn">import</span> <span class="nn">evaluation.MMD</span> <span class="k">as</span> <span class="nn">MMD</span>
+<span class="kn">from</span> <span class="nn">evaluation.lisi</span> <span class="kn">import</span> <span class="n">compute_lisi</span>
+
+
+<span class="n">font_dir</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Atkinson_Hyperlegible/Web Fonts/TTF/&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">font_manager</span><span class="o">.</span><span class="n">findSystemFonts</span><span class="p">(</span><span class="n">font_dir</span><span class="p">):</span>
+    <span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">addfont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+<span class="c1"># Set font family globally</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Atkinson Hyperlegible&quot;</span>
+<span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">})</span>
+
+
+<div class="viewcode-block" id="read_datasets"><a class="viewcode-back" href="../../evaluation.html#evaluation.data_quality.read_datasets">[docs]</a><span class="k">def</span> <span class="nf">read_datasets</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">ConfigParser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load real and simulated (fake) gene expression datasets.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg : ConfigParser</span>
+<span class="sd">        Parser for config file containing program params.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[numpy.ndarray, numpy.ndarray]</span>
+<span class="sd">        A tuple containing:</span>
+<span class="sd">        - real_cells.X : NumPy array of real gene expression data</span>
+<span class="sd">        - fake_cells.X : NumPy array of simulated gene expression data, truncated to match real data row count</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">test_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+    <span class="n">fake_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;simulated data path&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fake_cells_path</span><span class="p">:</span>  <span class="c1"># Fall back to generation path</span>
+        <span class="n">fake_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Generation&quot;</span><span class="p">,</span> <span class="s2">&quot;generation path&quot;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="ow">not</span> <span class="n">fake_cells_path</span>
+    <span class="p">):</span>  <span class="c1"># Fall back on default save dir if generation path is also empty</span>
+        <span class="n">fake_cells_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;output directory&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/simulated.h5ad&quot;</span>
+
+    <span class="n">real_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">test_cells_path</span><span class="p">)</span>
+    <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">fake_cells_path</span><span class="p">)[:</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">fake_cells</span><span class="o">.</span><span class="n">X</span></div>
+
+
+<div class="viewcode-block" id="plot_tSNE"><a class="viewcode-back" href="../../evaluation.html#evaluation.data_quality.plot_tSNE">[docs]</a><span class="k">def</span> <span class="nf">plot_tSNE</span><span class="p">(</span>
+    <span class="n">real</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">fake</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform t-SNE embedding on real and fake cell data and save a scatter plot.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    real : np.ndarray</span>
+<span class="sd">        A NumPy array of real cell data with shape (n_real_cells, n_features).</span>
+<span class="sd">    fake : np.ndarray</span>
+<span class="sd">        A NumPy array of fake/generated cell data with shape (n_fake_cells, n_features).</span>
+<span class="sd">    output_dir : str</span>
+<span class="sd">        Path to the directory where the t-SNE plot image will be saved.</span>
+<span class="sd">        If empty, the plot is not saved.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    typing.Tuple[np.ndarray, np.ndarray]</span>
+<span class="sd">        A tuple containing the 2D t-SNE embeddings of the real and fake data,</span>
+<span class="sd">        in the form (real_embedding, fake_embedding).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+
+    <span class="n">embedded_cells</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="n">real_embedding</span> <span class="o">=</span> <span class="n">embedded_cells</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="n">real</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
+    <span class="n">fake_embedding</span> <span class="o">=</span> <span class="n">embedded_cells</span><span class="p">[</span><span class="n">fake</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:,</span> <span class="p">:]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+        <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 2&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">output_dir</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;tSNE.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t-SNE plot saved to&quot;</span><span class="p">,</span> <span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;tSNE.png&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">real_embedding</span><span class="p">,</span> <span class="n">fake_embedding</span></div>
+
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">euclidean_distances</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="compute_distances"><a class="viewcode-back" href="../../evaluation.html#evaluation.data_quality.compute_distances">[docs]</a><span class="k">def</span> <span class="nf">compute_distances</span><span class="p">(</span>
+    <span class="n">real_cells</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute Euclidean and Cosine distances between the mean expression profiles of real and fake cells.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    real_cells : np.ndarray</span>
+<span class="sd">        A NumPy array representing real cell data (cells x features).</span>
+<span class="sd">    fake_cells : np.ndarray</span>
+<span class="sd">        A NumPy array representing fake cell data (cells × features).</span>
+<span class="sd">    axis : int, optional</span>
+<span class="sd">        Axis along which to compute the mean expression (default is 0, meaning across cells), by default 0</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    typing.Tuple[float, float]</span>
+<span class="sd">        A tuple containing:</span>
+<span class="sd">        - Euclidean distance between the mean expression profiles.</span>
+<span class="sd">        - Cosine distance between the mean expression profiles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># calculate mean expression across cells</span>
+    <span class="n">fake_mean_expression</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_cells</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">real_mean_expression</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">real_cells</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">fake_mean_expression</span><span class="p">,</span> <span class="n">real_mean_expression</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span>
+        <span class="n">cosine_distances</span><span class="p">(</span><span class="n">fake_mean_expression</span><span class="p">,</span> <span class="n">real_mean_expression</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compute_RF_AUROC"><a class="viewcode-back" href="../../evaluation.html#evaluation.data_quality.compute_RF_AUROC">[docs]</a><span class="k">def</span> <span class="nf">compute_RF_AUROC</span><span class="p">(</span>
+    <span class="n">real_cells</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">fake_cells</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">n_components</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the AUROC and plot the ROC curve of a Random Forest classifier distinguishing real from fake cells.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    real_cells : np.ndarray</span>
+<span class="sd">        A NumPy array representing real cell data (cells x features).</span>
+<span class="sd">    fake_cells : np.ndarray</span>
+<span class="sd">        A NumPy array representing fake/generated cell data (cells x features).</span>
+<span class="sd">    output_dir : str</span>
+<span class="sd">        Path to the directory where the ROC curve plot will be saved. The plot is saved as &#39;RF.png&#39;.</span>
+<span class="sd">    n_components : int, optional</span>
+<span class="sd">        Number of principal components to retain during PCA, by default 50</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The area under the ROC curve (AUROC) for the classifier.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># create labels for real and fake data (real = 1, fake = 0)</span>
+    <span class="n">y_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">y_fake</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fake_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># perform PCA</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
+
+    <span class="c1"># split data into training and testing</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_real</span><span class="p">,</span> <span class="n">y_fake</span><span class="p">)),</span>
+        <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="c1"># train and test RF</span>
+    <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># plot ROC</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Receiver Operating Characteristic&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;AUC = </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">roc_auc</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r--&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;RF.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RF ROC plot saved to&quot;</span><span class="p">,</span> <span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;RF.png&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">roc_auc</span></div>
+
+
+<div class="viewcode-block" id="evaluate"><a class="viewcode-back" href="../../evaluation.html#evaluation.data_quality.evaluate">[docs]</a><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">ConfigParser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assess the data quality of the simulated dataset.</span>
+
+<span class="sd">    - T-SNE plots of real vs simulated cells (jointly embedded and plotted).</span>
+<span class="sd">    - Euclidean and Cosine distances between the centroids of real cells and simulated cells.</span>
+<span class="sd">        The centroid cell was obtained by calculating the mean along the gene axis (across all simulated or real cells).</span>
+<span class="sd">    - Area under the receiver operating characteristic curve of a random forest in distinguishing real cells from simulated ones.</span>
+<span class="sd">        We perform dimensionality reduction using PCA to extract the top 50 PCs of each cell as the input features to the RF model.</span>
+<span class="sd">        The RF model is composed of 1000 trees and the Gini impurity was used to measure the quality of a split.</span>
+<span class="sd">    - Maximum mean discrepancy (MMD) to estimate the proximity of high-dimensional distributions of real and simulated cells without</span>
+<span class="sd">      creating centroids.</span>
+<span class="sd">    - Mean integration local inverse Simpson&#39;s Index (miLISI).</span>
+<span class="sd">        iLISI captures the effective number of datatypes (real or simulated) to which datapoints of its local neighborhood belong.</span>
+
+<span class="sd">    As a “control” (and to enable calibration of these scores), we also calculated these metrics using two halves of the reference test set.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg : ConfigParser</span>
+<span class="sd">        Parser for config file containing program params.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">read_datasets</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">real_cells</span><span class="p">):</span>
+        <span class="n">real_cells</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+    <span class="c1"># Split the test set into 2 to compute the control metrics</span>
+    <span class="n">num_rows</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">real_cells_ctr1</span> <span class="o">=</span> <span class="n">real_cells</span><span class="p">[:</span><span class="n">half</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">real_cells_ctr2</span> <span class="o">=</span> <span class="n">real_cells</span><span class="p">[</span><span class="n">half</span><span class="p">:,</span> <span class="p">:]</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;plot tsne&quot;</span><span class="p">):</span>
+        <span class="n">tsne_real</span><span class="p">,</span> <span class="n">tsne_generated</span> <span class="o">=</span> <span class="n">plot_tSNE</span><span class="p">(</span>
+            <span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;output directory&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute euclidean distance&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span>
+        <span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute cosine distance&quot;</span>
+    <span class="p">):</span>
+        <span class="n">euclidean</span><span class="p">,</span> <span class="n">cosine</span> <span class="o">=</span> <span class="n">compute_distances</span><span class="p">(</span><span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">)</span>
+        <span class="n">euclidean_ctr</span><span class="p">,</span> <span class="n">cosine_ctr</span> <span class="o">=</span> <span class="n">compute_distances</span><span class="p">(</span><span class="n">real_cells_ctr1</span><span class="p">,</span> <span class="n">real_cells_ctr2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute euclidean distance&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Euclidean distance (real vs fake):&quot;</span><span class="p">,</span> <span class="n">euclidean</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Euclidean distance (control):&quot;</span><span class="p">,</span> <span class="n">euclidean_ctr</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute cosine distance&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cosine distance (real vs fake):&quot;</span><span class="p">,</span> <span class="n">cosine</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cosine distance (control):&quot;</span><span class="p">,</span> <span class="n">cosine_ctr</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute rf auroc&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="n">rf_auroc</span> <span class="o">=</span> <span class="n">compute_RF_AUROC</span><span class="p">(</span>
+            <span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;output directory&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RF AUROC:&quot;</span><span class="p">,</span> <span class="n">rf_auroc</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute MMD&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu:0&quot;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;MMD (real vs fake):&quot;</span><span class="p">,</span>
+                <span class="n">MMD</span><span class="o">.</span><span class="n">MMD</span><span class="p">(</span><span class="n">real_cells</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">real_cells</span><span class="p">,</span> <span class="n">fake_cells</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;MMD (control):&quot;</span><span class="p">,</span>
+                <span class="n">MMD</span><span class="o">.</span><span class="n">MMD</span><span class="p">(</span><span class="n">real_cells</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">real_cells_ctr1</span><span class="p">,</span> <span class="n">real_cells_ctr2</span><span class="p">),</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s2">&quot;Evaluation&quot;</span><span class="p">,</span> <span class="s2">&quot;compute miLISI&quot;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="n">tsne_real_ctr1</span><span class="p">,</span> <span class="n">tsne_real_ctr2</span> <span class="o">=</span> <span class="n">plot_tSNE</span><span class="p">(</span><span class="n">real_cells_ctr1</span><span class="p">,</span> <span class="n">real_cells_ctr2</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="n">tsne_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">tsne_real</span><span class="p">,</span> <span class="n">tsne_generated</span><span class="p">))</span>
+        <span class="n">tsne_coords_ctr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">tsne_real_ctr1</span><span class="p">,</span> <span class="n">tsne_real_ctr2</span><span class="p">))</span>
+
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;generated&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">fake_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">metadata_ctr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;ctr1&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">tsne_real_ctr1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;ctr2&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">tsne_real_ctr2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">lisis</span> <span class="o">=</span> <span class="n">compute_lisi</span><span class="p">(</span><span class="n">tsne_coords</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
+        <span class="n">lisis_ctr</span> <span class="o">=</span> <span class="n">compute_lisi</span><span class="p">(</span><span class="n">tsne_coords_ctr</span><span class="p">,</span> <span class="n">metadata_ctr</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;miLISI (real vs fake):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lisis</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;miLISI (control):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lisis_ctr</span><span class="p">))</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yazdan Zinati
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

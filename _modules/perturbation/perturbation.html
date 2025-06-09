@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>perturbation.perturbation &#8212; GRouNdGAN 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/perturbation/perturbation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="GRouNdGAN - Home"/>
+    <script>document.write(`<img src="../../_static/logo.svg" class="logo__image only-dark" alt="GRouNdGAN - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hub.docker.com/repository/docker/yazdanz/groundgan/" title="Docker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-docker fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Docker</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.1038/s41467-024-48516-6" title="Manuscript" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Manuscript</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions" title="Docs Build" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://github.com/Emad-COMBINE-lab/GRouNdGAN/actions/workflows/documentation.yaml/badge.svg?branch=master" class="icon-link-image" alt="Docs Build"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../factory.html">factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gans.html">gans package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layers.html">layers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../networks.html">networks package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../custom_parser.html">custom_parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../evaluation.html">evaluation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../perturbation.html">perturbation package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sc_dataset.html">sc_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tfrecord_loader.html">tfrecord_loader module</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Emad-COMBINE-lab/GRouNdGAN/issues/new?title=Issue%20on%20page%20%2F_modules/perturbation/perturbation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for perturbation.perturbation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">typing</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.font_manager</span> <span class="k">as</span> <span class="nn">font_manager</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">umap.umap_</span> <span class="k">as</span> <span class="nn">umap</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">configparser</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
+<span class="kn">from</span> <span class="nn">factory</span> <span class="kn">import</span> <span class="n">get_factory</span><span class="p">,</span> <span class="n">parse_list</span>
+<span class="kn">from</span> <span class="nn">sc_dataset</span> <span class="kn">import</span> <span class="n">get_loader</span>
+
+<span class="n">font_dir</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Atkinson_Hyperlegible/Web Fonts/TTF/&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">font</span> <span class="ow">in</span> <span class="n">font_manager</span><span class="o">.</span><span class="n">findSystemFonts</span><span class="p">(</span><span class="n">font_dir</span><span class="p">):</span>
+    <span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">addfont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+<span class="c1"># Set font family globally</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Atkinson Hyperlegible&quot;</span>
+<span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">})</span>
+<span class="n">UMAP</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">UMAP</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="plot_UMAP"><a class="viewcode-back" href="../../perturbation.html#perturbation.perturbation.plot_UMAP">[docs]</a><span class="k">def</span> <span class="nf">plot_UMAP</span><span class="p">(</span>
+    <span class="n">real</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">fake</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">real_labels</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">fake_title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Fake&quot;</span><span class="p">,</span>
+    <span class="n">case_ctr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ctr&quot;</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot UMAP projections and density plots for real and generated (fake) cell data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    real : np.ndarray</span>
+<span class="sd">        Real cell expression data (cells x genes).</span>
+<span class="sd">    fake : np.ndarray</span>
+<span class="sd">        Fake/generated cell expression data (cells x genes).</span>
+<span class="sd">    real_labels : Optional[Union[list[str], np.ndarray]], optional</span>
+<span class="sd">        List or array of cell type labels for real cells (used for color-coded scatter plots), by default None</span>
+<span class="sd">    fit : bool, optional</span>
+<span class="sd">        Whether to fit a new UMAP model on the concatenated data (`True`),</span>
+<span class="sd">        or transform using an existing fitted UMAP model (`False`), by default False</span>
+<span class="sd">    fake_title : str, optional</span>
+<span class="sd">        Title used for fake cells in the plots (e.g., &quot;Generated&quot;, &quot;Simulated&quot;), by default &quot;Fake&quot;</span>
+<span class="sd">    case_ctr : str, optional</span>
+<span class="sd">        Identifier used in the saved filenames (before of after pert), by default &quot;ctr&quot;</span>
+<span class="sd">    save_path : Optional[str], optional</span>
+<span class="sd">        If provided, saves the scatter and density plots as PNGs, by default None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">real_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">real_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">real_labels</span><span class="p">)</span>
+        <span class="n">celltypes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_labels</span><span class="p">)</span>
+        <span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">celltypes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fit</span><span class="p">:</span>
+        <span class="n">embedded_cells</span> <span class="o">=</span> <span class="n">UMAP</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">embedded_cells</span> <span class="o">=</span> <span class="n">UMAP</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="n">real_embedding</span> <span class="o">=</span> <span class="n">embedded_cells</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="n">real</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
+    <span class="n">fake_embedding</span> <span class="o">=</span> <span class="n">embedded_cells</span><span class="p">[</span><span class="n">real</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:,</span> <span class="p">:]</span>
+
+    <span class="c1"># Figure 1: Scatter Plots</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">fig1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">real_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Get the original tab20 colormap</span>
+        <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;tab20&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get the colors from tab20 excluding the red color</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">colormap</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colormap</span><span class="o">.</span><span class="n">N</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">6</span>
+        <span class="p">]</span>  <span class="c1"># Remove red color at index 2</span>
+
+        <span class="c1"># Create a new colormap without the red color</span>
+        <span class="n">colormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+        <span class="n">colormap</span> <span class="o">=</span> <span class="p">[</span><span class="n">colormap</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)]</span>
+
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="n">celltype</span><span class="p">:</span> <span class="n">colormap</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">celltype</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">real_labels</span><span class="p">))}</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_labels</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">real_labels</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">i</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">real_embedding</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">real_embedding</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span>
+                <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; (real)&quot;</span><span class="p">,</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Real Cells&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;UMAP 1&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;UMAP 2&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Subplot 2: Fake Cells Scatter Plot</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">fake_title</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;UMAP 1&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;UMAP 2&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Subplot 3: Real and Fake Cells Combined Scatter Plot</span>
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">real_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_labels</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">real_labels</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">i</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">real_embedding</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">real_embedding</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span>
+                <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; (real)&quot;</span><span class="p">,</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fake&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;UMAP 1&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;UMAP 2&quot;</span><span class="p">)</span>
+
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Real and </span><span class="si">{</span><span class="n">fake_title</span><span class="si">}</span><span class="s2"> Cells&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Get handles and labels from ax1</span>
+    <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">real_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Place shared legend to the far left</span>
+        <span class="n">fig1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+            <span class="n">handles</span><span class="p">,</span>
+            <span class="n">labels</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cell Types&quot;</span><span class="p">,</span>
+            <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span>
+            <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># Leave space for legend on the left</span>
+
+    <span class="c1"># Figure 2: Density Plots</span>
+    <span class="n">fig2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Subplot 1: Real Cells Density Plot</span>
+    <span class="n">ax4</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+        <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">shade_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">,</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Real Cells Density&quot;</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Subplot 2: Fake Cells Density Plot</span>
+    <span class="n">ax5</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span>
+        <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">shade_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">,</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%.3g</span><span class="s2">&quot;</span><span class="p">},</span>  <span class="c1"># Set format to limit significant figures</span>
+    <span class="p">)</span>
+    <span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fake_title</span><span class="si">}</span><span class="s2"> Cells Density&quot;</span><span class="p">)</span>
+    <span class="n">ax5</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Subplot 3: Real and Fake Cells Combined Density Plot</span>
+    <span class="n">ax6</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">real_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">fake_embedding</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])),</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">,</span>
+        <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">shade_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax6</span><span class="p">,</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%.3g</span><span class="s2">&quot;</span><span class="p">},</span>  <span class="c1"># Set format to limit significant figures</span>
+    <span class="p">)</span>
+    <span class="n">ax6</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Real and </span><span class="si">{</span><span class="n">fake_title</span><span class="si">}</span><span class="s2"> Cells Density&quot;</span><span class="p">)</span>
+    <span class="n">ax6</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">save_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">save_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;scatter_plot_</span><span class="si">{</span><span class="n">case_ctr</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">fig2</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">save_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;density_plot_</span><span class="si">{</span><span class="n">case_ctr</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="perturb"><a class="viewcode-back" href="../../perturbation.html#perturbation.perturbation.perturb">[docs]</a><span class="k">def</span> <span class="nf">perturb</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">ConfigParser</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs perturbation experiment defined in the configuration file.</span>
+<span class="sd">    Saves cells and UMAP plots before and after perturbation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg : ConfigParser</span>
+<span class="sd">        Parser for config file containing program params.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># use the same number of cels as the test set</span>
+    <span class="n">cells_no</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="s2">&quot;Preprocessing&quot;</span><span class="p">,</span> <span class="s2">&quot;test set size&quot;</span><span class="p">)</span>
+
+    <span class="n">test_set</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Read the GAN</span>
+    <span class="n">gan</span> <span class="o">=</span> <span class="n">get_factory</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span><span class="o">.</span><span class="n">get_gan</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded GAN&quot;</span><span class="p">)</span>
+    <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;EXPERIMENT&quot;</span><span class="p">,</span> <span class="s2">&quot;checkpoint&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using checkpoint at&quot;</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
+
+    <span class="c1"># get real cells</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">get_loader</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">),</span> <span class="n">cells_no</span><span class="p">)</span>
+    <span class="n">real_cells</span><span class="p">,</span> <span class="n">real_labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">loader</span><span class="p">))</span>
+    <span class="n">real_cells</span> <span class="o">=</span> <span class="n">real_cells</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">real_cells</span><span class="p">[:</span><span class="n">cells_no</span><span class="p">],</span> <span class="n">real_labels</span><span class="p">[:</span><span class="n">cells_no</span><span class="p">]</span>
+
+    <span class="c1"># get fake cells without perturbation</span>
+    <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">gan</span><span class="o">.</span><span class="n">generate_cells</span><span class="p">(</span><span class="n">cells_no</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
+
+    <span class="c1">#### LET USER DEFINE PATH IN CFG</span>
+    <span class="k">if</span> <span class="s2">&quot;celltype&quot;</span> <span class="ow">in</span> <span class="n">test_set</span><span class="o">.</span><span class="n">obs</span><span class="p">:</span>
+        <span class="n">plot_UMAP</span><span class="p">(</span>
+            <span class="n">test_set</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+            <span class="n">fake_cells</span><span class="p">,</span>
+            <span class="n">real_labels</span><span class="o">=</span><span class="n">test_set</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">celltype</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+            <span class="n">fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">case_ctr</span><span class="o">=</span><span class="s2">&quot;before_perturbation&quot;</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plot_UMAP</span><span class="p">(</span>
+            <span class="n">test_set</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+            <span class="n">fake_cells</span><span class="p">,</span>
+            <span class="n">fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">case_ctr</span><span class="o">=</span><span class="s2">&quot;before_perturbation&quot;</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">pert_mode</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">gan</span><span class="o">.</span><span class="n">generate_cells</span><span class="p">(</span><span class="n">cells_no</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
+    <span class="n">fake_cells_new</span> <span class="o">=</span> <span class="n">gan</span><span class="o">.</span><span class="n">generate_cells</span><span class="p">(</span><span class="n">cells_no</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">fake_cells</span> <span class="o">==</span> <span class="n">fake_cells_new</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="s2">&quot;perturbation mode should be deterministic&quot;</span>
+
+    <span class="n">tfs_to_perturb</span> <span class="o">=</span> <span class="n">parse_list</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;tfs to perturb&quot;</span><span class="p">),</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="n">pert_values</span> <span class="o">=</span> <span class="n">parse_list</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;perturbation values&quot;</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+
+    <span class="n">gene_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_set</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span>
+    <span class="n">tfs_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">gene_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span> <span class="k">for</span> <span class="n">tf</span> <span class="ow">in</span> <span class="n">tfs_to_perturb</span><span class="p">]</span>
+    <span class="n">tf_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tfs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">tf_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">tf_idx</span> <span class="ow">in</span> <span class="n">tfs_idx</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tf_idx</span><span class="p">)</span>
+
+    <span class="n">unperturbed_tfs</span> <span class="o">=</span> <span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">pert_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+        <span class="n">pert_values</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span><span class="p">[:,</span> <span class="n">tf_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">pert_tensor</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fake_cells_perturbed</span> <span class="o">=</span> <span class="n">gan</span><span class="o">.</span><span class="n">generate_cells</span><span class="p">(</span><span class="n">cells_no</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
+    <span class="n">gan</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">tf_expressions</span> <span class="o">=</span> <span class="n">unperturbed_tfs</span>
+
+    <span class="k">if</span> <span class="s2">&quot;celltype&quot;</span> <span class="ow">in</span> <span class="n">test_set</span><span class="o">.</span><span class="n">obs</span><span class="p">:</span>
+        <span class="n">plot_UMAP</span><span class="p">(</span>
+            <span class="n">test_set</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+            <span class="n">fake_cells_perturbed</span><span class="p">,</span>
+            <span class="n">real_labels</span><span class="o">=</span><span class="n">test_set</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">celltype</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+            <span class="n">fit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">case_ctr</span><span class="o">=</span><span class="s2">&quot;after_perturbation&quot;</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plot_UMAP</span><span class="p">(</span>
+            <span class="n">test_set</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+            <span class="n">fake_cells_perturbed</span><span class="p">,</span>
+            <span class="n">fit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">case_ctr</span><span class="o">=</span><span class="s2">&quot;after_perturbation&quot;</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="n">fake_cells</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">fake_cells</span><span class="p">)</span>
+    <span class="n">fake_cells</span><span class="o">.</span><span class="n">obs_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;ctr_fake&quot;</span><span class="p">,</span> <span class="n">fake_cells</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">fake_cells</span><span class="o">.</span><span class="n">obs_names_make_unique</span><span class="p">()</span>
+    <span class="n">fake_cells</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;before_perturbation.h5ad&quot;</span><span class="p">)</span>
+
+    <span class="n">fake_cells_perturbed</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">fake_cells_perturbed</span><span class="p">)</span>
+    <span class="n">fake_cells_perturbed</span><span class="o">.</span><span class="n">obs_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+        <span class="s2">&quot;pert_fake&quot;</span><span class="p">,</span> <span class="n">fake_cells_perturbed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">fake_cells_perturbed</span><span class="o">.</span><span class="n">obs_names_make_unique</span><span class="p">()</span>
+    <span class="n">fake_cells_perturbed</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;after_perturbation.h5ad&quot;</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Saved cells before and after perturbation to&quot;</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;save dir&quot;</span><span class="p">),</span>
+    <span class="p">)</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yazdan Zinati
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Emad&#39;s COMBINE Lab: Yazdan Zinati, Abdulrahman Takiddeen, and Amin Emad.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
