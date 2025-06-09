@@ -103,7 +103,7 @@ def preprocess(cfg: ConfigParser) -> None:
     anndata[val_size : test_size + val_size].write_h5ad(cfg.get("Data", "test"))
     anndata[test_size + val_size :].write_h5ad(cfg.get("Data", "train"))
 
-    print("Successfully preprocessed and and saved dataset.")
+    print("Successfully preprocessed and saved dataset.")
     print("Train set:", cfg.get("Data", "train"))
     print("Validation set:", cfg.get("Data", "validation"))
     print("Test set:", cfg.get("Data", "test"))
