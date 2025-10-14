@@ -68,10 +68,12 @@ class CausalGenerator(nn.Module):
         self._generator = None
 
         self.genes = list(self.causal_graph.keys())
+        self.register_buffer("genes_tensor", torch.tensor(self.genes, device=self.device), persistent=False)
         self.regulators = list(  # all gene regulating TFs (can contain duplicate TFs)
             itertools.chain.from_iterable(self.causal_graph.values())
         )
         self.tfs = list(set(self.regulators))
+        self.register_buffer("tfs_tensor", torch.tensor(self.tfs, device=self.device), persistent=False)
 
         # if a gene has X number of regulators (TFs + noises), it will have a
         # hidden layer with the width of (hidden_width * num_regulators)
@@ -86,9 +88,9 @@ class CausalGenerator(nn.Module):
         self.noise = None
 
         self._lsn = LSN(self.library_size)
+        self.register_module("lsn", self._lsn)
 
         self._create_generator()
-        self._create_labeler()
 
     def forward(self, noise: torch.Tensor, *args, **kwargs) -> torch.Tensor:
         """
@@ -124,10 +126,8 @@ class CausalGenerator(nn.Module):
         batch_size = tf_expressions.shape[0]
 
         # create placeholder for cells
-        cells = torch.zeros(batch_size, self.num_tfs + self.num_genes).to(self.device)
-        cells = cells.index_add_(
-            1, torch.tensor(self.tfs).to(self.device), tf_expressions
-        )
+        cells = torch.zeros(batch_size, self.num_tfs + self.num_genes, device=self.device)
+        cells = cells.index_add_(1, self.tfs_tensor, tf_expressions)
 
         # lazy way of avoiding a circular dependency
         # FIXME: circular dependency
@@ -144,9 +144,7 @@ class CausalGenerator(nn.Module):
         regulators = torch.cat([tf_expressions, noise], dim=1)
         gene_expression = self._generator(regulators)
 
-        cells = cells.index_add_(
-            1, torch.tensor(self.genes).to(self.device), gene_expression
-        )
+        cells = cells.index_add_(1, self.genes_tensor, gene_expression)
         if self.library_size is not None:
             # reuse previous LSN scale in perturbation mode
             cells = self._lsn(cells, reuse_scale=self.pert_mode)
@@ -229,20 +227,6 @@ class CausalGenerator(nn.Module):
         )
 
         self._generator = nn.Sequential(*generator_layers)
-
-    def _create_labeler(self):
-        self._labeler = nn.Sequential(
-            nn.Linear(self.num_genes, self.num_genes * 2),
-            nn.BatchNorm1d(self.num_genes * 2),
-            nn.ReLU(inplace=True),
-            nn.Linear(self.num_genes * 2, self.num_genes * 2),
-            nn.BatchNorm1d(self.num_genes * 2),
-            nn.ReLU(inplace=True),
-            nn.Linear(self.num_genes * 2, self.num_genes * 2),
-            nn.BatchNorm1d(self.num_genes * 2),
-            nn.ReLU(inplace=True),
-            nn.Linear(self.num_genes * 2, self.num_tfs),
-        )
 
     def _create_generator_block(
         self,

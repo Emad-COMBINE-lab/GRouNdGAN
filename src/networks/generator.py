@@ -75,6 +75,7 @@ class Generator(nn.Module):
         )
 
         self._generator = nn.Sequential(*layers)
+        self.register_module("generator", self._generator)
 
     @staticmethod
     def _create_generator_block(
@@ -118,7 +119,7 @@ class Generator(nn.Module):
             return nn.Sequential(
                 linear_layer,
                 nn.BatchNorm1d(output_dim),
-                nn.ReLU(inplace=True),
+                ReLU(inplace=True),
             )
         else:
             # * Unable to find variance_scaling_initializer() with FAN_AVG mode
@@ -264,7 +265,7 @@ class ConditionalGenerator(Generator):
             return (
                 linear_layer,
                 ConditionalBatchNorm(output_dim, num_classes),
-                nn.ReLU(inplace=True),
+                ReLU(inplace=True),
             )
         else:
             nn.init.kaiming_normal_(

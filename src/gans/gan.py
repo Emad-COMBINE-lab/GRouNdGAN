@@ -258,9 +258,15 @@ class GAN:
         batch_no = int(np.ceil(cells_no / self.batch_size))
 
         fake_cells = []
-        for _ in range(batch_no):
-            noise = self._generate_noise(self.batch_size, self.latent_dim, self.device)
-            fake_cells.append(self.gen(noise).cpu().detach().numpy())
+        was_training = self.gen.training
+        self.gen.eval()
+        with torch.no_grad():
+            for _ in range(batch_no):
+                noise = self._generate_noise(
+                    self.batch_size, self.latent_dim, self.device
+                )
+                fake_cells.append(self.gen(noise).cpu().detach().numpy())
+        self.gen.train(was_training)
 
         return np.concatenate(fake_cells)[:cells_no]
 
@@ -273,15 +279,28 @@ class GAN:
         path : typing.Union[str, bytes, os.PathLike]
             Directory to save the model.
         """
-        output_dir = path + "/checkpoints"
-        if not os.path.isdir(output_dir):
-            os.makedirs(output_dir)
 
-        torch.save(
-            {
-                "step": self.step,
+        if torch.distributed.is_initialized() and os.environ.get("RANK", "0") != "0":
+            return
+
+        output_dir = path + "/checkpoints"
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+        if torch.distributed.is_initialized():
+            state_dict = {
                 "generator_state_dict": self.gen.module.state_dict(),
                 "critic_state_dict": self.crit.module.state_dict(),
+            }
+        else:
+            state_dict = {
+                "generator_state_dict": self.gen.state_dict(),
+                "critic_state_dict": self.crit.state_dict(),
+            }
+
+        torch.save(
+            state_dict
+            | {
+                "step": self.step,
                 "generator_optimizer_state_dict": self.gen_opt.state_dict(),
                 "critic_optimizer_state_dict": self.crit_opt.state_dict(),
                 "generator_lr_scheduler": self.gen_lr_scheduler.state_dict(),
@@ -380,10 +399,17 @@ class GAN:
         crit_data : typing.Union[torch.Tensor, typing.Tuple[torch.Tensor]]
             Input to the critic.
         """
+        if torch.distributed.is_initialized():
+            gen = self.gen.module
+            crit = self.crit.module
+        else:
+            gen = self.gen
+            crit = self.crit
+
         with SummaryWriter(f"{output_dir}/TensorBoard/model/generator") as w:
-            w.add_graph(self.gen.module, gen_data)
+            w.add_graph(gen, gen_data)
         with SummaryWriter(f"{output_dir}/TensorBoard/model/critic") as w:
-            w.add_graph(self.crit.module, crit_data)
+            w.add_graph(crit, crit_data)
 
     def _update_tensorboard(
         self,
@@ -412,6 +438,10 @@ class GAN:
         output_dir : typing.Union[str, bytes, os.PathLike]
             Directory to save the tfevents.
         """
+
+        # Only update on the master node
+        if torch.distributed.is_initialized() and os.environ.get("RANK", "0") != "0":
+            return
 
         with SummaryWriter(f"{output_dir}/TensorBoard/generator") as w:
             w.add_scalar("loss", gen_loss, self.step)
@@ -443,12 +473,16 @@ class GAN:
         output_dir : typing.Union[str, bytes, os.PathLike]
             Directory to save the t-SNE plots.
         """
-        tsne_path = output_dir + "/TSNE"
-        if not os.path.isdir(tsne_path):
-            os.makedirs(tsne_path)
-
         fake_cells = self.generate_cells(len(valid_loader.dataset))
         valid_cells, _ = next(iter(valid_loader))
+        valid_cells = valid_cells.cpu().detach().numpy()
+
+        # Only generate on the master node,
+        if torch.distributed.is_initialized() and os.environ.get("RANK", "0") != "0":
+            return
+
+        tsne_path = output_dir + "/TSNE"
+        Path(tsne_path).mkdir(parents=True, exist_ok=True)
 
         embedded_cells = TSNE().fit_transform(
             np.concatenate((valid_cells, fake_cells), axis=0)
@@ -513,7 +547,7 @@ class GAN:
         fake_noise = self._generate_noise(self.batch_size, self.latent_dim, self.device)
         fake = self.gen(fake_noise)
 
-        self.tb_fake = fake # for tensorboard model graph
+        self.tb_fake = fake  # for tensorboard model graph
 
         crit_fake_pred = self.crit(fake.detach())
         crit_real_pred = self.crit(real_cells)
@@ -548,7 +582,7 @@ class GAN:
             self.batch_size, self.latent_dim, device=self.device
         )
 
-        self.tb_fake_noise = fake_noise # for tensorboard model graph
+        self.tb_fake_noise = fake_noise  # for tensorboard model graph
 
         fake = self.gen(fake_noise)
         crit_fake_pred = self.crit(fake)
@@ -620,7 +654,9 @@ class GAN:
         """
 
         def should_run(freq):
-            return freq > 0 and self.step % freq == 0 and self.step > 0
+            return (freq > 0 and self.step % freq == 0 and self.step > 1) or (
+                self.step - 1 == max_steps
+            )
 
         loader, valid_loader = self._get_loaders(train_files, valid_files)
         loader_gen = iter(loader)
@@ -655,9 +691,11 @@ class GAN:
         self.crit.train()
 
         # We only accept training on GPU since training on CPU is impractical.
-        self.device = "cuda"
-        self.gen = torch.nn.DataParallel(self.gen)
-        self.crit = torch.nn.DataParallel(self.crit)
+        if torch.distributed.is_initialized():
+            self.gen = torch.nn.parallel.DistributedDataParallel(self.gen)
+            self.crit = torch.nn.parallel.DistributedDataParallel(self.crit)
+        else:
+            self.device = "cuda"
 
         # Main training loop
         generator_losses, critic_losses = [], []
@@ -674,9 +712,7 @@ class GAN:
             if self.step != 0:
                 mean_iter_crit_loss = 0
                 for _ in range(critic_iter):
-                    crit_loss, gp = self._train_critic(
-                        real_cells, real_labels, c_lambda
-                    )
+                    crit_loss, gp = self._train_critic(real_cells, real_labels, c_lambda)
                     mean_iter_crit_loss += crit_loss.item() / critic_iter
 
                 critic_losses += [mean_iter_crit_loss]
@@ -689,13 +725,17 @@ class GAN:
 
             generator_losses += [gen_loss.item()]
 
+            if should_run(save_feq):
+                self._save(output_dir)
+                print("Saved checkpoint")
+
             # Log and visualize progress
             if should_run(summary_freq):
                 gen_mean = sum(generator_losses[-summary_freq:]) / summary_freq
                 crit_mean = sum(critic_losses[-summary_freq:]) / summary_freq
 
                 # if self.step == summary_freq:
-                    # self._add_tensorboard_graph(output_dir, self.tb_fake_noise, self.tb_fake)
+                # self._add_tensorboard_graph(output_dir, self.tb_fake_noise, self.tb_fake)
 
                 self._update_tensorboard(
                     gen_mean,
@@ -713,8 +753,6 @@ class GAN:
 
             print("Done training causal controller step", self.step, flush=True)
 
-            if should_run(save_feq):
-                self._save(output_dir)
-                print("Saved checkpoint")
-
+            if torch.distributed.is_initialized():
+                torch.distributed.barrier()
             self.step += 1

@@ -92,7 +92,7 @@ class MaskedLinear(nn.Module):
         else:
             self.mask = torch.tensor(mask, dtype=torch.float).t()
 
-        self.mask = nn.Parameter(self.mask, requires_grad=False)
+        self.mask = nn.Parameter(self.mask, requires_grad=False).to(self.device)
 
         self.weight = nn.Parameter(
             torch.Tensor(self.output_features, self.input_features).to(self.device)

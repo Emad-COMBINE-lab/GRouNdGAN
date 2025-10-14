@@ -6,12 +6,12 @@ import shutil
 
 import numpy as np
 import scanpy as sc
-
+import torch.distributed
 from custom_parser import get_argparser, get_configparser
-from factory import get_factory
-from preprocessing import grn_creation, preprocess
 from evaluation import data_quality, grn_inference
+from factory import get_factory
 from perturbation import perturbation
+from preprocessing import grn_creation, preprocess
 
 if __name__ == "__main__":
     """
@@ -43,8 +43,21 @@ if __name__ == "__main__":
         grn_creation.create_GRN(cfg_parser)
 
     if args.train:
-        fac.get_trainer()()
-        print("Finished training")
+        if cfg_parser.get("EXPERIMENT", "use DDP", fallback="False") == "True":
+            fac.parser.set("EXPERIMENT", "device", f"cuda:{os.environ['LOCAL_RANK']}")
+            group = torch.distributed.init_process_group("nccl")
+            fac.get_trainer()()
+            torch.distributed.destroy_process_group(group)
+            print("Finished training.")
+            if args.generate or args.evaluate or args.benchmark_grn or args.perturb:
+                raise ValueError(
+                    "Cannot generate, evaluate, benchmark GRN, or perturb after training with DDP."
+                    "Please run these tasks again without DDP."
+                )
+            exit(0)
+        else:
+            fac.get_trainer()()
+            print("Finished training")
 
     if args.generate:
         simulated_cells = fac.get_gan().generate_cells(

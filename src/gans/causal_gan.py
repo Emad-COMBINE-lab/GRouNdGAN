@@ -1,5 +1,6 @@
 import os
 import typing
+from pathlib import Path
 
 import torch
 from networks.critic import Critic
@@ -108,6 +109,7 @@ class CausalGAN(GAN):
             self.causal_controller,
             self.causal_graph,
             self.library_size,
+            self.device,
         ).to(self.device)
         self.gen.freeze_causal_controller()
 
@@ -130,17 +132,31 @@ class CausalGAN(GAN):
         path : typing.Union[str, bytes, os.PathLike]
             Directory to save the model.
         """
-        output_dir = path + "/checkpoints"
-        if not os.path.isdir(output_dir):
-            os.makedirs(output_dir)
+        if torch.distributed.is_initialized() and os.environ.get("RANK", "0") != "0":
+            return
 
-        torch.save(
-            {
-                "step": self.step,
+        output_dir = path + "/checkpoints"
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+
+        if torch.distributed.is_initialized():
+            state_dict = {
                 "generator_state_dict": self.gen.module.state_dict(),
                 "critic_state_dict": self.crit.module.state_dict(),
                 "labeler_state_dict": self.labeler.module.state_dict(),
                 "antilabeler_state_dict": self.antilabeler.module.state_dict(),
+            }
+        else:
+            state_dict = {
+                "generator_state_dict": self.gen.state_dict(),
+                "critic_state_dict": self.crit.state_dict(),
+                "labeler_state_dict": self.labeler.state_dict(),
+                "antilabeler_state_dict": self.antilabeler.state_dict(),
+            }
+
+        torch.save(
+            state_dict
+            | {
+                "step": self.step,
                 "generator_optimizer_state_dict": self.gen_opt.state_dict(),
                 "critic_optimizer_state_dict": self.crit_opt.state_dict(),
                 "labeler_optimizer_state_dict": self.labeler_opt.state_dict(),
@@ -212,27 +228,34 @@ class CausalGAN(GAN):
             Tensor containing a batch of real cells.
         """
         fake_noise = self._generate_noise(self.batch_size, self.latent_dim, self.device)
-        fake = self.gen(fake_noise).detach() 
+        fake = self.gen(fake_noise).detach()
+
+        if torch.distributed.is_initialized():
+            genes = self.gen.module.genes
+            tfs = self.gen.module.tfs
+        else:
+            genes = self.gen.genes
+            tfs = self.gen.tfs
 
         # train anti-labeler
         self.antilabeler_opt.zero_grad()
-        predicted_tfs = self.antilabeler(fake[:, self.gen.module.genes])
-        actual_tfs = fake[:, self.gen.module.tfs]
+        predicted_tfs = self.antilabeler(fake[:, genes])
+        actual_tfs = fake[:, tfs]
         antilabeler_loss = self.mse(predicted_tfs, actual_tfs)
         antilabeler_loss.backward(retain_graph=True)
         self.antilabeler_opt.step()
 
         # train labeler on fake data
         self.labeler_opt.zero_grad()
-        predicted_tfs = self.labeler(fake[:, self.gen.module.genes])
+        predicted_tfs = self.labeler(fake[:, genes])
         labeler_floss = self.mse(predicted_tfs, actual_tfs)
         labeler_floss.backward()
         self.labeler_opt.step()
 
         # train labeler on real data
         self.labeler_opt.zero_grad()
-        predicted_tfs = self.labeler(real_cells[:, self.gen.module.genes])
-        actual_tfs = real_cells[:, self.gen.module.tfs]
+        predicted_tfs = self.labeler(real_cells[:, genes])
+        actual_tfs = real_cells[:, tfs]
         labeler_rloss = self.mse(predicted_tfs, actual_tfs)
         labeler_rloss.backward()
         self.labeler_opt.step()
@@ -251,15 +274,22 @@ class CausalGAN(GAN):
             self.batch_size, self.latent_dim, device=self.device
         )
 
-        self.tb_fake_noise = fake_noise # for tensorboard model graph
+        self.tb_fake_noise = fake_noise  # for tensorboard model graph
 
         fake = self.gen(fake_noise)
 
-        predicted_tfs = self.labeler(fake[:, self.gen.module.genes])
-        actual_tfs = fake[:, self.gen.module.tfs]
+        if torch.distributed.is_initialized():
+            genes = self.gen.module.genes
+            tfs = self.gen.module.tfs
+        else:
+            genes = self.gen.genes
+            tfs = self.gen.tfs
+
+        predicted_tfs = self.labeler(fake[:, genes])
+        actual_tfs = fake[:, tfs]
         labeler_loss = self.mse(predicted_tfs, actual_tfs)
 
-        predicted_tfs = self.antilabeler(fake[:, self.gen.module.genes])
+        predicted_tfs = self.antilabeler(fake[:, genes])
         antilabeler_loss = self.mse(predicted_tfs, actual_tfs)
 
         crit_fake_pred = self.crit(fake)
@@ -267,14 +297,13 @@ class CausalGAN(GAN):
 
         # comment for ablation of labeler and anti-labeler (GRouNdGAN_def_even_ablation1)
         gen_loss += labeler_loss + antilabeler_loss
-        
+
         # uncomment for ablation of anti-labeler but keeping the labeler (GRouNdGAN_def_even_ablation2)
         # gen_loss += labeler_loss
 
         # uncomment for ablation of labeler but keeping the anti-labeler (GRouNdGAN_def_even_ablation3)
         # gen_loss += antilabeler_loss
 
-        
         gen_loss.backward()
 
         # Update weights
@@ -352,7 +381,9 @@ class CausalGAN(GAN):
         """
 
         def should_run(freq):
-            return freq > 0 and self.step % freq == 0 and self.step > 0
+            return (freq > 0 and self.step % freq == 0 and self.step > 1) or (
+                self.step - 1 == max_steps
+            )
 
         loader, valid_loader = self._get_loaders(train_files, valid_files)
         loader_gen = iter(loader)
@@ -406,11 +437,13 @@ class CausalGAN(GAN):
         self.antilabeler.train()
 
         # We only accept training on GPU since training on CPU is impractical.
-        self.device = "cuda"
-        self.gen = torch.nn.DataParallel(self.gen)
-        self.crit = torch.nn.DataParallel(self.crit)
-        self.labeler = torch.nn.DataParallel(self.labeler)
-        self.antilabeler = torch.nn.DataParallel(self.antilabeler)
+        if torch.distributed.is_initialized():
+            self.gen = torch.nn.parallel.DistributedDataParallel(self.gen)
+            self.crit = torch.nn.parallel.DistributedDataParallel(self.crit)
+            self.labeler = torch.nn.parallel.DistributedDataParallel(self.labeler)
+            self.antilabeler = torch.nn.parallel.DistributedDataParallel(self.antilabeler)
+        else:
+            self.device = "cuda"
 
         # Main training loop
         generator_losses, critic_losses = [], []
@@ -427,9 +460,7 @@ class CausalGAN(GAN):
             if self.step != 0:
                 mean_iter_crit_loss = 0
                 for _ in range(critic_iter):
-                    crit_loss, gp = self._train_critic(
-                        real_cells, real_labels, c_lambda
-                    )
+                    crit_loss, gp = self._train_critic(real_cells, real_labels, c_lambda)
                     mean_iter_crit_loss += crit_loss.item() / critic_iter
 
                 critic_losses += [mean_iter_crit_loss]
@@ -451,7 +482,9 @@ class CausalGAN(GAN):
                 crit_mean = sum(critic_losses[-summary_freq:]) / summary_freq
 
                 if self.step == summary_freq:
-                    self._add_tensorboard_graph(output_dir, self.tb_fake_noise, self.tb_fake)
+                    self._add_tensorboard_graph(
+                        output_dir, self.tb_fake_noise, self.tb_fake
+                    )
 
                 self._update_tensorboard(
                     gen_mean,
@@ -474,3 +507,5 @@ class CausalGAN(GAN):
                 print("Saved checkpoint")
 
             self.step += 1
+            if torch.distributed.is_initialized():
+                torch.distributed.barrier()

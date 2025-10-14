@@ -3,8 +3,8 @@ import typing
 
 import scanpy as sc
 import torch
-from torch.utils.data import DataLoader, Dataset
 from scipy import sparse
+from torch.utils.data import DataLoader, Dataset
 
 
 class SCDataset(Dataset):
@@ -78,4 +78,6 @@ def get_loader(
     if batch_size is None:
         batch_size = len(dataset)
 
-    return DataLoader(dataset, batch_size, shuffle=True, drop_last=True)
+    return DataLoader(
+        dataset, batch_size, shuffle=True, drop_last=True, pin_memory=True, num_workers=1
+    )

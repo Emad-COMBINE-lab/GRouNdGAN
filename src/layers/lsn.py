@@ -23,8 +23,8 @@ class LSN(nn.Module):
 
         """
         super().__init__()
-        self.library_size = library_size
-        self.device = device
+        self.library_size = torch.nn.Parameter(torch.tensor(library_size), requires_grad=False)
+        self.register_parameter("library_size", self.library_size)
         self.scale = None
 
     def forward(
@@ -47,7 +47,7 @@ class LSN(nn.Module):
         torch.Tensor
             Gene expression of cells after library size normalization.
         """
-        gammas = torch.ones(in_.shape[0]).to(self.device) * self.library_size
+        gammas = torch.ones(in_.shape[0], device=self.library_size.device) * self.library_size
         sigmas = torch.sum(in_, 1)
         scale = torch.div(gammas, sigmas)
 
