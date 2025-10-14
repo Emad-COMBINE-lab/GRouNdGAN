@@ -1,5 +1,7 @@
 import os
 import typing
+import warnings
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -252,7 +254,10 @@ class GAN:
             Gene expression matrix of generated cells.
         """
         if checkpoint is not None:
-            self._load(checkpoint)
+            if not Path(checkpoint).exists():
+                warnings.warn(f"Checkpoint {checkpoint} does not exist.")
+            else:
+                self._load(checkpoint)
 
         # find how many batches to generate
         batch_no = int(np.ceil(cells_no / self.batch_size))
@@ -648,8 +653,11 @@ class GAN:
             self.crit_opt, crit_alpha_0, crit_alpha_final, max_steps
         )
 
-        if checkpoint is not None:
-            self._load(checkpoint, mode="training")
+        if checkpoint is not None and Path(checkpoint).exists():
+            if not Path(checkpoint).exists():
+                warnings.warn(f"Checkpoint {checkpoint} does not exist.")
+            else:
+                self._load(checkpoint, mode="training")
 
         self.gen.train()
         self.crit.train()
